@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git add</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>📗 Git add</h1>
+
+    <h2>Krátký úvod</h2>
+    <p>Příkaz git add připraví vybrané změny pro další commit.</p>
+
+    <p>
+      Změny ještě neukládá natrvalo. Pouze je přesune do připravené oblasti,
+      které se říká staging area.
+    </p>
+    <div class="mind">
+      <h2>🧠 Jak přemýšlet o git add</h2>
+      <p>git add je jako výběr věcí, které chceš vložit do dalšího balíčku.</p>
+
+      <p>
+        Soubor může být změněný, ale dokud nepoužiješ git add, nebude součástí
+        dalšího commitu.
+      </p>
+    </div>
+
+    <h2>📚 Co se dnes naučíš</h2>
+
+    <ul>
+      <li>co dělá git add</li>
+      <li>co je staging area</li>
+      <li>jak přidat jeden soubor</li>
+      <li>jak přidat všechny změny</li>
+      <li>jak zkontrolovat připravené soubory</li>
+    </ul>
+
+    <h2>💻 Příklady</h2>
+
+    <ul>
+      <li>
+        <code>git add index.html</code>
+        <p>Připraví pro commit pouze soubor index.html.</p>
+      </li>
+      <li>
+        <code>git add index.html style.css</code>
+        <p>Připraví pro commit oba uvedené soubory.</p>
+      </li>
+      <li>
+        <code>git add .</code>
+        <p>Připraví všechny změněné a nové soubory v aktuálním projektu.</p>
+      </li>
+    </ul>
+
+    <div class="tip">
+      <h3>💡 Tip</h3>
+      <p>Po příkazu git add vždy spusť<code>git status </code>.</p>
+
+      <p>Zkontroluješ tak, které soubory jsou opravdu připravené pro commit.</p>
+    </div>
+
+    <div class="chyba">
+      <h3>⚠️ Nejčastější chyba</h3>
+      <p>
+        Začátečník někdy použije <code>git commit</code> bez předchozího
+        <code>git add</code>.
+      </p>
+      <p>Příkaz git add . může připravit i soubor, který jsi přidat nechtěl.</p>
+
+      <p>Proto je důležité před commitem zkontrolovat git status.</p>
+
+      <p>Git potom nové změny do commitu nezahrne.</p>
+    </div>
+
+    <h2>📝 Co si zapamatovat</h2>
+
+    <ul>
+      <li><code> git add</code> nepřidává soubor na GitHub.</li>
+      <li><code>git add</code> ještě nevytváří commit.</li>
+
+      <li><code> git add</code> připravuje změny pro commit.</li>
+
+      <li><code>git add</code> název-souboru připraví jeden soubor.</li>
+      <li><code>git add .</code> připraví všechny změny.</li>
+    </ul>
+
+    <h2>💻 Vyzkoušej si</h2>
+    <p>jeden soubor:</p>
+    <pre><code>git status
+git add index.html
+git status
+      </code></pre>
+    <p>všechny soubory:</p>
+    <pre><code>git add .
+git status
+      
+</code></pre>
+
+    <div class="lesson-nav">
+      <a href="git-status.html">⬅ git status</a>
+
+      <a href="git.html">📗 Obsah Git</a>
+
+      <a href="git-commit.html">git commit ➡</a>
+    </div>
+  </body>
+</html>
