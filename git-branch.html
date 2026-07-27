@@ -28,7 +28,7 @@
 ================ -->
 
   <div class="mind">
-    <h2>🧠 Jak přemýšlet o git switch</h2>
+    <h2>🧠 Jak přemýšlet o git branch</h2>
 
     <p>Představ si, že projekt je kniha.</p>
 
@@ -98,20 +98,29 @@
 
     <p>Pro názvy větví používej krátké a srozumitelné názvy bez mezer a diakritiky.</p>
 
-    Například: oprava-navigace nebo kapitola-git-branch.</p>
+    <p>Například: oprava-navigace nebo kapitola-git-branch.</p>
   </div>
 
   <!-- ===============
 ===Nejčastější chyba =====
 ================ -->
   <div class="chyba">
-    <h3>⚠️ Nejčastější chyba</h3>
+  <h3>⚠️ Nejčastější chyba</h3>
 
-    <p>Začátečník někdy smaže větev pomocí <code>git branch -D</code>, aniž by si ověřil její obsah.</p>
-    Přepínač -D obchází bezpečnostní kontrolu Gitu a může odstranit nesloučené změny.</p>
-    Nejdřív vždy zkus bezpečné <code>git branch -d</code>.</p>
-    </p>
-  </div>
+  <p>
+    Začátečník někdy smaže větev pomocí
+    <code>git branch -D</code>, aniž by si ověřil její obsah.
+  </p>
+
+  <p>
+    Přepínač <code>-D</code> obchází bezpečnostní kontrolu Gitu
+    a může odstranit nesloučené změny.
+  </p>
+
+  <p>
+    Nejdřív vždy zkus bezpečné <code>git branch -d</code>.
+  </p>
+</div>
 
   <!-- ===============
 ===Co si zapamatovat =====
@@ -141,14 +150,15 @@
   <!-- ===============
 ===Navigace =====
 ================ -->
-<button class="complete-lesson" data-lesson="git-pull">
+<button class="complete-lesson" data-lesson="git-branch">
   ✅ Označit lekci jako dokončenou
   </button>
   <div class="lesson-nav">
     <a href="git-switch.html">⬅️ switch</a>
     <a href="git.html">📗 Obsah Git</a>
-    <a href="index.html"> Git log ➡️</a>
+    <a href="git-log.html"> Git log ➡️</a>
   </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
