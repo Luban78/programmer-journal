@@ -6,6 +6,10 @@ body {
   margin: 30px auto;
   padding: 20px;
   box-sizing: border-box;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
 }
 
 h1 {
@@ -18,7 +22,7 @@ h2 {
 }
 
 .podnadpis {
-    text-align: center;
+  text-align: center;
 }
 
 hr {
@@ -61,24 +65,31 @@ pre code {
 }
 
 .tip {
-    background-color: #fff8dc;
-    border-left: 5px solid #e6b800;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
+  background-color: #fff8dc;
+  border-left: 5px solid #e6b800;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 @media (max-width: 600px) {
   body {
-    margin-top: 1px;
+    min-height: 100dvh;
+    padding-bottom: 2px;
+  }
+
+  .lesson-nav {
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
 .chyba {
-    background-color: #f6afa6;
-    border-left: 5px solid #f05353;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
+  background-color: #f6afa6;
+  border-left: 5px solid #f05353;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 @media (max-width: 600px) {
   body {
@@ -86,32 +97,37 @@ pre code {
   }
 }
 
-
 .mind {
-    background-color: #8aeaf9ff;
-    border-left: 5px solid #136b8cff;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
+  background-color: #8aeaf9ff;
+  border-left: 5px solid #136b8cff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 /*spodni navigace*/
 .lesson-nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-top: 30px;
-  font-size: 14px;
+  gap: 10px;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-bottom: 4px;
 }
 
 .lesson-nav a {
   flex: 1;
-}
-
-.lesson-nav a:nth-child(2) {
+  min-width: 0;
+  padding: 12px 4px;
+  background-color: #14380f;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
   text-align: center;
+  text-decoration: none;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
-.lesson-nav a:last-child {
-  text-align: right;
+.lesson-nav a:active {
+  transform: scale(0.96);
 }
