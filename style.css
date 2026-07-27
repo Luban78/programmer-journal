@@ -131,7 +131,7 @@ pre code {
 .lesson-nav a:active {
   transform: scale(0.96);
 }
-//progress bar
+/*progress bar*/
 .chapter-progress {
   margin: 25px 0;
 }

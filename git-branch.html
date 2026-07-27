@@ -1,139 +1,154 @@
 <!doctype html>
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git branch | Programmer Journal</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <h1>📗 Git branch</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git branch | Programmer Journal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <!-- ===============
+<body>
+  <h1>📗 Git branch</h1>
+
+  <!-- ===============
 ===Krátký úvod =====
 ================ -->
 
-    <h2>Krátký úvod</h2>
+  <h2>Krátký úvod</h2>
 
-    <p>Příkaz git branch slouží k práci s větvemi projektu.</p>
+  <p>Příkaz git branch slouží k práci s větvemi projektu.</p>
 
-<p>Větev je oddělená pracovní verze projektu, ve které můžeš bezpečně vyvíjet novou funkci nebo opravu.</p>
+  <p>Větev je oddělená pracovní verze projektu, ve které můžeš bezpečně vyvíjet novou funkci nebo opravu.</p>
 
-<p>Hlavní větev main tak může zůstat stabilní, dokud nejsou nové změny hotové a otestované.</p>
+  <p>Hlavní větev main tak může zůstat stabilní, dokud nejsou nové změny hotové a otestované.</p>
 
-    <!-- ===============
+  <!-- ===============
 ===Jak přemýšlet o =====
 ================ -->
 
-    <div class="mind">
-      <h2>🧠 Jak přemýšlet o git switch</h2>
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o git switch</h2>
 
-      <p>Představ si, že projekt je kniha.</p>
+    <p>Představ si, že projekt je kniha.</p>
 
-      <p>Hlavní větev je originální kniha.</p>
+    <p>Hlavní větev je originální kniha.</p>
 
-      <p>
-        Nová větev je její kopie, ve které můžeš bezpečně psát, škrtat a
-        experimentovat.
-      </p>
+    <p>
+      Nová větev je její kopie, ve které můžeš bezpečně psát, škrtat a
+      experimentovat.
+    </p>
 
-      <p>Dokud změny nesloučíš, hlavní větev zůstane beze změny.</p>
-    </div>
+    <p>Dokud změny nesloučíš, hlavní větev zůstane beze změny.</p>
+  </div>
 
-    <!-- ===============
+  <!-- ===============
 ===Co se dnes naučíš =====
 ================ -->
 
-    <h2>📚 Co se dnes naučíš</h2>
 
-    <ul>
-      <li>k čemu slouží <code>git switch</code></li>
-      <li>jak přepnout větev</li>
-      <li>jak vytvořit novou větev</li>
-      <li>co je hlavní větev</li>
-      <li>proč používat větve</li>
-    </ul>
 
-    <!-- ===============
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>co je větev</li>
+    <li>jak zobrazit lokální větve</li>
+    <li>jak poznat aktuální větev</li>
+    <li>jak vytvořit novou větev</li>
+    <li>jak bezpečně smazat větev</li>
+    <li>jak vynuceně smazat testovací větev</li>
+  </ul>
+
+  <!-- ===============
 ===Příklady =====
 ================ -->
-    <h2>💻 Příklady</h2>
+  <h2>💻 Příklady</h2>
 
-    <ul>
-      <li>
-        <code>git switch main</code>
-        <p>Přepne na hlavní větev projektu.</p>
-      </li>
-      <li>
-        <code>git switch kapitola-git-switch</code>
-        <p>Přepne na existující větev s názvem kapitola-git-switch.</p>
-      </li>
-      <li>
-        <code>git switch -c kapitola-git-switch</code>
-        <p>Vytvoří novou větev a ihned se na ni přepne.</p>
-      </li>
-      <li>
-        <code>git branch</code>
-        <p>Zobrazí seznam všech lokálních větví.</p>
-      </li>
-    </ul>
+  <ul>
+    <li>
+      <code>git branch</code>
+      <p>Zobrazí seznam lokálních větví. Hvězdička označuje aktuální větev.</p>
+    </li>
+    <li>
+      <code>git --no-pager branch</code>
+      <p>Zobrazí větve bez otevření pageru s prázdnými řádky označenými znakem <code>~</code>.</p>
+    </li>
+    <li>
+      <code>git switch -c zkouska-vetve</code>
+      <p>Vytvoří novou větev zkouska-vetve a ihned se na ni přepne.</p>
+    </li>
+    <li>
+      <code>git branch -d zkouska-vetve</code>
+      <p>Bezpečně smaže větev. Git smazání odmítne, pokud by mohlo dojít ke ztrátě nesloučených změn.</p>
+    </li>
+    <li>
+      <code>git branch -D zkouska-vetve</code>
+      <p>Vynutí smazání větve. Používej pouze tehdy, když víš, že změny ve větvi nepotřebuješ.</p>
+    </li>
+  </ul>
 
-    <!-- ===============
+  <!-- ===============
 ===tip =====
 ================ -->
-    <div class="tip">
-      <h3>💡 Tip</h3>
+  <div class="tip">
+    <h3>💡 Tip</h3>
 
-      <p>Pro každou větší úpravu vytvoř novou větev.</p>
+    <p>Před vytvořením nové větve si vždy ověř pomocí <code>git status</code>, na které větvi právě jsi.</p>
 
-      <p>Když se něco nepovede, hlavní větev zůstane bezpečně beze změn.</p>
-    </div>
+    <p>Pro názvy větví používej krátké a srozumitelné názvy bez mezer a diakritiky.</p>
 
-    <!-- ===============
+    Například: oprava-navigace nebo kapitola-git-branch.</p>
+  </div>
+
+  <!-- ===============
 ===Nejčastější chyba =====
 ================ -->
-    <div class="chyba">
-      <h3>⚠️ Nejčastější chyba</h3>
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
 
-      <p>Začátečník někdy zapomene, na které větvi právě pracuje.</p>
+    <p>Začátečník někdy smaže větev pomocí <code>git branch -D</code>, aniž by si ověřil její obsah.</p>
+    Přepínač -D obchází bezpečnostní kontrolu Gitu a může odstranit nesloučené změny.</p>
+    Nejdřív vždy zkus bezpečné <code>git branch -d</code>.</p>
+    </p>
+  </div>
 
-      <p>Před úpravami proto vždy spusť <code>git status</code> a zkontroluj název aktuální větve.
-      </p>
-    </div>
-
-    <!-- ===============
+  <!-- ===============
 ===Co si zapamatovat =====
 ================ -->
-    <h2>📝 Co si zapamatovat</h2>
+  <h2>📝 Co si zapamatovat</h2>
 
-    <ul>
-      <li><code>git switch</code> přepíná mezi větvemi.</li>
-      <li><code>git switch -c</code> vytvoří novou větev.</li>
-      <li>main je hlavní větev projektu.</li>
-      <li><code>git branch</code> zobrazí lokální větve.</li>
-      <li>Před prací je dobré ověřit aktuální větev pomocí <code>git
-        status</code>.
-      </li>
-    </ul>
+  <ul>
+    <li><code>git branch</code> vypíše lokální větve.</li>
+    <li>Hvězdička označuje aktuální větev.</li>
+    <li><code>git switch -c</code> vytvoří novou větev a přepne se na ni.</li>
+    <li><code>git branch -d</code> bezpečně smaže větev.</li>
+    <li><code>git branch -D </code> vynutí smazání větve.</li>
+    <li>main je hlavní větev projektu.</li>
+  </ul>
 
-    <!-- ===============
+  <!-- ===============
 ===Vyzkoušej si =====
 ================ -->
-    <h2>💻 Vyzkoušej si</h2>
+  <h2>💻 Vyzkoušej si</h2>
 
-    <pre><code>git branch</code></pre>
-    <pre><code>git switch main</code></pre>
-    <pre><code>git switch -c kapitola-git-switch</code></pre>
-    <pre><code>git status</code></pre>
+  <pre><code>git status</code></pre>
+  <pre><code>git --no-pager branch</code></pre>
+  <pre><code>git switch -c zkouska-vetve</code></pre>
+  <pre><code>git switch main</code></pre>
+  <pre><code>git branch -d zkouska-vetve</code></pre>
 
-    <!-- ===============
+  <!-- ===============
 ===Navigace =====
 ================ -->
-    <div class="lesson-nav">
-      <a href="git-pull.html">⬅️ pull</a>
-      <a href="git.html">📗 Obsah Git</a>
-      <a href="index.html">Programmer Journal</a>
-    </div>
-  </body>
+<button class="complete-lesson" data-lesson="git-pull">
+  ✅ Označit lekci jako dokončenou
+  </button>
+  <div class="lesson-nav">
+    <a href="git-switch.html">⬅️ switch</a>
+    <a href="git.html">📗 Obsah Git</a>
+    <a href="index.html"> Git log ➡️</a>
+  </div>
+</body>
+
 </html>
