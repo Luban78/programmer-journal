@@ -107,7 +107,7 @@ pre code {
 /*spodni navigace*/
 .lesson-nav {
   display: flex;
-  gap: 10px;
+  gap: 7px;
   margin-top: auto;
   margin-bottom: 0;
   padding-bottom: 4px;
@@ -130,4 +130,32 @@ pre code {
 
 .lesson-nav a:active {
   transform: scale(0.96);
+}
+//progress bar
+.chapter-progress {
+  margin: 25px 0;
+}
+
+.chapter-progress p {
+  margin-bottom: 8px;
+}
+
+.chapter-progress progress {
+  width: 100%;
+  height: 22px;
+}
+
+.complete-lesson{
+  font-size: 18px;
+  height: 75px;
+  text-align: center;
+  background-color: #acf9d6;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border-left: 10px solid #0b8b09;
+  border-color: #0b8b09;
+  width: 100%;
+}
+.complete-lesson:active{
+  background-color: #207608;
 }
