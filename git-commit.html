@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git commit | Programmer Journal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>📗 Git commit</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>Příkaz git commit uloží připravené změny do historie projektu.</p>
+  <p>Každý commit představuje jeden uložený bod, ke kterému se můžeme později vrátit.</p>
+  <p>Commit ukládá pouze změny, které jsme předtím připravili pomocí příkazu git add.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o git commit</h2>
+
+    <p>Git commit je jako vytvoření uloženého bodu ve hře.</p>
+
+
+    <p>Příkaz <code>git add</code> vybere změny, které chceme uložit.</p>
+    <p>Příkaz git commit potom z těchto připravených změn vytvoří nový záznam v historii projektu.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>co dělá git commit</li>
+    <li>proč commit potřebuje zprávu</li>
+    <li>jak vytvořit commit</li>
+    <li>jak napsat dobrou zprávu commitu</li>
+    <li>jak zobrazit historii commitů</li>
+    <li>jak poznat, že commit proběhl správně</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+
+  <ul>
+    <li>
+      <code>git commit -m "První commit"</code>
+      <p>Vytvoří commit s krátkou zprávou „První commit“.</p>
+    </li>
+    <li>
+      <code>git commit -m "Opravena navigace mezi lekcemi"</code>
+      <p>Zpráva stručně popisuje, jaká změna byla do historie projektu uložena.</p>
+    </li>
+    <li>
+      <code>git log</code>
+      <p>Zobrazí historii commitů včetně jejich identifikátoru, autora, data a zprávy.</p>
+    </li>
+    <li>
+      <code>git log --oneline</code>
+      <p>Zobrazí každý commit na jednom řádku, takže je historie přehlednější.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Zpráva commitu by měla krátce a jasně popsat, co se změnilo.</p>
+    <p>Místo obecné zprávy „oprava“ napiš například „Opravena navigace mezi lekcemi“.</p>
+    <p>Jeden commit by měl obsahovat jednu logickou změnu.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>
+      Začátečník někdy spustí <code>git commit</code> bez předchozího příkazu
+      <code>git add</code>.
+    </p>
+    <p>Změny, které nejsou připravené, se potom do commitu neuloží.</p>
+    <p>Další častou chybou je nesrozumitelná zpráva, například „test“, „změna“ nebo „oprava“.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li><code>git commit</code> uloží připravené změny do historie projektu.</li>
+    <li><code>git commit</code> neodesílá změny na GitHub.</li>
+    <li>Před commitem je potřeba použít <code>git add</code>.</li>
+    <li>Parametr <code>-m</code> umožní napsat zprávu commitu.</li>
+    <li>Zpráva by měla stručně popsat provedenou změnu.</li>
+
+    <li><code>git log</code> zobrazí historii commitů.</li>
+    <li><code>git log --oneline</code> zobrazí zkrácenou historii.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+
+  <pre><code>git status</code></pre>
+  <pre><code>git add .</code></pre>
+  <pre><code>git commit -m "Dokoncena lekce git commit"</code></pre>
+  <pre><code>git status</code></pre>
+  <pre><code>git log --oneline</code></pre>
+
+  <div class="lesson-nav">
+    <a href="git-add.html">⬅ git add</a>
+    <a href="git.html">📗 Obsah Git</a>
+    <a href="#">git push ➡</a>
+  </div>
+</body>
+
+</html>
