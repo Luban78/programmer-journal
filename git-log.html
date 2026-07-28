@@ -16,51 +16,25 @@
 
     <h2>Krátký úvod</h2>
 
-    <p>Příkaz <code>git switch</code> slouží k přepínání mezi větvemi.</p>
+    <p>Příkaz <code>git log</code> zobrazí historii commitů v projektu.</p>
 
-    <p>
-      Díky větvím můžeš bezpečně pracovat na nových funkcích, aniž bys ovlivnil
-      hlavní větev projektu.
-    </p>
+<p>Commity jsou seřazené od nejnovějšího po nejstarší.</p>
 
-    <p>
-      <code>Git switch</code> také umožňuje vytvořit novou větev a rovnou se na
-      ni přepnout.
-    </p>
+<p>Díky historii můžeme zjistit, kdy změna vznikla, kdo ji vytvořil a jakou měla zprávu.</p>
 
     <!-- ===============
 ===Jak přemýšlet o =====
 ================ -->
 
     <div class="mind">
-      <h2>🧠 Jak přemýšlet o git switch</h2>
+      <h2>🧠 Jak přemýšlet o git log</h2>
 
-      <p>Představ si, že projekt je kniha.</p>
+      <p>Každý commit je jako uložená fotografie projektu.</p>
 
-      <p>Hlavní větev je originální kniha.</p>
-
-      <p>
-        Nová větev je její kopie, ve které můžeš bezpečně psát, škrtat a
-        experimentovat.
-      </p>
-
-      <p>Dokud změny nesloučíš, hlavní větev zůstane beze změny.</p>
+<p>Git log je album, ve kterém jsou všechny fotografie seřazené od nejnovější po nejstarší.</p>
     </div>
 
-    <!-- ===============
-===Co se dnes naučíš =====
-================ -->
-
-    <h2>📚 Co se dnes naučíš</h2>
-
-    <ul>
-      <li>k čemu slouží <code>git switch</code></li>
-      <li>jak přepnout větev</li>
-      <li>jak vytvořit novou větev</li>
-      <li>co je hlavní větev</li>
-      <li>proč používat větve</li>
-    </ul>
-
+    
     <!-- ===============
 ===Příklady =====
 ================ -->
@@ -68,20 +42,16 @@
 
     <ul>
       <li>
-        <code>git switch main</code>
-        <p>Přepne na hlavní větev projektu.</p>
+        <code>git log</code>
+        <p>Zobrazí podrobnosti včetně ID commitu, autora, data a zprávy.</p>
       </li>
       <li>
-        <code>git switch kapitola-git-switch</code>
-        <p>Přepne na existující větev s názvem kapitola-git-switch.</p>
+        <code>git log --oneline</code>
+        <p>Zobrazí každý commit stručně na jednom řádku.</p>
       </li>
       <li>
-        <code>git switch -c kapitola-git-switch</code>
-        <p>Vytvoří novou větev a ihned se na ni přepne.</p>
-      </li>
-      <li>
-        <code>git branch</code>
-        <p>Zobrazí seznam všech lokálních větví.</p>
+        <code>git log --stat</code>
+        <p>Zobrazí také změněné soubory a počty přidaných a odebraných řádků.</p>
       </li>
     </ul>
 
@@ -91,9 +61,9 @@
     <div class="tip">
       <h3>💡 Tip</h3>
 
-      <p>Pro každou větší úpravu vytvoř novou větev.</p>
+      <p>Pro rychlou kontrolu historie nejčastěji používej <code>git log --oneline</code>.</p>
 
-      <p>Když se něco nepovede, hlavní větev zůstane bezpečně beze změn.</p>
+<p>Z podrobného výpisu se vrátíš do terminálu klávesou q.</p>
     </div>
 
     <!-- ===============
@@ -102,10 +72,9 @@
     <div class="chyba">
       <h3>⚠️ Nejčastější chyba</h3>
 
-      <p>Začátečník někdy zapomene, na které větvi právě pracuje.</p>
+      <p>Začátečník se někdy lekne, že po příkazu <code>git log</code> nemůže psát další příkaz.</p>
 
-      <p>Před úpravami proto vždy spusť <code>git status</code> a zkontroluj název aktuální větve.
-      </p>
+<p>Git pouze otevřel historii v pageru. Do terminálu se vrátíš stisknutím klávesy q.</p>
     </div>
 
     <!-- ===============
@@ -114,36 +83,28 @@
     <h2>📝 Co si zapamatovat</h2>
 
     <ul>
-      <li><code>git switch</code> přepíná mezi větvemi.</li>
-      <li><code>git switch -c</code> vytvoří novou větev.</li>
-      <li>main je hlavní větev projektu.</li>
-      <li><code>git branch</code> zobrazí lokální větve.</li>
-      <li>Před prací je dobré ověřit aktuální větev pomocí <code>git
-        status</code>.
+      <li><code>git log</code> zobrazí historii commitů.</li>
+      <li>Nejnovější commit je nahoře.</li>
+      <li>Každý commit má vlastní identifikátor.</li>
+       <li><code>git log --oneline</code> zobrazí stručnou historii.</li>
+      <li></li><code>git log --stat</code>
+<li>ukáže také změněné soubory.</>.
+      </li>
+      <li>Z pageru odejdeš klávesou <code>q</code>.</li>
       </li>
     </ul>
-
-    <!-- ===============
-===Vyzkoušej si =====
-================ -->
-    <h2>💻 Vyzkoušej si</h2>
-
-    <pre><code>git branch</code></pre>
-    <pre><code>git switch main</code></pre>
-    <pre><code>git switch -c kapitola-git-switch</code></pre>
-    <pre><code>git status</code></pre>
-
+    
     <!-- ===============
 ===Navigace =====
 ================ -->
-  <button class="complete-lesson" data-lesson="git-switch">
+  <button class="complete-lesson" data-lesson="git-log">
   ✅ Označit lekci jako dokončenou
   </button>
     
     <div class="lesson-nav">
-      <a href="git-pull.html">⬅️ pull</a>
+      <a href="git-branch.html">⬅️ branch</a>
       <a href="git.html">📗 Obsah</a>
-      <a href="index.html">Programmer Journal</a>
+      <a href="index.html">🏠 Journal</a>
     </div>
     <script src="script.js"></script>
   </body>
