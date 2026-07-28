@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git switch | Programmer Journal</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <h1>📗 Git switch</h1>
+
+    <!-- ===============
+===Krátký úvod =====
+================ -->
+
+    <h2>Krátký úvod</h2>
+
+    <p>Příkaz <code>git switch</code> slouží k přepínání mezi větvemi.</p>
+
+    <p>
+      Díky větvím můžeš bezpečně pracovat na nových funkcích, aniž bys ovlivnil
+      hlavní větev projektu.
+    </p>
+
+    <p>
+      <code>Git switch</code> také umožňuje vytvořit novou větev a rovnou se na
+      ni přepnout.
+    </p>
+
+    <!-- ===============
+===Jak přemýšlet o =====
+================ -->
+
+    <div class="mind">
+      <h2>🧠 Jak přemýšlet o git switch</h2>
+
+      <p>Představ si, že projekt je kniha.</p>
+
+      <p>Hlavní větev je originální kniha.</p>
+
+      <p>
+        Nová větev je její kopie, ve které můžeš bezpečně psát, škrtat a
+        experimentovat.
+      </p>
+
+      <p>Dokud změny nesloučíš, hlavní větev zůstane beze změny.</p>
+    </div>
+
+    <!-- ===============
+===Co se dnes naučíš =====
+================ -->
+
+    <h2>📚 Co se dnes naučíš</h2>
+
+    <ul>
+      <li>k čemu slouží <code>git switch</code></li>
+      <li>jak přepnout větev</li>
+      <li>jak vytvořit novou větev</li>
+      <li>co je hlavní větev</li>
+      <li>proč používat větve</li>
+    </ul>
+
+    <!-- ===============
+===Příklady =====
+================ -->
+    <h2>💻 Příklady</h2>
+
+    <ul>
+      <li>
+        <code>git switch main</code>
+        <p>Přepne na hlavní větev projektu.</p>
+      </li>
+      <li>
+        <code>git switch kapitola-git-switch</code>
+        <p>Přepne na existující větev s názvem kapitola-git-switch.</p>
+      </li>
+      <li>
+        <code>git switch -c kapitola-git-switch</code>
+        <p>Vytvoří novou větev a ihned se na ni přepne.</p>
+      </li>
+      <li>
+        <code>git branch</code>
+        <p>Zobrazí seznam všech lokálních větví.</p>
+      </li>
+    </ul>
+
+    <!-- ===============
+===tip =====
+================ -->
+    <div class="tip">
+      <h3>💡 Tip</h3>
+
+      <p>Pro každou větší úpravu vytvoř novou větev.</p>
+
+      <p>Když se něco nepovede, hlavní větev zůstane bezpečně beze změn.</p>
+    </div>
+
+    <!-- ===============
+===Nejčastější chyba =====
+================ -->
+    <div class="chyba">
+      <h3>⚠️ Nejčastější chyba</h3>
+
+      <p>Začátečník někdy zapomene, na které větvi právě pracuje.</p>
+
+      <p>Před úpravami proto vždy spusť <code>git status</code> a zkontroluj název aktuální větve.
+      </p>
+    </div>
+
+    <!-- ===============
+===Co si zapamatovat =====
+================ -->
+    <h2>📝 Co si zapamatovat</h2>
+
+    <ul>
+      <li><code>git switch</code> přepíná mezi větvemi.</li>
+      <li><code>git switch -c</code> vytvoří novou větev.</li>
+      <li>main je hlavní větev projektu.</li>
+      <li><code>git branch</code> zobrazí lokální větve.</li>
+      <li>Před prací je dobré ověřit aktuální větev pomocí <code>git
+        status</code>.
+      </li>
+    </ul>
+
+    <!-- ===============
+===Vyzkoušej si =====
+================ -->
+    <h2>💻 Vyzkoušej si</h2>
+
+    <pre><code>git branch</code></pre>
+    <pre><code>git switch main</code></pre>
+    <pre><code>git switch -c kapitola-git-switch</code></pre>
+    <pre><code>git status</code></pre>
+
+    <!-- ===============
+===Navigace =====
+================ -->
+  <button class="complete-lesson" data-lesson="git-switch">
+  ✅ Označit lekci jako dokončenou
+  </button>
+    
+    <div class="lesson-nav">
+      <a href="git-pull.html">⬅️ pull</a>
+      <a href="../git.html">📗 Obsah</a>
+      <a href="../index.html">Programmer Journal</a>
+    </div>
+    <script src="../script.js"></script>
+  </body>
+</html>

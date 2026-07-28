@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Základní struktura HTML dokumentu | Programmer Journal</title>
+
+  <!-- Společný styl projektu -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Barevné zvýraznění kódu Prism -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+
+  <!-- Zalamování dlouhých řádků kódu na mobilu -->
+  <style>
+    pre[class*="language-"],
+    code[class*="language-"] {
+      white-space: pre-wrap !important;
+      overflow-wrap: anywhere !important;
+      word-break: normal !important;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>📗 Základní struktura HTML dokumentu</h1>
+
+  <!-- Krátký úvod -->
+
+  <h2>Krátký úvod</h2>
+
+  <p>Každá HTML stránka má svou základní kostru.</p>
+
+  <p>
+    Prohlížeč díky ní pozná, že jde o HTML dokument, jaký používá
+    jazyk a kde začíná samotný obsah stránky.
+  </p>
+
+  <p>
+    Bez této struktury může stránka fungovat nespolehlivě
+    nebo se zobrazovat jinak, než očekáváme.
+  </p>
+
+  <!-- Jak přemýšlet -->
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o základní struktuře</h2>
+
+    <p>Představ si, že stavíš nový dům.</p>
+
+    <p>
+      Nejdříve vytvoříš pevné základy a nosnou konstrukci.
+    </p>
+
+    <p>
+      Teprve potom přidáváš nábytek, okna nebo dekorace.
+    </p>
+
+    <p>Stejně funguje HTML.</p>
+
+    <p>
+      Nejdříve vytvoříš kostru dokumentu a až potom
+      do ní přidáváš obsah.
+    </p>
+  </div>
+
+  <!-- Co se dnes naučíš -->
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>
+      k čemu slouží
+      <code class="language-markup inline-code">&lt;!DOCTYPE html&gt;</code>
+    </li>
+
+    <li>
+      proč používáme značku
+      <code class="language-markup inline-code">&lt;html&gt;</code>
+    </li>
+
+    <li>
+      co obsahuje část
+      <code class="language-markup inline-code">&lt;head&gt;</code>
+    </li>
+
+    <li>
+      co patří do
+      <code class="language-markup inline-code">&lt;body&gt;</code>
+    </li>
+
+    <li>proč nastavujeme jazyk stránky</li>
+
+    <li>
+      proč používáme
+      <code class="language-markup inline-code">&lt;meta charset&gt;</code>
+      a viewport
+    </li>
+  </ul>
+
+  <!-- Příklady -->
+
+  <h2>💻 Příklady</h2>
+
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;!DOCTYPE html&gt;</code>
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;html lang="cs"&gt;</code>
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;head&gt;</code>
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;body&gt;</code>
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;meta charset="UTF-8"&gt;</code>
+    </li>
+  </ul>
+
+  <!-- Tip -->
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+
+    <p>
+      Základní strukturu HTML nebudeš psát pokaždé ručně.
+    </p>
+
+    <p>
+      Většina editorů ji umí vytvořit automaticky, ale je důležité
+      rozumět tomu, co jednotlivé části znamenají.
+    </p>
+  </div>
+
+  <!-- Nejčastější chyba -->
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+
+    <p>
+      Začátečníci často zapomenou ukončit některou značku
+      nebo vloží viditelný obsah do části
+      <code class="language-markup inline-code">&lt;head&gt;</code>
+      místo do
+      <code class="language-markup inline-code">&lt;body&gt;</code>.
+    </p>
+
+    <p>
+      Vše, co má být vidět na stránce, patří do
+      <code class="language-markup inline-code">&lt;body&gt;</code>.
+    </p>
+  </div>
+
+  <!-- Co si zapamatovat -->
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>Každá HTML stránka má základní strukturu.</li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;!DOCTYPE html&gt;</code>
+      říká prohlížeči, že jde o HTML5.
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;html&gt;</code>
+      je kořen celého dokumentu.
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;head&gt;</code>
+      obsahuje informace o stránce.
+    </li>
+
+    <li>
+      <code class="language-markup inline-code">&lt;body&gt;</code>
+      obsahuje vše, co uživatel uvidí.
+    </li>
+
+    <li>
+      Správná struktura je základem každé webové stránky.
+    </li>
+  </ul>
+
+  <!-- Vyzkoušej si -->
+
+  <h2>💻 Vyzkoušej si</h2>
+
+  <p>
+    Vytvoř základní HTML stránku podle následující ukázky:
+  </p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje první stránka</title>
+</head>
+
+<body>
+  <h1>Ahoj světe!</h1>
+</body>
+
+</html>
+  </script>
+
+  <!-- Dokončení lekce -->
+
+  <button
+    class="complete-lesson"
+    data-lesson="html-zakladni-struktura"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <!-- Navigace -->
+
+  <div class="lesson-nav">
+    <a href="../index.html">⬅️ Hlavní</a>
+
+    <a href="../html.html">🌐 Obsah HTML</a>
+
+    <a href="html-nadpisy-odstavce.html">
+      Nadpisy ➡️
+    </a>
+  </div>
+
+  <!-- Prism -->
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+
+  <!-- JavaScript projektu -->
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

@@ -159,3 +159,17 @@ pre code {
 .complete-lesson:active{
   background-color: #207608;
 }
+
+pre[class*="language-"] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.inline-code {
+  display: inline-block !important;
+  background: #272822 !important;
+  padding: 0.12em 0.35em !important;
+  border-radius: 0.25em !important;
+  white-space: normal !important;
+  font-weight: normal;
+}
