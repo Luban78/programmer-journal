@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Barvy, text a písmo | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🎨 Barvy, text a písmo</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    V minulé lekci ses naučil pomocí selektorů vybrat prvky,
+    které chceš upravit.
+  </p>
+
+  <p>
+    Teď se naučíš měnit jejich barvu, velikost, tloušťku,
+    zarovnání a další vlastnosti textu.
+  </p>
+
+  <p>
+    Všechny dnešní vlastnosti zapisujeme dovnitř CSS pravidla:
+  </p>
+
+  <pre><code class="language-css">selektor {
+  vlastnost: hodnota;
+}</code></pre>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Selektor odpovídá na otázku:
+      <strong>„Co chci upravit?“</strong>
+    </p>
+
+    <p>
+      CSS vlastnost odpovídá na otázku:
+      <strong>„Co na tom chci změnit?“</strong>
+    </p>
+
+    <p>
+      Hodnota odpovídá na otázku:
+      <strong>„Jak přesně to má vypadat?“</strong>
+    </p>
+
+    <pre><code class="language-css">h1 {
+  color: blue;
+}</code></pre>
+
+    <p>
+      Selektor
+      <code class="language-css inline-code">h1</code>
+      vybere hlavní nadpis, vlastnost
+      <code class="language-css inline-code">color</code>
+      mění barvu textu a hodnota
+      <code class="language-css inline-code">blue</code>
+      určuje modrou barvu.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>měnit barvu textu a pozadí</li>
+    <li>zapisovat základní barvy názvem a hexadecimálním kódem</li>
+    <li>měnit velikost písma</li>
+    <li>nastavit tučné nebo normální písmo</li>
+    <li>použít kurzívu</li>
+    <li>vybrat rodinu písma</li>
+    <li>zarovnat text vlevo, na střed nebo vpravo</li>
+    <li>text podtrhnout nebo podtržení odstranit</li>
+    <li>upravit výšku řádku pro lepší čitelnost</li>
+  </ul>
+
+  <h2>1️⃣ Barva textu</h2>
+
+  <p>
+    Barvu textu nastavuje vlastnost
+    <code class="language-css inline-code">color</code>.
+  </p>
+
+  <pre><code class="language-css">p {
+  color: blue;
+}</code></pre>
+
+  <p>
+    Toto pravidlo nastaví všem odstavcům modrou barvu textu.
+  </p>
+
+  <h3>Barva zapsaná názvem</h3>
+
+  <pre><code class="language-css">h1 {
+  color: red;
+}
+
+p {
+  color: darkgreen;
+}</code></pre>
+
+  <p>
+    Názvy barev jsou pro začátek přehledné.
+    Nabídka přesných odstínů je ale omezená.
+  </p>
+
+  <h3>Barva zapsaná hexadecimálním kódem</h3>
+
+  <pre><code class="language-css">h1 {
+  color: #1faaad;
+}
+
+p {
+  color: #474147;
+}</code></pre>
+
+  <p>
+    Hexadecimální barva začíná znakem
+    <code class="language-css inline-code">#</code>
+    a za ním obvykle následuje šest znaků.
+  </p>
+
+  <p>
+    Tento zápis umožňuje vybrat mnohem přesnější odstín než běžný název barvy.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Pro začátek</h3>
+
+    <p>
+      Nemusíš hexadecimální kódy znát zpaměti.
+      Barvu si můžeš vybrat pomocí nabídky barev v editoru a její kód použít v CSS.
+    </p>
+  </div>
+
+  <h2>2️⃣ Barva pozadí</h2>
+
+  <p>
+    Barvu pozadí nastavuje vlastnost
+    <code class="language-css inline-code">background-color</code>.
+  </p>
+
+  <pre><code class="language-css">body {
+  background-color: #e9e9ef;
+}</code></pre>
+
+  <p>
+    Pozadí můžeme nastavit celé stránce, ale také jednomu nadpisu,
+    odstavci nebo jinému prvku.
+  </p>
+
+  <pre><code class="language-css">h2 {
+  background-color: lightblue;
+}</code></pre>
+
+  <div class="mind">
+    <h3>🧠 Nezaměňovat</h3>
+
+    <ul>
+      <li>
+        <code class="language-css inline-code">color</code>
+        mění barvu textu.
+      </li>
+
+      <li>
+        <code class="language-css inline-code">background-color</code>
+        mění barvu pozadí za textem nebo prvkem.
+      </li>
+    </ul>
+  </div>
+
+  <h2>3️⃣ Velikost písma</h2>
+
+  <p>
+    Velikost textu nastavuje vlastnost
+    <code class="language-css inline-code">font-size</code>.
+  </p>
+
+  <pre><code class="language-css">h1 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 20px;
+}</code></pre>
+
+  <p>
+    Prozatím budeme používat jednotku
+    <code class="language-css inline-code">px</code>.
+    Jednotky podrobně probereme v samostatné lekci.
+  </p>
+
+  <p>
+    Čím vyšší číslo použiješ, tím větší text se zobrazí.
+  </p>
+
+  <h2>4️⃣ Tloušťka písma</h2>
+
+  <p>
+    Tloušťku písma nastavuje vlastnost
+    <code class="language-css inline-code">font-weight</code>.
+  </p>
+
+  <pre><code class="language-css">.dulezite {
+  font-weight: bold;
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">bold</code>
+    vytvoří tučný text.
+  </p>
+
+  <pre><code class="language-css">.obycejne {
+  font-weight: normal;
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">normal</code>
+    vrátí běžnou tloušťku písma.
+  </p>
+
+  <h2>5️⃣ Kurzíva</h2>
+
+  <p>
+    Styl písma nastavuje vlastnost
+    <code class="language-css inline-code">font-style</code>.
+  </p>
+
+  <pre><code class="language-css">.poznamka {
+  font-style: italic;
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">italic</code>
+    zobrazí text kurzívou.
+  </p>
+
+  <pre><code class="language-css">.bez-kurzivy {
+  font-style: normal;
+}</code></pre>
+
+  <h2>6️⃣ Rodina písma</h2>
+
+  <p>
+    Druh písma nastavuje vlastnost
+    <code class="language-css inline-code">font-family</code>.
+  </p>
+
+  <pre><code class="language-css">body {
+  font-family: Arial, sans-serif;
+}</code></pre>
+
+  <p>
+    Prohlížeč se nejdřív pokusí použít písmo
+    <code class="language-css inline-code">Arial</code>.
+    Když ho zařízení nemá, použije některé dostupné bezpatkové písmo
+    ze skupiny
+    <code class="language-css inline-code">sans-serif</code>.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Záložní písmo</h3>
+
+    <p>
+      Je dobré uvést více možností oddělených čárkou.
+      Poslední možnost bývá obecná rodina, například
+      <code class="language-css inline-code">sans-serif</code>
+      nebo
+      <code class="language-css inline-code">serif</code>.
+    </p>
+  </div>
+
+  <h2>7️⃣ Zarovnání textu</h2>
+
+  <p>
+    Zarovnání textu nastavuje vlastnost
+    <code class="language-css inline-code">text-align</code>.
+  </p>
+
+  <pre><code class="language-css">h1 {
+  text-align: center;
+}
+
+.text-vlevo {
+  text-align: left;
+}
+
+.text-vpravo {
+  text-align: right;
+}</code></pre>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">left</code>
+      zarovná text vlevo.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">center</code>
+      zarovná text na střed.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">right</code>
+      zarovná text vpravo.
+    </li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Pozor</h3>
+
+    <p>
+      Vlastnost
+      <code class="language-css inline-code">text-align: center;</code>
+      zarovná text uvnitř prvku.
+    </p>
+
+    <p>
+      Nevycentruje automaticky celý blok nebo kartu doprostřed obrazovky.
+      Rozložení prvků se naučíš později pomocí Flexboxu.
+    </p>
+  </div>
+
+  <h2>8️⃣ Podtržení a další ozdoby textu</h2>
+
+  <p>
+    Ozdobu textu nastavuje vlastnost
+    <code class="language-css inline-code">text-decoration</code>.
+  </p>
+
+  <pre><code class="language-css">#upozorneni {
+  text-decoration: underline;
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">underline</code>
+    text podtrhne.
+  </p>
+
+  <pre><code class="language-css">a {
+  text-decoration: none;
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">none</code>
+    ozdobu odstraní. Často se používá například pro odstranění
+    výchozího podtržení odkazu.
+  </p>
+
+  <h2>9️⃣ Výška řádku</h2>
+
+  <p>
+    Vzdálenost mezi řádky textu nastavuje vlastnost
+    <code class="language-css inline-code">line-height</code>.
+  </p>
+
+  <pre><code class="language-css">p {
+  line-height: 1.6;
+}</code></pre>
+
+  <p>
+    Vyšší řádkování zlepšuje čitelnost delších odstavců.
+    Hodnota
+    <code class="language-css inline-code">1.6</code>
+    znamená, že výška řádku bude přibližně 1,6násobkem velikosti písma.
+  </p>
+
+  <h2>🔗 Spojení se selektory</h2>
+
+  <p>
+    Vlastnosti můžeš kombinovat s elementem, třídou i ID,
+    které už znáš z minulé lekce.
+  </p>
+
+  <pre><code class="language-css">body {
+  background-color: #e8e8f2;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #34346f;
+  font-size: 42px;
+  text-align: center;
+}
+
+.modry-text {
+  color: blue;
+  font-weight: bold;
+}
+
+#upozorneni {
+  color: red;
+  text-decoration: underline;
+}</code></pre>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barvy a písmo</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Moje studijní stránka</h1>
+
+  <h2>Co se dnes učím</h2>
+
+  <p>
+    Pomocí CSS měním vzhled textu.
+  </p>
+
+  <p class="dulezite">
+    Tento odstavec je důležitý.
+  </p>
+
+  <p id="upozorneni">
+    Nezapomeň uložit oba soubory.
+  </p>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  background-color: #ededf5;
+  color: #303038;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #4646a8;
+  font-size: 38px;
+  text-align: center;
+}
+
+h2 {
+  color: #555577;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.dulezite {
+  color: #0066cc;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#upozorneni {
+  color: #cc0000;
+  text-decoration: underline;
+}</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        Chybí středník za hodnotou:
+        <code class="language-css inline-code">color: red</code>.
+      </li>
+
+      <li>
+        Místo dvojtečky je použito rovnítko:
+        <code class="language-css inline-code">color = red;</code>.
+      </li>
+
+      <li>
+        U velikosti písma chybí jednotka:
+        <code class="language-css inline-code">font-size: 20;</code>.
+      </li>
+
+      <li>
+        Barva pozadí se omylem zapisuje do vlastnosti
+        <code class="language-css inline-code">color</code>
+        místo
+        <code class="language-css inline-code">background-color</code>.
+      </li>
+
+      <li>
+        V CSS se použije český název barvy, který prohlížeč nezná.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">color</code>
+      mění barvu textu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">background-color</code>
+      mění barvu pozadí.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">font-size</code>
+      mění velikost textu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">font-weight</code>
+      nastavuje tloušťku písma.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">font-style</code>
+      umožňuje použít kurzívu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">font-family</code>
+      vybírá druh písma.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">text-align</code>
+      zarovnává text uvnitř prvku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">text-decoration</code>
+      přidává nebo odstraňuje ozdobu textu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">line-height</code>
+      mění vzdálenost mezi řádky.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Tuto lekci si nejdřív v klidu projdi a vyzkoušej si jednotlivé příklady.
+    </p>
+
+    <p>
+      Potom dostaneš praktický úkol pouze z dnešní lekce
+      a z dříve zvládnutých selektorů.
+    </p>
+
+    <p>
+      Až úkol samostatně zvládneš, označíme také tuto lekci jako dokončenou.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-selektory.html">⬅️ Selektory</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
