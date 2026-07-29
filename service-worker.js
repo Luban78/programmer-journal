@@ -1,4 +1,4 @@
-const CACHE_NAME = "programmer-journal-v4";
+const CACHE_NAME = "programmer-journal-v5";
 
 const APP_FILES = [
   "./",
@@ -9,6 +9,7 @@ const APP_FILES = [
   "./terminal.html",
   "./git.html",
   "./html.html",
+  "./css.html",
   "./javascript.html",
   "./meInfo.html",
   "./git/git-status.html",

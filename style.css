@@ -244,3 +244,104 @@ code[class*="language-"] {
   color: #123e17;
   font-weight: 700;
 }
+
+/* Prism: zalamování dlouhého kódu na mobilu */
+pre[class*="language-"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  white-space: pre-wrap !important;
+  overflow-x: hidden !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+pre[class*="language-"] code[class*="language-"] {
+  white-space: inherit !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* Android tlačítko zpět */
+.back-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 1000;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #222222;
+  color: #ffffff;
+  font-size: 15px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 16px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.back-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.exit-modal[hidden] {
+  display: none;
+}
+
+.exit-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.exit-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.exit-modal__card {
+  position: relative;
+  width: min(100%, 390px);
+  box-sizing: border-box;
+  padding: 22px;
+  border-radius: 16px;
+  background: #f4f4f4;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+.exit-modal__card h2 {
+  margin-top: 0;
+}
+
+.exit-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.exit-modal__actions button {
+  min-width: 105px;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.exit-modal__stay {
+  background: #dedede;
+  color: #222222;
+}
+
+.exit-modal__leave {
+  background: #14380f;
+  color: #ffffff;
+}
