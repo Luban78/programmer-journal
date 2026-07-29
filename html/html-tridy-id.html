@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Třídy a ID | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Třídy a ID</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Atributy <code class="language-markup inline-code">class</code> a <code class="language-markup inline-code">id</code> umožňují označit konkrétní prvky stránky.</p>
+  <p>Stejnou třídu může mít více prvků. Jedno ID má být na stránce použité pouze jednou.</p>
+  <p>CSS podle nich upravuje vzhled a JavaScript vybírá prvky, se kterými má pracovat.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Třída je jako společný dres celého týmu – stejnou třídu může mít více hráčů.</p>
+    <p>ID je jako jedinečné číslo občanského průkazu – na stránce má označovat jediný prvek.</p>
+    <p>Samotné atributy vzhled nezmění, ale připraví přesné značky pro CSS a JavaScript.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak přidat prvku atribut <code class="language-markup inline-code">class</code></li>
+    <li>jak přidat prvku atribut <code class="language-markup inline-code">id</code></li>
+    <li>rozdíl mezi třídou a ID</li>
+    <li>jak použít více tříd u jednoho prvku</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;p class="important"&gt;Důležitý text&lt;/p&gt;</code>
+      <p>Třídu <code class="language-markup inline-code">important</code> může používat více prvků.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;h1 id="main-title"&gt;Programmer Journal&lt;/h1&gt;</code>
+      <p>ID <code class="language-markup inline-code">main-title</code> má být jedinečné.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;button class="button primary"&gt;Uložit&lt;/button&gt;</code>
+      <p>Jeden prvek může mít více tříd oddělených mezerou.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Názvy tříd a ID piš bez mezer a diakritiky, například <code class="language-markup inline-code">lesson-card</code>.</p>
+    <p>Název by měl popisovat význam prvku, ne pouze jeho aktuální barvu.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Nejčastější chybou je opakované použití stejného ID u více prvků.</p>
+    <p>Další chybou je zápis více tříd čárkou. Správně je odděluj pouze mezerou.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">class</code> lze použít u více prvků.</li>
+    <li><code class="language-markup inline-code">id</code> má být na stránce jedinečné.</li>
+    <li>Více tříd oddělujeme mezerou.</li>
+    <li>Třídy a ID připravují prvky pro CSS a JavaScript.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř stránku s několika prvky označenými třídami a jedinečným ID:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Třídy a ID</title>
+</head>
+
+<body>
+  <h1 id="main-title">Programmer Journal</h1>
+
+  <p class="lesson-text">Učím se HTML.</p>
+  <p class="lesson-text important">Každý den udělám další krok.</p>
+
+  <button class="button primary" type="button">
+    Pokračovat
+  </button>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Vzhled stránky zůstane zatím běžný, ale prvky budou připravené pro další práci. Oba odstavce mají společnou třídu, druhý má navíc třídu important a hlavní nadpis má jedinečné ID.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-tridy-id">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-formulare.html">⬅️ Formuláře</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="../javascript.html">JavaScript ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

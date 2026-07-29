@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formuláře a popisky | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Formuláře a popisky</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Formulář sdružuje pole, do kterých uživatel zadává údaje.</p>
+  <p>Značka <code class="language-markup inline-code">&lt;label&gt;</code> vytváří popisek a pomocí atributů <code class="language-markup inline-code">for</code> a <code class="language-markup inline-code">id</code> ho propojíme s konkrétním polem.</p>
+  <p>Formulář zapisujeme do značky <code class="language-markup inline-code">&lt;form&gt;</code>.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Představ si formulář jako papírový dotazník.</p>
+    <p>Každé pole musí mít jasný popisek, aby uživatel věděl, co má zadat.</p>
+    <p>Atribut <code class="language-markup inline-code">name</code> pojmenuje údaj, který by se později odesílal.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak vytvořit formulář</li>
+    <li>jak propojit <code class="language-markup inline-code">label</code> s inputem</li>
+    <li>k čemu slouží atributy <code class="language-markup inline-code">for</code>, <code class="language-markup inline-code">id</code> a <code class="language-markup inline-code">name</code></li>
+    <li>jak použít <code class="language-markup inline-code">textarea</code></li>
+    <li>jak vytvořit odesílací tlačítko</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;form&gt;...&lt;/form&gt;</code>
+      <p>Obalí prvky, které patří do jednoho formuláře.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;label for="email"&gt;E-mail&lt;/label&gt;</code>
+      <p>Popisek propojený s prvkem, který má <code class="language-markup inline-code">id="email"</code>.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;input id="email" name="email" type="email"&gt;</code>
+      <p>Pole s jednoznačným ID a názvem odesílaného údaje.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;textarea id="zprava" name="zprava"&gt;&lt;/textarea&gt;</code>
+      <p>Víceřádkové pole pro delší text.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;button type="submit"&gt;Odeslat&lt;/button&gt;</code>
+      <p>Tlačítko určené k odeslání formuláře.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Když klikneš na správně propojený popisek <code class="language-markup inline-code">label</code>, kurzor se přesune do jeho pole.</p>
+    <p>U checkboxu kliknutí na popisek zaškrtne nebo odškrtne políčko.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Hodnota atributu <code class="language-markup inline-code">for</code> musí být úplně stejná jako hodnota atributu <code class="language-markup inline-code">id</code> u příslušného pole.</p>
+    <p>Duplicitní ID nebo chybějící propojení zhoršují ovládání i přístupnost formuláře.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">&lt;form&gt;</code> sdružuje formulářové prvky.</li>
+    <li><code class="language-markup inline-code">label</code> poskytuje jasný popisek.</li>
+    <li><code class="language-markup inline-code">for</code> se propojuje s odpovídajícím <code class="language-markup inline-code">id</code>.</li>
+    <li><code class="language-markup inline-code">name</code> pojmenuje odesílanou hodnotu.</li>
+    <li><code class="language-markup inline-code">textarea</code> slouží pro delší text.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř kontaktní formulář s popisky, dvěma poli a textovou zprávou:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontaktní formulář</title>
+</head>
+
+<body>
+  <h1>Napiš mi</h1>
+
+  <form>
+    <label for="name">Jméno</label>
+    <br>
+    <input id="name" name="name" type="text" required>
+    <br>
+    <br>
+
+    <label for="email">E-mail</label>
+    <br>
+    <input id="email" name="email" type="email" required>
+    <br>
+    <br>
+
+    <label for="message">Zpráva</label>
+    <br>
+    <textarea id="message" name="message" rows="5"></textarea>
+    <br>
+    <br>
+
+    <button type="submit">Odeslat</button>
+  </form>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Na stránce se zobrazí kontaktní formulář. Kliknutí na každý popisek aktivuje správné pole. Prohlížeč před odesláním zkontroluje povinné jméno a e-mail.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-formulare">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-tlacitka-inputy.html">⬅️ Tlačítka</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="html-tridy-id.html">Třídy a ID ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

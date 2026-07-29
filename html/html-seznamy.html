@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seznamy | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Seznamy</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Seznamy používáme tehdy, když chceme zobrazit několik souvisejících položek přehledně pod sebou.</p>
+  <p>Nečíslovaný seznam vytváříme značkou <code class="language-markup inline-code">&lt;ul&gt;</code>, číslovaný seznam značkou <code class="language-markup inline-code">&lt;ol&gt;</code>.</p>
+  <p>Každá položka seznamu patří do značky <code class="language-markup inline-code">&lt;li&gt;</code>.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Představ si nákupní lístek a pracovní postup.</p>
+    <p>U nákupního lístku nezáleží na pořadí, proto použiješ nečíslovaný seznam.</p>
+    <p>U pracovního postupu je pořadí důležité, proto použiješ číslovaný seznam.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak vytvořit nečíslovaný seznam <code class="language-markup inline-code">&lt;ul&gt;</code></li>
+    <li>jak vytvořit číslovaný seznam <code class="language-markup inline-code">&lt;ol&gt;</code></li>
+    <li>jak zapisovat položky pomocí <code class="language-markup inline-code">&lt;li&gt;</code></li>
+    <li>kdy použít který druh seznamu</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;ul&gt;...&lt;/ul&gt;</code>
+      <p>Nečíslovaný seznam, u kterého pořadí položek není podstatné.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;ol&gt;...&lt;/ol&gt;</code>
+      <p>Číslovaný seznam, u kterého je pořadí důležité.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;li&gt;Káva&lt;/li&gt;</code>
+      <p>Jedna položka uvnitř seznamu.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Značku <code class="language-markup inline-code">&lt;li&gt;</code> vždy vlož dovnitř <code class="language-markup inline-code">&lt;ul&gt;</code> nebo <code class="language-markup inline-code">&lt;ol&gt;</code>.</p>
+    <p>Prohlížeč přidá odrážky nebo čísla automaticky.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Samotné položky <code class="language-markup inline-code">&lt;li&gt;</code> bez rodičovského seznamu tvoří neplatnou strukturu.</p>
+    <p>Další častou chybou je použití číslovaného seznamu tam, kde pořadí vůbec nehraje roli.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">&lt;ul&gt;</code> vytváří nečíslovaný seznam.</li>
+    <li><code class="language-markup inline-code">&lt;ol&gt;</code> vytváří číslovaný seznam.</li>
+    <li><code class="language-markup inline-code">&lt;li&gt;</code> vytváří jednu položku.</li>
+    <li>Druh seznamu vybíráme podle významu, ne podle vzhledu.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř stránku s nákupním seznamem a postupem přípravy kávy:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seznamy</title>
+</head>
+
+<body>
+  <h1>Moje seznamy</h1>
+
+  <h2>Nákup</h2>
+  <ul>
+    <li>Káva</li>
+    <li>Rajčata</li>
+    <li>Hrášek</li>
+  </ul>
+
+  <h2>Příprava kávy</h2>
+  <ol>
+    <li>Ohřát vodu</li>
+    <li>Nasypat kávu</li>
+    <li>Zalít vodou</li>
+  </ol>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Pod nadpisem Nákup se zobrazí seznam s odrážkami. Pod nadpisem Příprava kávy se zobrazí očíslované kroky od jedničky do trojky.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-seznamy">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-nadpisy-odstavce.html">⬅️ Nadpisy</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="html-odkazy.html">Odkazy ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

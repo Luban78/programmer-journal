@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadpisy a odstavce | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Nadpisy a odstavce</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Nadpisy rozdělují stránku na přehledné části a odstavce obsahují běžný text.</p>
+  <p>HTML nabízí šest úrovní nadpisů od nejdůležitějšího <code class="language-markup inline-code">&lt;h1&gt;</code> po nejméně důležitý <code class="language-markup inline-code">&lt;h6&gt;</code>.</p>
+  <p>Odstavec zapisujeme pomocí značky <code class="language-markup inline-code">&lt;p&gt;</code>.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Představ si stránku jako knihu.</p>
+    <p>Hlavní nadpis je název knihy, nadpisy druhé úrovně jsou kapitoly a odstavce tvoří samotný text.</p>
+    <p>Úrovně nadpisů nepoužívej podle velikosti písma, ale podle významu a pořadí obsahu.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak použít nadpisy <code class="language-markup inline-code">&lt;h1&gt;</code> až <code class="language-markup inline-code">&lt;h6&gt;</code></li>
+    <li>jak vytvořit odstavec pomocí <code class="language-markup inline-code">&lt;p&gt;</code></li>
+    <li>proč má být na stránce jeden hlavní nadpis</li>
+    <li>jak správně řadit úrovně nadpisů</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;h1&gt;Moje zahrada&lt;/h1&gt;</code>
+      <p>Hlavní nadpis celé stránky.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;h2&gt;Rajčata&lt;/h2&gt;</code>
+      <p>Nadpis hlavní části stránky.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;h3&gt;Zalévání&lt;/h3&gt;</code>
+      <p>Podnadpis uvnitř části Rajčata.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;p&gt;Rajčata zalévám každé ráno.&lt;/p&gt;</code>
+      <p>Běžný odstavec textu.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Na jedné stránce používej zpravidla jeden hlavní nadpis <code class="language-markup inline-code">&lt;h1&gt;</code>.</p>
+    <p>Další části rozděl pomocí <code class="language-markup inline-code">&lt;h2&gt;</code> a jejich podčásti pomocí <code class="language-markup inline-code">&lt;h3&gt;</code>.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Začátečník někdy vybírá nadpis podle toho, jak je velký. Vzhled ale později upravuje CSS.</p>
+    <p>Nepřeskakuj bez důvodu například z <code class="language-markup inline-code">&lt;h2&gt;</code> rovnou na <code class="language-markup inline-code">&lt;h5&gt;</code>.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">&lt;h1&gt;</code> je hlavní nadpis stránky.</li>
+    <li><code class="language-markup inline-code">&lt;h2&gt;</code> až <code class="language-markup inline-code">&lt;h6&gt;</code> tvoří další úrovně.</li>
+    <li><code class="language-markup inline-code">&lt;p&gt;</code> vytváří odstavec.</li>
+    <li>Nadpisy popisují strukturu a význam obsahu.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř jednoduchou stránku o své zahradě se správně seřazenými nadpisy a odstavci:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje zahrada</title>
+</head>
+
+<body>
+  <h1>Moje zahrada</h1>
+
+  <h2>Rajčata</h2>
+  <p>Rajčata pěstuji na slunném místě.</p>
+
+  <h3>Zalévání</h3>
+  <p>Zalévám je ráno přímo ke kořenům.</p>
+
+  <h2>Hrášek</h2>
+  <p>Hrášek vysévám brzy na jaře.</p>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Stránka zobrazí jeden hlavní nadpis, dvě hlavní části a několik běžných odstavců. Podčást Zalévání bude správně zařazená pod část Rajčata.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-nadpisy-odstavce">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-zakladni-struktura.html">⬅️ Struktura</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="html-seznamy.html">Seznamy ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

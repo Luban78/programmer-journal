@@ -1,4 +1,4 @@
-const CACHE_NAME = "programmer-journal-v3";
+const CACHE_NAME = "programmer-journal-v4";
 
 const APP_FILES = [
   "./",
@@ -8,22 +8,33 @@ const APP_FILES = [
   "./manifest.webmanifest",
   "./terminal.html",
   "./git.html",
-  "./git-status.html",
-  "./git-add.html",
-  "./git-commit.html",
-  "./git-push.html",
-  "./git-pull.html",
-  "./git-switch.html",
+  "./html.html",
+  "./javascript.html",
+  "./meInfo.html",
+  "./git/git-status.html",
+  "./git/git-add.html",
+  "./git/git-commit.html",
+  "./git/git-push.html",
+  "./git/git-pull.html",
+  "./git/git-switch.html",
+  "./git/git-branch.html",
+  "./git/git-log.html",
+  "./html/html-zakladni-struktura.html",
+  "./html/html-nadpisy-odstavce.html",
+  "./html/html-seznamy.html",
+  "./html/html-odkazy.html",
+  "./html/html-obrazky.html",
+  "./html/html-tlacitka-inputy.html",
+  "./html/html-formulare.html",
+  "./html/html-tridy-id.html",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/icon-maskable-512.png",
+  "./icons/icon-maskable-512.png"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(APP_FILES);
-    }),
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES)),
   );
 
   self.skipWaiting();
@@ -46,6 +57,10 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") {
+    return;
+  }
+
   event.respondWith(
     fetch(event.request)
       .then((response) => {

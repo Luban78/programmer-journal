@@ -1,105 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML | Programmer Journal</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <h1>🌐 HTML</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML | Programmer Journal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    <h2>Krátký úvod</h2>
+<body>
+  <h1>🌐 HTML</h1>
+
+  <h2>Krátký úvod</h2>
     <p>HTML je značkovací jazyk, který vytváří základní strukturu webové stránky.</p>
+    <p>Pomocí HTML určujeme, co se na stránce nachází – například nadpisy, odstavce, obrázky, odkazy, seznamy, tlačítka nebo formuláře.</p>
+    <p>HTML neřeší vzhled stránky ani její chování. Vzhled upravuje CSS a interaktivitu přidává JavaScript.</p>
 
-<p>Pomocí HTML určujeme, co se na stránce nachází – například nadpisy, odstavce, obrázky, odkazy, seznamy, tlačítka nebo formuláře.</p>
-
-<p>HTML neřeší vzhled stránky ani její chování. Vzhled později upravuje CSS a interaktivitu přidává JavaScript.</p>
-    
-    <div class="mind">
-      <h2>🧠 Jak přemýšlet o HTML</h2>
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o HTML</h2>
       <p>Představ si webovou stránku jako dům.</p>
+      <p>HTML tvoří jeho základní konstrukci – stěny, místnosti, dveře a okna.</p>
+      <p>CSS určí barvy, velikosti a vzhled domu.</p>
+      <p>JavaScript do něj přidá funkce, například rozsvícení světla po stisknutí vypínače.</p>
+  </div>
 
-<p>HTML tvoří jeho základní konstrukci – stěny, místnosti, dveře a okna.</p>
+  <div class="chapter-progress" data-progress-for="html">
+    <p>
+      <strong>Postup kapitoly HTML:</strong>
+      <span class="progress-text">0 / 8 lekcí</span>
+    </p>
+    <progress value="0" max="8"></progress>
+  </div>
 
-<p>CSS později určí barvy, velikosti a vzhled domu.</p>
+  <h2>📚 Obsah kapitoly</h2>
 
-<p>JavaScript do něj přidá funkce, například rozsvícení světla po stisknutí vypínače.</p>
-    </div>
+  <ul class="lesson-list" data-chapter="html">
+      <li data-lesson="html-zakladni-struktura">
+        <span class="lesson-status"></span>
+        <a href="html/html-zakladni-struktura.html">Struktura HTML</a>
+      </li>
+      <li data-lesson="html-nadpisy-odstavce">
+        <span class="lesson-status"></span>
+        <a href="html/html-nadpisy-odstavce.html">Nadpisy a odstavce</a>
+      </li>
+      <li data-lesson="html-seznamy">
+        <span class="lesson-status"></span>
+        <a href="html/html-seznamy.html">Seznamy</a>
+      </li>
+      <li data-lesson="html-odkazy">
+        <span class="lesson-status"></span>
+        <a href="html/html-odkazy.html">Odkazy</a>
+      </li>
+      <li data-lesson="html-obrazky">
+        <span class="lesson-status"></span>
+        <a href="html/html-obrazky.html">Obrázky</a>
+      </li>
+      <li data-lesson="html-tlacitka-inputy">
+        <span class="lesson-status"></span>
+        <a href="html/html-tlacitka-inputy.html">Tlačítka a inputy</a>
+      </li>
+      <li data-lesson="html-formulare">
+        <span class="lesson-status"></span>
+        <a href="html/html-formulare.html">Formuláře a popisky</a>
+      </li>
+      <li data-lesson="html-tridy-id">
+        <span class="lesson-status"></span>
+        <a href="html/html-tridy-id.html">Třídy a ID</a>
+      </li>
+  </ul>
 
-    
-<!-- progress -->
-    
-<div class="chapter-progress">
-  <p>
-  <strong>Postup kapitoly HTML:</strong>
-  <span id="html-progress-text">0 / 8 lekcí</span>
-</p>
-  <progress value="0" max="8" id="html-progress"></progress>
-</div>
+  <a href="index.html">🏠 Zpět na hlavní stránku</a>
+  <script src="script.js"></script>
+</body>
 
-    
-    <h2>📚 Obsah kapitoly</h2>
-
-    <ul class="lesson-list">
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-zakladni-struktura" />
-      <a href="html/html-zakladni-struktura.html">Struktura HTML</a>
-    </label>
-  </li>
-
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-nadpisy-odstavce" />
-      <a href="html/html-nadpisy-odstavce.html">Nadpisy a odstavce</a>
-    </label>
-  </li>
-
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-seznamy" />
-      <a href="html/html-seznamy.html">Seznamy</a>
-    </label>
-  </li>
-
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-odkazy" />
-      <a href="html/html-odkazy.html">Odkazy</a>
-    </label>
-  </li>
-
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-obrazky" />
-      <a href="html/html-obrazky.html">Obrázky</a>
-    </label>
-  </li>
-
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-tlacitka-inputy" />
-      <a href="html/html-tlacitka-inputy.html">Tlačítka a inputy</a>
-    </label>
-  </li>
-
-    <li>
-    <label>
-      <input type="checkbox" data-lesson="html-formulare" />
-      <a href="html/html-formulare.html">Formuláře a popisky</a>
-    </label>
-  </li>
-  <li>
-    <label>
-      <input type="checkbox" data-lesson="html-tridy-id" />
-      <a href="#">Třídy a ID</a>
-    </label>
-  </li>
-    </ul>
-
-    <a href="index.html">🏠 Zpět na hlavní stránku</a>
-    <script src="script.js"></script>
-  </body>
 </html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrázky | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Obrázky</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Obrázek vkládáme do stránky pomocí značky <code class="language-markup inline-code">&lt;img&gt;</code>.</p>
+  <p>Atribut <code class="language-markup inline-code">src</code> určuje cestu k souboru a atribut <code class="language-markup inline-code">alt</code> popisuje obsah obrázku.</p>
+  <p>Značka <code class="language-markup inline-code">&lt;img&gt;</code> nemá uzavírací značku.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Představ si obrázek jako fotografii vloženou do knihy.</p>
+    <p>Atribut <code class="language-markup inline-code">src</code> říká, kde fotografie leží.</p>
+    <p>Atribut <code class="language-markup inline-code">alt</code> vysvětluje její obsah, když se obrázek nenačte nebo stránku používá čtečka obrazovky.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak vložit obrázek pomocí <code class="language-markup inline-code">&lt;img&gt;</code></li>
+    <li>k čemu slouží atributy <code class="language-markup inline-code">src</code> a <code class="language-markup inline-code">alt</code></li>
+    <li>jak nastavit šířku obrázku</li>
+    <li>jak pracovat s relativní cestou k obrázku</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;img src="obrazky/kava.jpg" alt="Šálek černé kávy"&gt;</code>
+      <p>Vloží obrázek a přidá smysluplný alternativní text.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;img src="obrazky/kava.jpg" alt="Šálek černé kávy" width="300"&gt;</code>
+      <p>Nastaví šířku obrázku na 300 pixelů.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;img src="../icons/icon-192.png" alt="Ikona Programmer Journal"&gt;</code>
+      <p>Pomocí <code class="language-markup inline-code">../</code> přejde o jednu složku výš.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Do atributu <code class="language-markup inline-code">alt</code> napiš krátký popis významu obrázku, ne pouze slovo „obrázek“.</p>
+    <p>Pro konečný vzhled je lepší rozměry později řídit pomocí CSS.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Když je cesta v atributu <code class="language-markup inline-code">src</code> chybná, prohlížeč obrázek nenajde.</p>
+    <p>Další chybou je chybějící <code class="language-markup inline-code">alt</code>, který je důležitý pro přístupnost.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">&lt;img&gt;</code> vloží obrázek.</li>
+    <li><code class="language-markup inline-code">src</code> obsahuje cestu k souboru.</li>
+    <li><code class="language-markup inline-code">alt</code> popisuje význam obrázku.</li>
+    <li>Relativní cesta se počítá od souboru, ve kterém je značka zapsaná.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř stránku, která zobrazí ikonu Programmer Journal uloženou v projektu:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrázek</title>
+</head>
+
+<body>
+  <h1>Programmer Journal</h1>
+
+  <img
+    src="icons/icon-192.png"
+    alt="Zelená ikona aplikace Programmer Journal"
+    width="192"
+  >
+
+  <p>Moje osobní učebnice programování.</p>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Pod hlavním nadpisem se zobrazí zelená ikona aplikace o šířce 192 pixelů a pod ní krátký odstavec.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-obrazky">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-odkazy.html">⬅️ Odkazy</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="html-tlacitka-inputy.html">Tlačítka ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tlačítka a inputy | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Tlačítka a inputy</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Tlačítko vytváříme značkou <code class="language-markup inline-code">&lt;button&gt;</code> a vstupní pole značkou <code class="language-markup inline-code">&lt;input&gt;</code>.</p>
+  <p>Atribut <code class="language-markup inline-code">type</code> určuje, jaký druh vstupu potřebujeme.</p>
+  <p>Samotné HTML prvky zobrazí, ale jejich chování později naprogramujeme v JavaScriptu.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Tlačítko je vypínač a input je místo, kam uživatel zadá hodnotu.</p>
+    <p>HTML připraví ovládací prvky.</p>
+    <p>JavaScript později rozhodne, co se po kliknutí nebo zadání hodnoty stane.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak vytvořit tlačítko</li>
+    <li>jak vytvořit textové, e-mailové a heslové pole</li>
+    <li>jak použít atribut <code class="language-markup inline-code">placeholder</code></li>
+    <li>jak vytvořit checkbox</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;button type="button"&gt;Pozdravit&lt;/button&gt;</code>
+      <p>Běžné tlačítko, které samo neodesílá formulář.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;input type="text" placeholder="Zadej jméno"&gt;</code>
+      <p>Jednořádkové pole pro běžný text.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;input type="email"&gt;</code>
+      <p>Pole určené pro e-mailovou adresu.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;input type="password"&gt;</code>
+      <p>Pole, které skryje zapisované znaky.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;input type="checkbox"&gt;</code>
+      <p>Zaškrtávací pole pro volbu ano nebo ne.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>U tlačítka mimo odesílací formulář používej <code class="language-markup inline-code">type="button"</code>.</p>
+    <p>Placeholder je pouze nápověda. Nenahrazuje skutečný popisek pole.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Začátečník někdy očekává, že tlačítko začne samo něco dělat. HTML ho pouze zobrazí.</p>
+    <p>Bez JavaScriptu kliknutí na běžné tlačítko žádnou vlastní akci neprovede.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">&lt;button&gt;</code> vytváří tlačítko.</li>
+    <li><code class="language-markup inline-code">&lt;input&gt;</code> vytváří vstupní prvek.</li>
+    <li><code class="language-markup inline-code">type</code> určuje druh vstupu.</li>
+    <li>Chování prvků budeme později programovat v JavaScriptu.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř jednoduchou přihlašovací stránku. Tlačítko zatím nemusí nic provádět:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Přihlášení</title>
+</head>
+
+<body>
+  <h1>Přihlášení</h1>
+
+  <input type="email" placeholder="E-mail">
+  <br>
+  <br>
+
+  <input type="password" placeholder="Heslo">
+  <br>
+  <br>
+
+  <input type="checkbox" id="remember">
+  <span>Zapamatovat přihlášení</span>
+  <br>
+  <br>
+
+  <button type="button">Přihlásit</button>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Na stránce se zobrazí pole pro e-mail a heslo, checkbox a tlačítko. Kliknutí na tlačítko zatím nic neprovede.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-tlacitka-inputy">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-obrazky.html">⬅️ Obrázky</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="html-formulare.html">Formuláře ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

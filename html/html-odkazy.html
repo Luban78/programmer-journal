@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odkazy | Programmer Journal</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+  <h1>🌐 Odkazy</h1>
+
+  <h2>Krátký úvod</h2>
+  <p>Odkaz umožní uživateli přejít na jinou stránku, soubor nebo webovou adresu.</p>
+  <p>Vytváříme ho značkou <code class="language-markup inline-code">&lt;a&gt;</code> a cílovou adresu zapisujeme do atributu <code class="language-markup inline-code">href</code>.</p>
+  <p>Odkaz může vést na stránku ve stejném projektu i na úplně jiný web.</p>
+
+  <div class="mind">
+    <h2>🧠 Jak přemýšlet o tématu</h2>
+    <p>Odkaz je jako dveře mezi dvěma místnostmi.</p>
+    <p>Text mezi otevírací a uzavírací značkou říká uživateli, kam dveře vedou.</p>
+    <p>Atribut <code class="language-markup inline-code">href</code> je přesná adresa cíle.</p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+  <ul>
+    <li>jak vytvořit odkaz pomocí <code class="language-markup inline-code">&lt;a&gt;</code></li>
+    <li>jak používat atribut <code class="language-markup inline-code">href</code></li>
+    <li>rozdíl mezi relativní a úplnou adresou</li>
+    <li>jak otevřít externí odkaz na nové kartě</li>
+  </ul>
+
+  <h2>💻 Příklady</h2>
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;a href="index.html"&gt;Hlavní stránka&lt;/a&gt;</code>
+      <p>Relativní odkaz na soubor ve stejné složce.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;a href="html/seznamy.html"&gt;Seznamy&lt;/a&gt;</code>
+      <p>Odkaz na soubor v podsložce.</p>
+    </li>
+    <li>
+      <code class="language-markup inline-code">&lt;a href="https://github.com" target="_blank" rel="noopener noreferrer"&gt;GitHub&lt;/a&gt;</code>
+      <p>Úplná webová adresa otevřená na nové kartě.</p>
+    </li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+    <p>Text odkazu piš srozumitelně. Místo neurčitého „klikni zde“ napiš například „Otevřít kapitolu Git“.</p>
+    <p>U interních odkazů kontroluj, ze které složky odkaz vede.</p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+    <p>Nejčastější chybou je špatná relativní cesta, například chybějící <code class="language-markup inline-code">../</code> při návratu o složku výš.</p>
+    <p>Odkaz se může zobrazit správně, ale po kliknutí vede na neexistující soubor.</p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+  <ul>
+    <li><code class="language-markup inline-code">&lt;a&gt;</code> vytváří odkaz.</li>
+    <li><code class="language-markup inline-code">href</code> určuje cílovou adresu.</li>
+    <li>Relativní cesta vede k souboru uvnitř projektu.</li>
+    <li>Úplná adresa začíná například <code class="language-markup inline-code">https://</code>.</li>
+  </ul>
+
+  <h2>💻 Vyzkoušej si</h2>
+  <p>Vytvoř malou stránku se třemi odkazy:</p>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje odkazy</title>
+</head>
+
+<body>
+  <h1>Užitečné odkazy</h1>
+
+  <p>
+    <a href="index.html">Hlavní stránka projektu</a>
+  </p>
+
+  <p>
+    <a href="html.html">Kapitola HTML</a>
+  </p>
+
+  <p>
+    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+      Otevřít GitHub
+    </a>
+  </p>
+</body>
+
+</html>
+  </script>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+    <p>Na stránce se zobrazí tři klikatelné odkazy. Dva povedou uvnitř projektu a GitHub se otevře na nové kartě.</p>
+  </div>
+
+  <button class="complete-lesson" data-lesson="html-odkazy">
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="html-seznamy.html">⬅️ Seznamy</a>
+    <a href="../html.html">🌐 Obsah HTML</a>
+    <a href="html-obrazky.html">Obrázky ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>
