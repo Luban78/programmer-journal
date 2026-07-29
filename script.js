@@ -190,17 +190,21 @@ function handleAndroidBack() {
   }, 1800);
 }
 
+
+
+
 function leaveApplication() {
   allowExit = true;
   exitModal.hidden = true;
+  
   window.removeEventListener("popstate", handleAndroidBack);
-
-  window.close();
-
-  window.setTimeout(() => {
-    history.go(-2);
-  }, 80);
+  window.removeEventListener("pageshow", installBackGuard);
+  
+  history.back();
 }
+
+
+
 
 installBackGuard();
 window.addEventListener("pageshow", installBackGuard);
