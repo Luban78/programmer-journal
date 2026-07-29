@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Připojení CSS k HTML | Programmer Journal</title>
+
+  <!-- Společný styl projektu -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Barevné zvýraznění kódu Prism -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🎨 Připojení CSS k HTML</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    HTML vytvoří obsah a strukturu stránky. CSS určí, jak bude stránka vypadat.
+  </p>
+
+  <p>
+    Aby mohl prohlížeč použít pravidla z CSS souboru, musíme tento soubor
+    správně připojit k HTML dokumentu.
+  </p>
+
+  <p>
+    V našich projektech budeme nejčastěji používat samostatný soubor
+    <code class="language-css inline-code">style.css</code>.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>HTML je kostra stránky a CSS je její vzhled.</p>
+
+    <p>
+      Značka
+      <code class="language-markup inline-code">&lt;link&gt;</code>
+      mezi nimi vytvoří spojení.
+    </p>
+
+    <p>
+      Když je cesta k CSS souboru správná, prohlížeč načte všechna jeho
+      pravidla a použije je na HTML prvky.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>proč oddělujeme HTML a CSS do samostatných souborů</li>
+
+    <li>
+      kam patří značka
+      <code class="language-markup inline-code">&lt;link&gt;</code>
+    </li>
+
+    <li>
+      k čemu slouží atribut
+      <code class="language-markup inline-code">href</code>
+    </li>
+
+    <li>jak musí být soubory uložené, aby se správně našly</li>
+
+    <li>jak poznat, že je CSS skutečně připojené</li>
+  </ul>
+
+  <h2>🔗 Doporučený způsob: externí CSS</h2>
+
+  <p>Nejprve vytvoříme dva samostatné soubory:</p>
+
+  <pre><code class="language-none">projekt/
+├── index.html
+└── style.css</code></pre>
+
+  <p>
+    Do části
+    <code class="language-markup inline-code">&lt;head&gt;</code>
+    v souboru
+    <code class="language-markup inline-code">index.html</code>
+    vložíme:
+  </p>
+
+  <pre><code class="language-markup">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-markup inline-code">stylesheet</code>
+    říká, že připojujeme soubor se styly.
+  </p>
+
+  <p>
+    Hodnota
+    <code class="language-markup inline-code">style.css</code>
+    určuje cestu k souboru.
+  </p>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje stránka</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Učím se CSS</h1>
+
+  <p>CSS je správně připojené.</p>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  background-color: #202124;
+  color: #f1f1f1;
+}
+
+h1 {
+  color: #38c8d4;
+  text-align: center;
+}</code></pre>
+
+  <div class="tip">
+    <h3>💡 Tip</h3>
+
+    <p>
+      Jestli jsou
+      <code class="language-markup inline-code">index.html</code>
+      a
+      <code class="language-css inline-code">style.css</code>
+      ve stejné složce, stačí cesta:
+    </p>
+
+    <p>
+      <code class="language-markup inline-code">href="style.css"</code>
+    </p>
+
+    <p>
+      Jestli je HTML stránka v podsložce, může být potřeba například:
+    </p>
+
+    <p>
+      <code class="language-markup inline-code">href="../style.css"</code>
+    </p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+
+    <p>HTML stránka se zobrazí, ale styly se vůbec nepoužijí.</p>
+
+    <p>Nejčastější příčiny jsou:</p>
+
+    <ul>
+      <li>chybný název souboru</li>
+      <li>chybná cesta v atributu <code class="language-markup inline-code">href</code></li>
+      <li>CSS soubor nebyl uložený</li>
+      <li>soubor má jinou příponu než <code class="language-css inline-code">.css</code></li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>HTML vytváří obsah, CSS vytváří vzhled.</li>
+
+    <li>
+      Externí CSS připojujeme v části
+      <code class="language-markup inline-code">&lt;head&gt;</code>.
+    </li>
+
+    <li>
+      Používáme značku
+      <code class="language-markup inline-code">&lt;link&gt;</code>.
+    </li>
+
+    <li>
+      Atribut
+      <code class="language-markup inline-code">href</code>
+      obsahuje cestu k CSS souboru.
+    </li>
+
+    <li>
+      Oddělené soubory udržují projekt přehledný a umožňují použít jeden styl
+      na více HTML stránkách.
+    </li>
+  </ul>
+
+  <h2>💪 Ověření znalosti</h2>
+
+  <p>
+    Tuto dovednost jsi už samostatně prokázal při tvorbě karty
+    „Lubomír – budoucí programátor“.
+  </p>
+
+  <p>
+    Vytvořil jsi soubor
+    <code class="language-css inline-code">style.css</code>,
+    správně jsi ho připojil a jeho pravidla se v náhledu skutečně použila.
+  </p>
+
+  <h2>💻 Vyzkoušej si</h2>
+
+  <p>Vytvoř soubory <code class="language-markup inline-code">index.html</code> a <code class="language-css inline-code">style.css</code>.</p>
+
+  <p>Do HTML vlož nadpis a odstavec. V CSS změň:</p>
+
+  <ul>
+    <li>barvu pozadí stránky</li>
+    <li>barvu hlavního nadpisu</li>
+    <li>zarovnání nadpisu na střed</li>
+  </ul>
+
+  <div class="expected-result">
+    <h3>✅ Očekávaný výsledek</h3>
+
+    <p>
+      Po otevření HTML stránky se zobrazí změněné pozadí i nadpis.
+      To potvrzuje, že je externí CSS soubor správně připojený.
+    </p>
+  </div>
+
+  <button
+    class="complete-lesson"
+    data-lesson="css-pripojeni"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="../index.html">⬅️ Hlavní</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
