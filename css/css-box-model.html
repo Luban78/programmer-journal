@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CSS box model | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>📦 Box model: obsah, padding, border a margin</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Každý HTML prvek si můžeš představit jako obdélníkovou krabici.
+  </p>
+
+  <p>
+    Uvnitř krabice je obsah. Kolem obsahu může být vnitřní odsazení,
+    okraj a vnější odsazení.
+  </p>
+
+  <p>
+    Tento způsob výpočtu prostoru se nazývá
+    <strong>CSS box model</strong>.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>Představ si zabalený dárek:</p>
+
+    <ul>
+      <li><strong>content</strong> je samotný dárek,</li>
+      <li><strong>padding</strong> je výplň kolem dárku,</li>
+      <li><strong>border</strong> je krabice,</li>
+      <li><strong>margin</strong> je volné místo kolem celé krabice.</li>
+    </ul>
+
+    <p>
+      V CSS nejčastěji pracujeme se třemi vlastnostmi:
+      <code class="language-css inline-code">padding</code>,
+      <code class="language-css inline-code">border</code>
+      a
+      <code class="language-css inline-code">margin</code>.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>co znamená box model</li>
+    <li>co je obsah prvku</li>
+    <li>jak přidat vnitřní odsazení pomocí <code class="language-css inline-code">padding</code></li>
+    <li>jak vytvořit okraj pomocí <code class="language-css inline-code">border</code></li>
+    <li>jak vytvořit vnější odsazení pomocí <code class="language-css inline-code">margin</code></li>
+    <li>jak nastavit jednotlivé strany zvlášť</li>
+    <li>jak fungují zkrácené zápisy</li>
+    <li>jaký je rozdíl mezi paddingem a marginem</li>
+  </ul>
+
+  <h2>1️⃣ Content – obsah</h2>
+
+  <p>
+    Obsah je to, co se nachází uvnitř HTML prvku.
+  </p>
+
+  <script type="text/plain" class="language-markup">
+<p>Toto je obsah odstavce.</p>
+  </script>
+
+  <p>
+    U odstavce je obsahem text. U obrázku je obsahem obrázek.
+    U tlačítka je obsahem jeho text.
+  </p>
+
+  <p>
+    Barvu pozadí prvku už znáš:
+  </p>
+
+  <pre><code class="language-css">p {
+  background-color: lightblue;
+}</code></pre>
+
+  <p>
+    Pozadí se zobrazí pod obsahem a také pod paddingem, pokud ho přidáme.
+  </p>
+
+  <h2>2️⃣ Padding – vnitřní odsazení</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">padding</code>
+    vytváří prostor
+    <strong>uvnitř prvku mezi obsahem a okrajem</strong>.
+  </p>
+
+  <pre><code class="language-css">p {
+  background-color: lightblue;
+  padding: 20px;
+}</code></pre>
+
+  <p>
+    Text už nebude nalepený na okraj barevného pozadí.
+    Kolem textu vznikne uvnitř prvku volný prostor.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Jak poznat padding</h3>
+
+    <p>
+      Když má prvek barvu pozadí, padding tuto barevnou plochu zvětší.
+    </p>
+  </div>
+
+  <h3>Jednotlivé strany paddingu</h3>
+
+  <pre><code class="language-css">.karta {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+}</code></pre>
+
+  <p>
+    Každou stranu můžeš nastavit samostatně.
+  </p>
+
+  <h3>Zkrácený zápis paddingu</h3>
+
+  <pre><code class="language-css">.karta {
+  padding: 10px 20px 30px 40px;
+}</code></pre>
+
+  <p>Hodnoty se čtou po směru hodinových ručiček:</p>
+
+  <ol>
+    <li>nahoře</li>
+    <li>vpravo</li>
+    <li>dole</li>
+    <li>vlevo</li>
+  </ol>
+
+  <p>Častý zápis se dvěma hodnotami:</p>
+
+  <pre><code class="language-css">.karta {
+  padding: 10px 20px;
+}</code></pre>
+
+  <ul>
+    <li>první hodnota nastaví horní a dolní odsazení,</li>
+    <li>druhá hodnota nastaví levé a pravé odsazení.</li>
+  </ul>
+
+  <h2>3️⃣ Border – okraj</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">border</code>
+    vytvoří viditelný okraj kolem obsahu a paddingu.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  border: 3px solid darkblue;
+}</code></pre>
+
+  <p>Zápis obsahuje tři části:</p>
+
+  <ul>
+    <li><code class="language-css inline-code">3px</code> – tloušťka okraje,</li>
+    <li><code class="language-css inline-code">solid</code> – styl čáry,</li>
+    <li><code class="language-css inline-code">darkblue</code> – barva okraje.</li>
+  </ul>
+
+  <h3>Další základní styly okraje</h3>
+
+  <pre><code class="language-css">.prvni {
+  border: 2px solid black;
+}
+
+.druhy {
+  border: 2px dashed black;
+}
+
+.treti {
+  border: 2px dotted black;
+}</code></pre>
+
+  <ul>
+    <li><code class="language-css inline-code">solid</code> – plná čára,</li>
+    <li><code class="language-css inline-code">dashed</code> – čárkovaná čára,</li>
+    <li><code class="language-css inline-code">dotted</code> – tečkovaná čára.</li>
+  </ul>
+
+  <h3>Okraj pouze na jedné straně</h3>
+
+  <pre><code class="language-css">.poznamka {
+  border-left: 5px solid orange;
+}</code></pre>
+
+  <p>
+    Podobně můžeš použít
+    <code class="language-css inline-code">border-top</code>,
+    <code class="language-css inline-code">border-right</code>
+    nebo
+    <code class="language-css inline-code">border-bottom</code>.
+  </p>
+
+  <h2>4️⃣ Margin – vnější odsazení</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">margin</code>
+    vytváří prostor
+    <strong>vně prvku, za jeho okrajem</strong>.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  margin: 20px;
+}</code></pre>
+
+  <p>
+    Margin oddálí celý prvek od sousedních prvků nebo od okraje stránky.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Jak poznat margin</h3>
+
+    <p>
+      Margin není součástí barevného pozadí prvku.
+      Je to prázdný prostor mimo prvek.
+    </p>
+  </div>
+
+  <h3>Jednotlivé strany marginu</h3>
+
+  <pre><code class="language-css">.karta {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  margin-left: 40px;
+}</code></pre>
+
+  <h3>Zkrácený zápis marginu</h3>
+
+  <pre><code class="language-css">.karta {
+  margin: 10px 20px 30px 40px;
+}</code></pre>
+
+  <p>
+    Pořadí je stejné jako u paddingu:
+    nahoře, vpravo, dole, vlevo.
+  </p>
+
+  <h2>🔍 Padding a margin vedle sebe</h2>
+
+  <pre><code class="language-css">.karta {
+  background-color: lightblue;
+  padding: 20px;
+  border: 3px solid darkblue;
+  margin: 30px;
+}</code></pre>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">padding: 20px;</code>
+      vytvoří prostor uvnitř karty.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">border: 3px solid darkblue;</code>
+      vytvoří okraj kolem karty.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">margin: 30px;</code>
+      oddálí kartu od okolí.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h3>🧠 Nejdůležitější rozdíl</h3>
+
+    <p>
+      <strong>Padding je uvnitř.</strong>
+    </p>
+
+    <p>
+      <strong>Margin je venku.</strong>
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box model</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="karta">
+    <h1>Moje karta</h1>
+
+    <p>
+      Učím se rozlišovat obsah, padding, border a margin.
+    </p>
+  </div>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  background-color: #e8e8f0;
+  font-family: Arial, sans-serif;
+}
+
+.karta {
+  background-color: white;
+  color: #303038;
+
+  padding: 20px;
+  border: 4px solid #3f51b5;
+  margin: 30px;
+}
+
+h1 {
+  color: #3f51b5;
+  text-align: center;
+}</code></pre>
+
+  <p>
+    V tomto příkladu je text obsahem karty.
+    Padding vytvoří prostor mezi textem a okrajem.
+    Border vytvoří modrý okraj.
+    Margin oddálí kartu od okrajů stránky.
+  </p>
+
+  <h2>🧪 Jak si rozdíl bezpečně ověřit</h2>
+
+  <p>
+    Když si nejsi jistý, použij výraznou barvu pozadí a okraj:
+  </p>
+
+  <pre><code class="language-css">.test {
+  background-color: yellow;
+  padding: 20px;
+  border: 5px solid red;
+  margin: 30px;
+}</code></pre>
+
+  <p>
+    Žlutá plocha ukáže obsah a padding.
+    Červená čára ukáže border.
+    Prázdný prostor za červenou čárou je margin.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        Padding a margin se zamění.
+        Pamatuj: padding je uvnitř, margin venku.
+      </li>
+
+      <li>
+        U hodnoty chybí jednotka:
+        <code class="language-css inline-code">padding: 20;</code>.
+        Správně je
+        <code class="language-css inline-code">padding: 20px;</code>.
+      </li>
+
+      <li>
+        U borderu chybí styl čáry:
+        <code class="language-css inline-code">border: 2px red;</code>.
+        Správně například
+        <code class="language-css inline-code">border: 2px solid red;</code>.
+      </li>
+
+      <li>
+        U čtyř hodnot se zamění pořadí.
+        Čti je: nahoře, vpravo, dole, vlevo.
+      </li>
+
+      <li>
+        Očekává se, že margin změní barvu pozadí prvku.
+        Margin je ale mimo prvek a barvu pozadí nemá.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>Každý HTML prvek se chová jako obdélníková krabice.</li>
+
+    <li>
+      <code class="language-css inline-code">content</code>
+      je obsah prvku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">padding</code>
+      je prostor uvnitř mezi obsahem a okrajem.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">border</code>
+      je viditelný okraj prvku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">margin</code>
+      je prostor vně prvku.
+    </li>
+
+    <li>
+      Jednotlivé strany můžeš nastavit pomocí
+      <code class="language-css inline-code">-top</code>,
+      <code class="language-css inline-code">-right</code>,
+      <code class="language-css inline-code">-bottom</code>
+      a
+      <code class="language-css inline-code">-left</code>.
+    </li>
+
+    <li>
+      Čtyři zkrácené hodnoty se čtou:
+      nahoře, vpravo, dole, vlevo.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Tato lekce je důležitější než předchozí a nemusíš ji pochopit
+      během jednoho přečtení.
+    </p>
+
+    <p>
+      Nejdřív si v klidu prohlédni rozdíl mezi paddingem a marginem
+      a vyzkoušej si barevný testovací box.
+    </p>
+
+    <p>
+      Potom dostaneš praktický úkol pouze z box modelu,
+      dříve zvládnutých selektorů a úprav textu.
+    </p>
+
+    <p>
+      Flexbox, pevné rozměry ani nové vlastnosti v úkolu zatím nebudou.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-barvy-text.html">⬅️ Barvy a písmo</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
