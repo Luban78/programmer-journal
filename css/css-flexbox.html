@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Flexbox a rozložení prvků | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🧭 Flexbox a rozložení prvků</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Flexbox je způsob, jak jednoduše skládat a zarovnávat prvky
+    uvnitř jednoho rodičovského prvku.
+  </p>
+
+  <p>
+    Pomocí Flexboxu můžeš prvky umístit vedle sebe, pod sebe,
+    vycentrovat je vodorovně i svisle a nastavit mezi nimi mezery.
+  </p>
+
+  <p>
+    Právě Flexbox vyřeší problém z tvého prvního CSS úkolu:
+    jak dostat kartu doprostřed obrazovky.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Nejdůležitější myšlenka</h2>
+
+    <p>
+      Flexbox se zapíná na
+      <strong>rodičovském prvku</strong>.
+    </p>
+
+    <p>
+      Rodič potom řídí rozložení svých přímých potomků.
+    </p>
+
+    <pre><code class="language-none">RODIČ – flex container
+┌──────────────────────────────┐
+│  POTOMEK  POTOMEK  POTOMEK  │
+│  flex item flex item flex item
+└──────────────────────────────┘</code></pre>
+
+    <p>
+      Rodič se nazývá
+      <strong>flex container</strong>
+      a jeho přímí potomci se nazývají
+      <strong>flex items</strong>.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>zapnout Flexbox pomocí <code class="language-css inline-code">display: flex</code></li>
+    <li>rozlišit rodiče a jeho přímé potomky</li>
+    <li>pochopit hlavní a vedlejší osu</li>
+    <li>měnit směr pomocí <code class="language-css inline-code">flex-direction</code></li>
+    <li>zarovnávat po hlavní ose pomocí <code class="language-css inline-code">justify-content</code></li>
+    <li>zarovnávat po vedlejší ose pomocí <code class="language-css inline-code">align-items</code></li>
+    <li>vytvářet mezery pomocí <code class="language-css inline-code">gap</code></li>
+    <li>povolit zalamování pomocí <code class="language-css inline-code">flex-wrap</code></li>
+    <li>vycentrovat kartu uprostřed celé obrazovky</li>
+  </ul>
+
+  <h2>1️⃣ Zapnutí Flexboxu</h2>
+
+  <p>
+    Flexbox zapneme na rodičovském prvku:
+  </p>
+
+  <pre><code class="language-css">.rodic {
+  display: flex;
+}</code></pre>
+
+  <h3>HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<div class="rodic">
+  <div>HTML</div>
+  <div>CSS</div>
+  <div>JavaScript</div>
+</div>
+  </script>
+
+  <p>
+    Tři vnitřní
+    <code class="language-markup inline-code">&lt;div&gt;</code>
+    prvky jsou přímí potomci rodiče
+    <code class="language-css inline-code">.rodic</code>.
+  </p>
+
+  <p>
+    Po zapnutí Flexboxu se ve výchozím nastavení zobrazí vedle sebe:
+  </p>
+
+  <pre><code class="language-none">[ HTML ] [ CSS ] [ JavaScript ]</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější začátečnická chyba</h3>
+
+    <p>
+      Vlastnost
+      <code class="language-css inline-code">display: flex;</code>
+      se omylem nastaví jednotlivým kartičkám místo jejich rodiči.
+    </p>
+
+    <p>
+      Jestli chceš rozkládat tři kartičky, Flexbox nastav jejich společnému obalu.
+    </p>
+  </div>
+
+  <h2>2️⃣ Hlavní a vedlejší osa</h2>
+
+  <p>
+    Flexbox pracuje se dvěma směry:
+  </p>
+
+  <ul>
+    <li><strong>hlavní osa</strong> – směr, ve kterém se prvky skládají,</li>
+    <li><strong>vedlejší osa</strong> – směr kolmý na hlavní osu.</li>
+  </ul>
+
+  <p>
+    Ve výchozím nastavení jsou prvky v řádku:
+  </p>
+
+  <pre><code class="language-none">hlavní osa  ─────────────────────►
+
+[ první ] [ druhý ] [ třetí ]
+
+vedlejší osa
+      │
+      ▼</code></pre>
+
+  <div class="mind">
+    <h3>🧠 Pomůcka</h3>
+
+    <p>
+      <code class="language-css inline-code">justify-content</code>
+      pracuje po hlavní ose.
+    </p>
+
+    <p>
+      <code class="language-css inline-code">align-items</code>
+      pracuje po vedlejší ose.
+    </p>
+  </div>
+
+  <h2>3️⃣ Flex-direction – směr prvků</h2>
+
+  <p>
+    Směr určuje vlastnost
+    <code class="language-css inline-code">flex-direction</code>.
+  </p>
+
+  <h3>Row – vedle sebe</h3>
+
+  <pre><code class="language-css">.rodic {
+  display: flex;
+  flex-direction: row;
+}</code></pre>
+
+  <pre><code class="language-none">[ první ] [ druhý ] [ třetí ]</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">row</code>
+    je výchozí, takže ji často nemusíš psát.
+  </p>
+
+  <h3>Column – pod sebou</h3>
+
+  <pre><code class="language-css">.rodic {
+  display: flex;
+  flex-direction: column;
+}</code></pre>
+
+  <pre><code class="language-none">[ první ]
+[ druhý ]
+[ třetí ]</code></pre>
+
+  <div class="tip">
+    <h3>💡 Co se změnou směru mění</h3>
+
+    <p>
+      U
+      <code class="language-css inline-code">row</code>
+      vede hlavní osa vodorovně.
+    </p>
+
+    <p>
+      U
+      <code class="language-css inline-code">column</code>
+      vede hlavní osa svisle.
+    </p>
+  </div>
+
+  <h2>4️⃣ Justify-content – hlavní osa</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">justify-content</code>
+    rozmísťuje prvky po hlavní ose.
+  </p>
+
+  <h3>Na začátku</h3>
+
+  <pre><code class="language-css">justify-content: flex-start;</code></pre>
+
+  <pre><code class="language-none">[1][2][3]                     </code></pre>
+
+  <h3>Uprostřed</h3>
+
+  <pre><code class="language-css">justify-content: center;</code></pre>
+
+  <pre><code class="language-none">          [1][2][3]          </code></pre>
+
+  <h3>Na konci</h3>
+
+  <pre><code class="language-css">justify-content: flex-end;</code></pre>
+
+  <pre><code class="language-none">                     [1][2][3]</code></pre>
+
+  <h3>Prostor mezi prvky</h3>
+
+  <pre><code class="language-css">justify-content: space-between;</code></pre>
+
+  <pre><code class="language-none">[1]          [2]          [3]</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">space-between</code>
+    vloží volný prostor mezi prvky, ale ne před první a za poslední.
+  </p>
+
+  <h2>5️⃣ Align-items – vedlejší osa</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">align-items</code>
+    zarovnává prvky po vedlejší ose.
+  </p>
+
+  <h3>Uprostřed</h3>
+
+  <pre><code class="language-css">.rodic {
+  display: flex;
+  align-items: center;
+}</code></pre>
+
+  <pre><code class="language-none">┌──────────────────────────────┐
+│                              │
+│      [1]  [2]  [3]           │
+│                              │
+└──────────────────────────────┘</code></pre>
+
+  <h3>Na začátku nebo na konci</h3>
+
+  <pre><code class="language-css">align-items: flex-start;</code></pre>
+
+  <pre><code class="language-css">align-items: flex-end;</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Proč align-items někdy není vidět</h3>
+
+    <p>
+      Rodič musí mít ve vedlejším směru nějaký volný prostor.
+    </p>
+
+    <p>
+      Jestli je rodič vysoký přesně jako jeho obsah,
+      není kam prvky posunout nahoru, doprostřed nebo dolů.
+    </p>
+  </div>
+
+  <h2>6️⃣ Gap – mezery mezi prvky</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">gap</code>
+    nastaví jednotnou mezeru mezi flex prvky.
+  </p>
+
+  <pre><code class="language-css">.rodic {
+  display: flex;
+  gap: 15px;
+}</code></pre>
+
+  <pre><code class="language-none">[1]   15 px   [2]   15 px   [3]</code></pre>
+
+  <p>
+    Výhodou je, že nemusíš každému prvku zvlášť nastavovat margin.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Praktické použití</h3>
+
+    <p>
+      Pro stejné mezery mezi tlačítky, kartami nebo odkazy
+      používej raději
+      <code class="language-css inline-code">gap</code>.
+    </p>
+  </div>
+
+  <h2>7️⃣ Flex-wrap – zalamování</h2>
+
+  <p>
+    Ve výchozím stavu se Flexbox snaží všechny prvky udržet v jednom řádku.
+  </p>
+
+  <p>
+    Zalamování povolíš takto:
+  </p>
+
+  <pre><code class="language-css">.rodic {
+  display: flex;
+  flex-wrap: wrap;
+}</code></pre>
+
+  <pre><code class="language-none">velká obrazovka:
+[ HTML ] [ CSS ] [ Git ] [ JavaScript ]
+
+malá obrazovka:
+[ HTML ] [ CSS ]
+[ Git  ] [ JavaScript ]</code></pre>
+
+  <p>
+    Když už se prvky do řádku nevejdou, přesunou se na další řádek.
+  </p>
+
+  <h2>8️⃣ Vycentrování karty uprostřed obrazovky</h2>
+
+  <p>
+    Toto je řešení, na které jsi čekal od prvního CSS úkolu.
+  </p>
+
+  <p>
+    Flexbox nastavíme rodiči, kterým je v tomto případě
+    <code class="language-markup inline-code">&lt;body&gt;</code>.
+  </p>
+
+  <pre><code class="language-css">body {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+
+  <p>
+    Co jednotlivé řádky dělají:
+  </p>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">min-height: 100vh;</code>
+      zajistí, že body bude vysoké alespoň jako celá obrazovka.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">display: flex;</code>
+      zapne Flexbox.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">justify-content: center;</code>
+      vycentruje kartu po hlavní, tedy vodorovné ose.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">align-items: center;</code>
+      vycentruje kartu po vedlejší, tedy svislé ose.
+    </li>
+  </ul>
+
+  <pre><code class="language-none">┌──────────── obrazovka ────────────┐
+│                                   │
+│          ┌─────────────┐          │
+│          │    karta    │          │
+│          └─────────────┘          │
+│                                   │
+└───────────────────────────────────┘</code></pre>
+
+  <div class="mind">
+    <h3>🧠 Proč potřebujeme 100vh</h3>
+
+    <p>
+      Bez dostatečné výšky rodiče nemá
+      <code class="language-css inline-code">align-items: center;</code>
+      volný svislý prostor, ve kterém by mohl kartu vycentrovat.
+    </p>
+  </div>
+
+  <h2>9️⃣ Column a změna os</h2>
+
+  <p>
+    Když nastavíš:
+  </p>
+
+  <pre><code class="language-css">flex-direction: column;</code></pre>
+
+  <p>
+    hlavní osa se otočí svisle.
+  </p>
+
+  <pre><code class="language-none">hlavní osa
+    │
+    ▼
+
+[ první ]
+[ druhý ]
+[ třetí ]
+
+vedlejší osa ─────────►</code></pre>
+
+  <p>
+    V takovém případě:
+  </p>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">justify-content</code>
+      zarovnává svisle,
+    </li>
+
+    <li>
+      <code class="language-css inline-code">align-items</code>
+      zarovnává vodorovně.
+    </li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Tady se lidé často spletou</h3>
+
+    <p>
+      <code class="language-css inline-code">justify-content</code>
+      neznamená vždy vodorovně.
+    </p>
+
+    <p>
+      Vždy pracuje po
+      <strong>hlavní ose</strong>,
+      jejíž směr určuje
+      <code class="language-css inline-code">flex-direction</code>.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje flex karta</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="karta">
+    <h1>Moje flex karta</h1>
+
+    <p>Technologie, které se učím:</p>
+
+    <div class="technologie">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>Git</span>
+      <span>JavaScript</span>
+    </div>
+  </div>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  min-height: 100vh;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #dfe7f5;
+  font-family: Arial, sans-serif;
+}
+
+.karta {
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 420px;
+
+  padding: 20px;
+  border: 4px solid #334f9c;
+
+  background-color: white;
+  color: #252535;
+}
+
+h1 {
+  color: #334f9c;
+  text-align: center;
+}
+
+.technologie {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.technologie span {
+  padding: 8px 12px;
+  border: 2px solid #334f9c;
+
+  color: #334f9c;
+  background-color: #e7ecfa;
+}</code></pre>
+
+  <p>
+    V příkladu jsou dva samostatné flex kontejnery:
+  </p>
+
+  <ul>
+    <li>
+      <code class="language-markup inline-code">&lt;body&gt;</code>
+      centruje celou kartu na obrazovce.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">.technologie</code>
+      rozkládá jednotlivé štítky vedle sebe.
+    </li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        <code class="language-css inline-code">display: flex;</code>
+        je nastaveno potomkům místo jejich společnému rodiči.
+      </li>
+
+      <li>
+        Zamění se
+        <code class="language-css inline-code">justify-content</code>
+        a
+        <code class="language-css inline-code">align-items</code>.
+      </li>
+
+      <li>
+        U svislého centrování nemá rodič žádnou větší výšku.
+      </li>
+
+      <li>
+        Po změně na
+        <code class="language-css inline-code">flex-direction: column;</code>
+        se zapomene, že se otočila hlavní osa.
+      </li>
+
+      <li>
+        Prvky se na mobilu nevejdou, protože chybí
+        <code class="language-css inline-code">flex-wrap: wrap;</code>.
+      </li>
+
+      <li>
+        Mezery se složitě nastavují marginem na každém prvku,
+        i když by stačilo použít
+        <code class="language-css inline-code">gap</code>.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      Flexbox zapínáme na rodiči pomocí
+      <code class="language-css inline-code">display: flex;</code>.
+    </li>
+
+    <li>
+      Přímí potomci rodiče se stanou flex items.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">flex-direction</code>
+      určuje směr hlavní osy.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">justify-content</code>
+      zarovnává po hlavní ose.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">align-items</code>
+      zarovnává po vedlejší ose.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">gap</code>
+      nastavuje mezery mezi prvky.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">flex-wrap: wrap;</code>
+      povoluje zalomení na další řádek.
+    </li>
+
+    <li>
+      Pro vycentrování karty uprostřed obrazovky potřebuje rodič
+      dostatečnou výšku, například
+      <code class="language-css inline-code">min-height: 100vh;</code>.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Nejdřív si tuto lekci v klidu projdi.
+      Zaměř se hlavně na vztah rodiče a potomků.
+    </p>
+
+    <p>
+      Potom dostaneš praktický úkol pouze z:
+      <code class="language-css inline-code">display: flex</code>,
+      <code class="language-css inline-code">flex-direction</code>,
+      <code class="language-css inline-code">justify-content</code>,
+      <code class="language-css inline-code">align-items</code>,
+      <code class="language-css inline-code">gap</code>
+      a
+      <code class="language-css inline-code">flex-wrap</code>.
+    </p>
+
+    <p>
+      K tomu použiješ pouze dříve zvládnuté barvy, text, box model,
+      rozměry a selektory.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-display.html">⬅️ Display</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
