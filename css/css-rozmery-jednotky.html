@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Šířka, výška a CSS jednotky | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>📐 Šířka, výška a CSS jednotky</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    V minulé lekci ses naučil, že každý HTML prvek se chová jako krabice.
+  </p>
+
+  <p>
+    Teď se naučíš určovat, jak široká nebo vysoká tato krabice bude
+    a jaké jednotky můžeš v CSS používat.
+  </p>
+
+  <p>
+    Díky tomu dokážeš vytvořit kartu, která bude mít rozumnou velikost
+    na telefonu i na větší obrazovce.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Vlastnost určuje, co měníme. Jednotka říká, podle čeho velikost počítáme.
+    </p>
+
+    <pre><code class="language-css">.karta {
+  width: 300px;
+}</code></pre>
+
+    <p>
+      <code class="language-css inline-code">width</code>
+      znamená šířka,
+      <code class="language-css inline-code">300</code>
+      je hodnota a
+      <code class="language-css inline-code">px</code>
+      je jednotka.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>nastavit šířku pomocí <code class="language-css inline-code">width</code></li>
+    <li>omezit největší šířku pomocí <code class="language-css inline-code">max-width</code></li>
+    <li>nastavit výšku a minimální výšku</li>
+    <li>porozumět jednotkám <code class="language-css inline-code">px</code>, <code class="language-css inline-code">%</code>, <code class="language-css inline-code">vw</code>, <code class="language-css inline-code">vh</code> a <code class="language-css inline-code">rem</code></li>
+    <li>vodorovně vycentrovat blok pomocí automatického marginu</li>
+    <li>pochopit, proč může pevná výška způsobit problém</li>
+    <li>zahrnout padding a border do zadané šířky pomocí <code class="language-css inline-code">box-sizing</code></li>
+  </ul>
+
+  <h2>1️⃣ Width – šířka</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">width</code>
+    nastavuje šířku prvku.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  width: 300px;
+}</code></pre>
+
+  <p>
+    Karta bude široká 300 pixelů.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Pozor na pevnou šířku</h3>
+
+    <p>
+      Pevná šířka může na malém telefonu přesahovat obrazovku.
+    </p>
+
+    <p>
+      Proto často nepoužíváme jen pevné
+      <code class="language-css inline-code">width: 420px;</code>,
+      ale kombinujeme procenta a maximální šířku.
+    </p>
+  </div>
+
+  <h2>2️⃣ Procenta – velikost podle rodiče</h2>
+
+  <p>
+    Jednotka
+    <code class="language-css inline-code">%</code>
+    nastavuje velikost vzhledem k prostoru rodičovského prvku.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  width: 90%;
+}</code></pre>
+
+  <p>
+    Karta zabere 90 % dostupné šířky svého rodiče.
+    Na menší obrazovce se proto automaticky zmenší.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Jednoduchá představa</h3>
+
+    <p>
+      Pokud má rodič šířku 1 000 px, hodnota 90 % znamená přibližně 900 px.
+    </p>
+
+    <p>
+      Pokud má rodič šířku 400 px, stejných 90 % znamená přibližně 360 px.
+    </p>
+  </div>
+
+  <h2>3️⃣ Max-width – největší povolená šířka</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">max-width</code>
+    určuje, jak široký smí prvek být nejvýše.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  width: 90%;
+  max-width: 420px;
+}</code></pre>
+
+  <p>
+    Na telefonu bude karta široká přibližně 90 % obrazovky.
+    Na velké obrazovce ale nikdy nepřeroste přes 420 px.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Velmi užitečná kombinace</h3>
+
+    <pre><code class="language-css">width: 90%;
+max-width: 420px;</code></pre>
+
+    <p>
+      Tuto kombinaci budeš často používat u karet, formulářů a panelů.
+    </p>
+  </div>
+
+  <h2>4️⃣ Vodorovné vycentrování bloku</h2>
+
+  <p>
+    Když má prvek menší šířku než dostupný prostor,
+    můžeš ho vodorovně vycentrovat automatickým marginem.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  width: 90%;
+  max-width: 420px;
+  margin: 30px auto;
+}</code></pre>
+
+  <p>
+    První hodnota
+    <code class="language-css inline-code">30px</code>
+    nastaví horní a dolní margin.
+  </p>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">auto</code>
+    rozdělí volný prostor vlevo a vpravo stejně.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Co už tím dokážeš</h3>
+
+    <p>
+      Tímto způsobem umíš kartu vycentrovat
+      <strong>vodorovně</strong>.
+    </p>
+
+    <p>
+      Vycentrování zároveň vodorovně i svisle přes celou obrazovku
+      se naučíš později pomocí Flexboxu.
+    </p>
+  </div>
+
+  <h2>5️⃣ Height – výška</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">height</code>
+    nastavuje pevnou výšku prvku.
+  </p>
+
+  <pre><code class="language-css">.panel {
+  height: 200px;
+}</code></pre>
+
+  <p>
+    Panel bude vysoký přesně 200 pixelů.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Pevná výška může být nebezpečná</h3>
+
+    <p>
+      Když se do prvku nevejde obsah, text může přetéct mimo jeho prostor.
+    </p>
+
+    <p>
+      U textových karet je proto často lepší výšku vůbec nenastavovat
+      a nechat ji přizpůsobit obsahu.
+    </p>
+  </div>
+
+  <h2>6️⃣ Min-height – minimální výška</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">min-height</code>
+    určuje nejmenší povolenou výšku.
+  </p>
+
+  <pre><code class="language-css">.panel {
+  min-height: 200px;
+}</code></pre>
+
+  <p>
+    Panel bude vysoký nejméně 200 px.
+    Když bude obsah potřebovat více místa, panel se může zvětšit.
+  </p>
+
+  <p>
+    Proto je
+    <code class="language-css inline-code">min-height</code>
+    u proměnlivého textu bezpečnější než pevná
+    <code class="language-css inline-code">height</code>.
+  </p>
+
+  <h2>7️⃣ Jednotka px</h2>
+
+  <p>
+    Jednotka
+    <code class="language-css inline-code">px</code>
+    označuje pixely.
+  </p>
+
+  <pre><code class="language-css">h1 {
+  font-size: 36px;
+}
+
+.karta {
+  padding: 20px;
+  border: 4px solid blue;
+}</code></pre>
+
+  <p>
+    Pixely jsou přehledné a vhodné například pro okraje,
+    padding nebo menší pevné rozměry.
+  </p>
+
+  <h2>8️⃣ Jednotky vw a vh</h2>
+
+  <p>
+    Jednotka
+    <code class="language-css inline-code">vw</code>
+    znamená procento šířky okna prohlížeče.
+  </p>
+
+  <p>
+    Jednotka
+    <code class="language-css inline-code">vh</code>
+    znamená procento výšky okna prohlížeče.
+  </p>
+
+  <pre><code class="language-css">.sekce {
+  width: 80vw;
+  min-height: 50vh;
+}</code></pre>
+
+  <ul>
+    <li><code class="language-css inline-code">100vw</code> odpovídá celé šířce okna,</li>
+    <li><code class="language-css inline-code">50vw</code> odpovídá polovině šířky okna,</li>
+    <li><code class="language-css inline-code">100vh</code> odpovídá celé výšce okna,</li>
+    <li><code class="language-css inline-code">50vh</code> odpovídá polovině výšky okna.</li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Kde se vh hodí</h3>
+
+    <p>
+      Hodnota
+      <code class="language-css inline-code">min-height: 100vh;</code>
+      se často používá, když má hlavní část stránky zabírat alespoň celou výšku obrazovky.
+    </p>
+  </div>
+
+  <h2>9️⃣ Jednotka rem</h2>
+
+  <p>
+    Jednotka
+    <code class="language-css inline-code">rem</code>
+    se odvozuje od základní velikosti písma celé stránky.
+  </p>
+
+  <pre><code class="language-css">h1 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.2rem;
+}</code></pre>
+
+  <p>
+    Pokud je základní velikost písma 16 px,
+    pak přibližně:
+  </p>
+
+  <ul>
+    <li><code class="language-css inline-code">1rem</code> = 16 px,</li>
+    <li><code class="language-css inline-code">2rem</code> = 32 px,</li>
+    <li><code class="language-css inline-code">0.5rem</code> = 8 px.</li>
+  </ul>
+
+  <p>
+    Výhodou je, že velikosti mohou lépe reagovat
+    na nastavení písma uživatele.
+  </p>
+
+  <h2>🔟 Box-sizing – co se započítá do šířky</h2>
+
+  <p>
+    Ve výchozím nastavení se k zadané šířce připočítá padding a border.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid blue;
+}</code></pre>
+
+  <p>
+    Výsledná karta bude ve skutečnosti širší než 300 px,
+    protože se přidá padding a okraj.
+  </p>
+
+  <p>
+    Praktické řešení je:
+  </p>
+
+  <pre><code class="language-css">.karta {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid blue;
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">border-box</code>
+    zajistí, že zadaná šířka už zahrnuje obsah, padding i border.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Praktické pravidlo</h3>
+
+    <p>
+      U karet a formulářů je
+      <code class="language-css inline-code">box-sizing: border-box;</code>
+      velmi užitečné, protože se jejich skutečná šířka lépe předvídá.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rozměry a jednotky</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="karta">
+    <h1>Moje responzivní karta</h1>
+
+    <p>
+      Na telefonu se zmenší a na velké obrazovce
+      nepřekročí maximální šířku.
+    </p>
+  </div>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  background-color: #dfe7f5;
+  font-family: Arial, sans-serif;
+}
+
+.karta {
+  box-sizing: border-box;
+
+  width: 90%;
+  max-width: 420px;
+  min-height: 220px;
+
+  padding: 20px;
+  border: 4px solid #334f9c;
+  margin: 30px auto;
+
+  background-color: white;
+  color: #252535;
+}
+
+h1 {
+  color: #334f9c;
+  font-size: 2rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}</code></pre>
+
+  <h2>🔍 Přehled jednotek</h2>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">px</code> –
+      pevná velikost v pixelech.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">%</code> –
+      velikost vzhledem k rodičovskému prvku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">vw</code> –
+      velikost vzhledem k šířce okna.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">vh</code> –
+      velikost vzhledem k výšce okna.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">rem</code> –
+      velikost vzhledem k základnímu písmu stránky.
+    </li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        U číselné hodnoty chybí jednotka:
+        <code class="language-css inline-code">width: 300;</code>.
+      </li>
+
+      <li>
+        Karta má pevnou šířku větší než mobilní obrazovka.
+      </li>
+
+      <li>
+        Pevná
+        <code class="language-css inline-code">height</code>
+        je příliš malá a obsah přeteče.
+      </li>
+
+      <li>
+        Očekává se, že
+        <code class="language-css inline-code">width: 90%;</code>
+        bude vždy přesně 90 % obrazovky.
+        Procenta se ale počítají podle rodiče.
+      </li>
+
+      <li>
+        Prvek je širší, než bylo očekáváno,
+        protože k width se připočítal padding a border.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">width</code>
+      nastavuje šířku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">max-width</code>
+      omezuje největší šířku.
+    </li>
+
+    <li>
+      Kombinace
+      <code class="language-css inline-code">width: 90%;</code>
+      a
+      <code class="language-css inline-code">max-width: 420px;</code>
+      je vhodná pro mobilní kartu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">margin: 30px auto;</code>
+      vycentruje blok vodorovně.
+    </li>
+
+    <li>
+      Pevná
+      <code class="language-css inline-code">height</code>
+      může způsobit přetečení obsahu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">min-height</code>
+      dovolí prvku podle obsahu růst.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">box-sizing: border-box;</code>
+      zahrne padding a border do zadané šířky.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Nejdřív si tuto lekci projdi a vyzkoušej si změnit šířku karty
+      mezi pixely a procenty.
+    </p>
+
+    <p>
+      Potom dostaneš praktický úkol pouze z rozměrů, jednotek,
+      box modelu, textu a selektorů.
+    </p>
+
+    <p>
+      Display ani Flexbox ještě v úkolu používat nebudeš.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-box-model.html">⬅️ Box model</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
