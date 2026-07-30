@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Display a chování prvků | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🧱 Display a chování prvků</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    HTML prvky se na stránce nechovají všechny stejně.
+  </p>
+
+  <p>
+    Některé automaticky začínají na novém řádku a zabírají dostupnou šířku.
+    Jiné zůstávají přímo v řádku textu vedle sebe.
+  </p>
+
+  <p>
+    Toto chování řídí CSS vlastnost
+    <code class="language-css inline-code">display</code>.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Vlastnost
+      <code class="language-css inline-code">display</code>
+      říká prohlížeči:
+    </p>
+
+    <p>
+      <strong>„Jakým způsobem se má tento prvek umístit mezi ostatní prvky?“</strong>
+    </p>
+
+    <p>
+      Dnes poznáš čtyři důležité hodnoty:
+    </p>
+
+    <ul>
+      <li><code class="language-css inline-code">block</code></li>
+      <li><code class="language-css inline-code">inline</code></li>
+      <li><code class="language-css inline-code">inline-block</code></li>
+      <li><code class="language-css inline-code">none</code></li>
+    </ul>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>proč se různé HTML prvky zobrazují jinak</li>
+    <li>jak se chová blokový prvek</li>
+    <li>jak se chová řádkový prvek</li>
+    <li>jak spojit výhody obou pomocí <code class="language-css inline-code">inline-block</code></li>
+    <li>jak prvek úplně odstranit z rozložení pomocí <code class="language-css inline-code">display: none</code></li>
+    <li>proč někdy nefunguje nastavená šířka nebo výška</li>
+    <li>jak změnit výchozí chování HTML prvku</li>
+    <li>proč je display důležitý pro budoucí Flexbox</li>
+  </ul>
+
+  <h2>1️⃣ Výchozí chování HTML prvků</h2>
+
+  <p>
+    Prohlížeč má pro jednotlivé HTML značky nastavenou výchozí hodnotu
+    vlastnosti
+    <code class="language-css inline-code">display</code>.
+  </p>
+
+  <p>
+    Například nadpis, odstavec nebo
+    <code class="language-markup inline-code">&lt;div&gt;</code>
+    se běžně chovají jako blokové prvky.
+  </p>
+
+  <p>
+    Odkaz,
+    <code class="language-markup inline-code">&lt;span&gt;</code>
+    nebo
+    <code class="language-markup inline-code">&lt;strong&gt;</code>
+    se běžně chovají jako řádkové prvky.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Důležité</h3>
+
+    <p>
+      Výchozí chování můžeš pomocí CSS změnit.
+      Odkaz můžeš změnit na blok a blok můžeš změnit na řádkový prvek.
+    </p>
+  </div>
+
+  <h2>2️⃣ Display: block</h2>
+
+  <p>
+    Blokový prvek obvykle:
+  </p>
+
+  <ul>
+    <li>začne na novém řádku,</li>
+    <li>zabere dostupnou šířku,</li>
+    <li>odsunuje další prvek na nový řádek,</li>
+    <li>umožňuje běžně nastavit šířku a výšku.</li>
+  </ul>
+
+  <pre><code class="language-none">┌──────────────────────────────┐
+│ první blok                   │
+└──────────────────────────────┘
+┌──────────────────────────────┐
+│ druhý blok                   │
+└──────────────────────────────┘</code></pre>
+
+  <h3>Příklad HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<div class="blok">První blok</div>
+<div class="blok">Druhý blok</div>
+  </script>
+
+  <h3>Příklad CSS</h3>
+
+  <pre><code class="language-css">.blok {
+  display: block;
+  width: 70%;
+  padding: 15px;
+  margin: 10px;
+  background-color: lightblue;
+  border: 2px solid darkblue;
+}</code></pre>
+
+  <p>
+    Každý
+    <code class="language-markup inline-code">&lt;div&gt;</code>
+    se zobrazí na vlastním řádku.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Příklady blokových prvků</h3>
+
+    <p>
+      Mezi běžné blokové prvky patří například:
+    </p>
+
+    <p>
+      <code class="language-markup inline-code">&lt;div&gt;</code>,
+      <code class="language-markup inline-code">&lt;p&gt;</code>,
+      <code class="language-markup inline-code">&lt;h1&gt;</code>
+      až
+      <code class="language-markup inline-code">&lt;h6&gt;</code>,
+      <code class="language-markup inline-code">&lt;ul&gt;</code>
+      a
+      <code class="language-markup inline-code">&lt;section&gt;</code>.
+    </p>
+  </div>
+
+  <h2>3️⃣ Display: inline</h2>
+
+  <p>
+    Řádkový prvek obvykle:
+  </p>
+
+  <ul>
+    <li>nezačne automaticky na novém řádku,</li>
+    <li>zabere jen tolik místa, kolik potřebuje jeho obsah,</li>
+    <li>může být vedle jiného řádkového prvku,</li>
+    <li>nerespektuje běžně nastavené <code class="language-css inline-code">width</code> a <code class="language-css inline-code">height</code>.</li>
+  </ul>
+
+  <pre><code class="language-none">[první] [druhý] [třetí]</code></pre>
+
+  <h3>Příklad HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<span class="stitek">HTML</span>
+<span class="stitek">CSS</span>
+<span class="stitek">JavaScript</span>
+  </script>
+
+  <h3>Příklad CSS</h3>
+
+  <pre><code class="language-css">.stitek {
+  display: inline;
+  color: darkblue;
+  background-color: lightblue;
+}</code></pre>
+
+  <p>
+    Všechny tři prvky zůstanou v jednom řádku, pokud se tam vejdou.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Příklady řádkových prvků</h3>
+
+    <p>
+      Mezi běžné řádkové prvky patří například:
+    </p>
+
+    <p>
+      <code class="language-markup inline-code">&lt;span&gt;</code>,
+      <code class="language-markup inline-code">&lt;a&gt;</code>,
+      <code class="language-markup inline-code">&lt;strong&gt;</code>
+      a
+      <code class="language-markup inline-code">&lt;em&gt;</code>.
+    </p>
+  </div>
+
+  <div class="chyba">
+    <h3>⚠️ Proč někdy nefunguje width</h3>
+
+    <p>
+      Následující pokus u běžného řádkového prvku nemusí změnit šířku:
+    </p>
+
+    <pre><code class="language-css">span {
+  width: 200px;
+}</code></pre>
+
+    <p>
+      Důvodem není chyba ve vlastnosti
+      <code class="language-css inline-code">width</code>.
+      Prvek se stále chová jako
+      <code class="language-css inline-code">inline</code>.
+    </p>
+  </div>
+
+  <h2>4️⃣ Display: inline-block</h2>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">inline-block</code>
+    spojuje výhody řádkového a blokového prvku.
+  </p>
+
+  <ul>
+    <li>prvky mohou stát vedle sebe,</li>
+    <li>zároveň jim můžeš nastavit šířku a výšku,</li>
+    <li>funguje u nich padding, border i margin jako u krabice.</li>
+  </ul>
+
+  <pre><code class="language-none">┌──────────┐ ┌──────────┐ ┌──────────┐
+│   HTML   │ │   CSS    │ │    JS    │
+└──────────┘ └──────────┘ └──────────┘</code></pre>
+
+  <h3>Příklad HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<a class="tlacitko" href="#">HTML</a>
+<a class="tlacitko" href="#">CSS</a>
+<a class="tlacitko" href="#">JavaScript</a>
+  </script>
+
+  <h3>Příklad CSS</h3>
+
+  <pre><code class="language-css">.tlacitko {
+  display: inline-block;
+
+  width: 120px;
+  padding: 12px;
+  margin: 5px;
+
+  color: white;
+  background-color: darkblue;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid navy;
+}</code></pre>
+
+  <p>
+    Odkazy zůstávají vedle sebe, ale nyní respektují šířku,
+    padding, border i margin.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Kde se inline-block hodí</h3>
+
+    <p>
+      Hodí se například pro jednoduchá tlačítka,
+      štítky nebo malé karty, které mají stát vedle sebe.
+    </p>
+
+    <p>
+      Pro složitější rozložení se dnes častěji používá Flexbox.
+    </p>
+  </div>
+
+  <h2>5️⃣ Display: none</h2>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">none</code>
+    prvek úplně odstraní z rozložení stránky.
+  </p>
+
+  <pre><code class="language-css">.skryty {
+  display: none;
+}</code></pre>
+
+  <script type="text/plain" class="language-markup">
+<p>První odstavec</p>
+
+<p class="skryty">
+  Tento odstavec se nezobrazí.
+</p>
+
+<p>Třetí odstavec</p>
+  </script>
+
+  <p>
+    Skrytý odstavec není vidět a nezůstane po něm ani prázdné místo.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Důležitý rozdíl</h3>
+
+    <p>
+      <code class="language-css inline-code">display: none;</code>
+      odstraní prvek i jeho místo v rozložení.
+    </p>
+
+    <p>
+      Prvek ale zůstává v HTML a můžeme ho později znovu zobrazit,
+      například pomocí JavaScriptu.
+    </p>
+  </div>
+
+  <h2>6️⃣ Změna výchozího chování</h2>
+
+  <p>
+    HTML značka má určité výchozí chování,
+    ale CSS ho může změnit.
+  </p>
+
+  <h3>Odkaz změněný na blok</h3>
+
+  <pre><code class="language-css">a {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+}</code></pre>
+
+  <p>
+    Každý odkaz bude na vlastním řádku a můžeme mu nastavit šířku.
+  </p>
+
+  <h3>Div změněný na inline-block</h3>
+
+  <pre><code class="language-css">.mala-karta {
+  display: inline-block;
+  width: 120px;
+  padding: 10px;
+  margin: 5px;
+}</code></pre>
+
+  <p>
+    Několik
+    <code class="language-markup inline-code">&lt;div&gt;</code>
+    prvků pak může stát vedle sebe.
+  </p>
+
+  <h2>🔍 Přehled hodnot display</h2>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">block</code> –
+      vlastní řádek, běžně respektuje šířku a výšku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">inline</code> –
+      zůstává v řádku a zabírá prostor podle obsahu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">inline-block</code> –
+      může být vedle ostatních, ale zároveň se chová jako krabice.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">none</code> –
+      prvek se nezobrazí a nezabírá místo.
+    </li>
+  </ul>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Moje znalosti</h1>
+
+  <div class="blok">
+    Tento prvek je block.
+  </div>
+
+  <span class="radkovy">HTML</span>
+  <span class="radkovy">CSS</span>
+
+  <div class="mala-karta">Git</div>
+  <div class="mala-karta">GitHub</div>
+
+  <p class="skryty">
+    Tento text není vidět.
+  </p>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  background-color: #e8edf7;
+  color: #252535;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #354f9c;
+  text-align: center;
+}
+
+.blok {
+  display: block;
+
+  width: 80%;
+  max-width: 420px;
+  padding: 15px;
+  margin: 20px auto;
+
+  background-color: white;
+  border: 3px solid #354f9c;
+}
+
+.radkovy {
+  display: inline;
+
+  color: darkblue;
+  background-color: lightblue;
+}
+
+.mala-karta {
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 120px;
+  padding: 12px;
+  margin: 8px;
+
+  color: white;
+  background-color: #354f9c;
+  text-align: center;
+  border: 2px solid #1f2d59;
+}
+
+.skryty {
+  display: none;
+}</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        U prvku
+        <code class="language-css inline-code">inline</code>
+        se nastaví width a očekává se, že bude fungovat.
+      </li>
+
+      <li>
+        Hodnota se zapíše jako
+        <code class="language-css inline-code">display: inline block;</code>.
+        Správně je
+        <code class="language-css inline-code">display: inline-block;</code>.
+      </li>
+
+      <li>
+        Prvek zmizí kvůli
+        <code class="language-css inline-code">display: none;</code>
+        a hledá se chyba v HTML.
+      </li>
+
+      <li>
+        Očekává se, že
+        <code class="language-css inline-code">inline-block</code>
+        automaticky vycentruje prvky.
+        Určuje ale jejich chování, nikoliv samo o sobě zarovnání celé skupiny.
+      </li>
+
+      <li>
+        Změní se display všem odkazům nebo divům příliš obecným selektorem
+        a ovlivní to i části stránky, které měly zůstat beze změny.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">display</code>
+      určuje, jak se prvek chová v rozložení stránky.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">block</code>
+      obvykle začíná na novém řádku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">inline</code>
+      zůstává uvnitř řádku textu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">inline</code>
+      běžně nerespektuje nastavenou width a height.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">inline-block</code>
+      dovolí prvkům stát vedle sebe a zároveň respektovat rozměry.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">display: none;</code>
+      prvek skryje a odstraní jeho místo z rozložení.
+    </li>
+
+    <li>
+      CSS může změnit výchozí chování libovolného HTML prvku.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Nejprve si vyzkoušej změnit stejný prvek mezi hodnotami
+      <code class="language-css inline-code">block</code>,
+      <code class="language-css inline-code">inline</code>
+      a
+      <code class="language-css inline-code">inline-block</code>.
+    </p>
+
+    <p>
+      Potom dostaneš praktický úkol pouze z display
+      a ze všech dříve zvládnutých vlastností.
+    </p>
+
+    <p>
+      Po zvládnutí úkolu přijde Flexbox.
+      Hodnota
+      <code class="language-css inline-code">display: flex;</code>
+      změní rodičovský prvek na nástroj pro moderní rozložení jeho potomků.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-rozmery-jednotky.html">⬅️ Rozměry a jednotky</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
