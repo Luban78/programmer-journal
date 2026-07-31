@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pozadí, okraje, zaoblení a stíny | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>✨ Pozadí, okraje, zaoblení a stíny</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Rozložení prvků už umíš řídit pomocí rozměrů, box modelu a Flexboxu.
+  </p>
+
+  <p>
+    Teď se zaměříme na jejich vzhled. Z obyčejného obdélníku vytvoříš
+    kartu, tlačítko nebo upozornění, které bude na stránce působit výrazněji.
+  </p>
+
+  <p>
+    Budeme pracovat hlavně s pozadím, okrajem, zaoblením a stínem.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>Při úpravě prvku si postupně polož čtyři otázky:</p>
+
+    <ol>
+      <li>Jaké má mít pozadí?</li>
+      <li>Má mít viditelný okraj?</li>
+      <li>Mají být rohy ostré, nebo zaoblené?</li>
+      <li>Má prvek působit vystouple pomocí stínu?</li>
+    </ol>
+
+    <p>
+      Jednotlivé vlastnosti nejsou složité. Důležitá je jejich rozumná kombinace.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>nastavit jednobarevné pozadí</li>
+    <li>pochopit rozdíl mezi <code class="language-css inline-code">background-color</code> a <code class="language-css inline-code">background</code></li>
+    <li>vytvořit různé druhy okrajů</li>
+    <li>nastavit okraj pouze na vybrané straně</li>
+    <li>zaoblit všechny rohy nebo každý roh jinak</li>
+    <li>vytvořit kruh pomocí <code class="language-css inline-code">border-radius: 50%</code></li>
+    <li>pochopit jednotlivé části vlastnosti <code class="language-css inline-code">box-shadow</code></li>
+    <li>použít jemný, výrazný nebo vnitřní stín</li>
+    <li>přidat stín textu</li>
+  </ul>
+
+  <h2>1️⃣ Background-color – barva pozadí</h2>
+
+  <p>
+    Barvu pozadí prvku nastavuje vlastnost
+    <code class="language-css inline-code">background-color</code>.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  background-color: #ffffff;
+}</code></pre>
+
+  <p>
+    Pozadí se zobrazí pod obsahem a paddingem prvku.
+    Margin leží mimo prvek, takže barvu pozadí nemá.
+  </p>
+
+  <h3>Zkrácená vlastnost background</h3>
+
+  <pre><code class="language-css">.karta {
+  background: #ffffff;
+}</code></pre>
+
+  <p>
+    Pro samotnou barvu fungují oba zápisy.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Který zápis použít</h3>
+
+    <p>
+      Když nastavuješ jen barvu, je
+      <code class="language-css inline-code">background-color</code>
+      přesnější a lépe říká, co se mění.
+    </p>
+
+    <p>
+      Zkrácená vlastnost
+      <code class="language-css inline-code">background</code>
+      se později hodí také pro obrázky nebo barevné přechody.
+    </p>
+  </div>
+
+  <h2>2️⃣ Jednoduchý barevný přechod</h2>
+
+  <p>
+    Místo jedné barvy může pozadí plynule přecházet mezi dvěma odstíny.
+  </p>
+
+  <pre><code class="language-css">.hlavicka {
+  background: linear-gradient(
+    to right,
+    #3457d5,
+    #6f42c1
+  );
+}</code></pre>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">to right</code>
+    určuje směr zleva doprava.
+  </p>
+
+  <p>
+    Barevný přechod je užitečný pro výraznou hlavičku nebo tlačítko,
+    ale není vhodné jím přeplnit celou stránku.
+  </p>
+
+  <h2>3️⃣ Border – okraj prvku</h2>
+
+  <p>
+    Okraj zapisujeme nejčastěji zkrácenou vlastností:
+  </p>
+
+  <pre><code class="language-css">.karta {
+  border: 3px solid #334f9c;
+}</code></pre>
+
+  <p>Zápis obsahuje tři části:</p>
+
+  <ul>
+    <li><code class="language-css inline-code">3px</code> – tloušťka,</li>
+    <li><code class="language-css inline-code">solid</code> – druh čáry,</li>
+    <li><code class="language-css inline-code">#334f9c</code> – barva.</li>
+  </ul>
+
+  <h3>Základní druhy čáry</h3>
+
+  <pre><code class="language-css">.plny {
+  border: 3px solid #333333;
+}
+
+.carkovany {
+  border: 3px dashed #333333;
+}
+
+.teckovany {
+  border: 3px dotted #333333;
+}
+
+.dvojity {
+  border: 6px double #333333;
+}</code></pre>
+
+  <ul>
+    <li><code class="language-css inline-code">solid</code> – plná čára,</li>
+    <li><code class="language-css inline-code">dashed</code> – čárkovaná,</li>
+    <li><code class="language-css inline-code">dotted</code> – tečkovaná,</li>
+    <li><code class="language-css inline-code">double</code> – dvojitá.</li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Pozor na překlep v selektoru</h3>
+
+    <p>
+      Název třídy musí začínat tečkou:
+      <code class="language-css inline-code">.teckovany</code>.
+    </p>
+
+    <p>
+      Bez tečky by CSS hledalo HTML značku s názvem
+      <code class="language-markup inline-code">&lt;teckovany&gt;</code>.
+    </p>
+  </div>
+
+  <h2>4️⃣ Okraj pouze na jedné straně</h2>
+
+  <pre><code class="language-css">.upozorneni {
+  border-left: 6px solid orange;
+}</code></pre>
+
+  <p>Stejným způsobem můžeš použít:</p>
+
+  <ul>
+    <li><code class="language-css inline-code">border-top</code></li>
+    <li><code class="language-css inline-code">border-right</code></li>
+    <li><code class="language-css inline-code">border-bottom</code></li>
+    <li><code class="language-css inline-code">border-left</code></li>
+  </ul>
+
+  <p>
+    Výrazný levý okraj se často používá u tipů,
+    chybových hlášení nebo poznámek.
+  </p>
+
+  <h2>5️⃣ Border-radius – zaoblení rohů</h2>
+
+  <p>
+    Vlastnost
+    <code class="language-css inline-code">border-radius</code>
+    zaobluje rohy prvku.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  border-radius: 16px;
+}</code></pre>
+
+  <p>
+    Čím vyšší hodnota, tím kulatější rohy budou.
+  </p>
+
+  <h3>Čtyři různé rohy</h3>
+
+  <pre><code class="language-css">.karta {
+  border-radius: 10px 20px 30px 40px;
+}</code></pre>
+
+  <p>Hodnoty se čtou v tomto pořadí:</p>
+
+  <ol>
+    <li>levý horní roh,</li>
+    <li>pravý horní roh,</li>
+    <li>pravý dolní roh,</li>
+    <li>levý dolní roh.</li>
+  </ol>
+
+  <h3>Kruh</h3>
+
+  <pre><code class="language-css">.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}</code></pre>
+
+  <p>
+    Kruh vznikne jen tehdy, když má prvek stejnou šířku a výšku.
+    Z obdélníku by vznikl ovál.
+  </p>
+
+  <h2>6️⃣ Box-shadow – stín prvku</h2>
+
+  <pre><code class="language-css">.karta {
+  box-shadow: 5px 5px 12px #777777;
+}</code></pre>
+
+  <p>Hodnoty znamenají:</p>
+
+  <ol>
+    <li>vodorovný posun stínu,</li>
+    <li>svislý posun stínu,</li>
+    <li>rozmazání,</li>
+    <li>barvu stínu.</li>
+  </ol>
+
+  <pre><code class="language-none">box-shadow: 5px 5px 12px gray;
+            ─── ─── ──── ────
+             X   Y  blur  barva</code></pre>
+
+  <h3>Jemný stín</h3>
+
+  <pre><code class="language-css">.karta {
+  box-shadow: 0 4px 12px #999999;
+}</code></pre>
+
+  <p>
+    Nulový vodorovný posun znamená, že stín nebude posunutý doprava ani doleva.
+  </p>
+
+  <h3>Stín na opačnou stranu</h3>
+
+  <pre><code class="language-css">.karta {
+  box-shadow: -5px -5px 12px #777777;
+}</code></pre>
+
+  <p>
+    Záporné hodnoty posunou stín vlevo a nahoru.
+  </p>
+
+  <h2>7️⃣ Roztažení stínu</h2>
+
+  <p>
+    Mezi rozmazání a barvu můžeš přidat ještě hodnotu roztažení.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  box-shadow: 0 4px 12px 3px #999999;
+}</code></pre>
+
+  <p>Pořadí je nyní:</p>
+
+  <ol>
+    <li>vodorovný posun,</li>
+    <li>svislý posun,</li>
+    <li>rozmazání,</li>
+    <li>roztažení,</li>
+    <li>barva.</li>
+  </ol>
+
+  <div class="tip">
+    <h3>💡 Méně bývá více</h3>
+
+    <p>
+      Velmi tmavý a ostrý stín může působit těžce.
+      U běžných karet většinou vypadá lépe jemnější stín
+      s větším rozmazáním.
+    </p>
+  </div>
+
+  <h2>8️⃣ Vnitřní stín</h2>
+
+  <p>
+    Klíčové slovo
+    <code class="language-css inline-code">inset</code>
+    vytvoří stín uvnitř prvku.
+  </p>
+
+  <pre><code class="language-css">.tlacitko {
+  box-shadow: inset 0 0 8px #555555;
+}</code></pre>
+
+  <p>
+    Prvek potom může působit vtlačeně nebo prohloubeně.
+  </p>
+
+  <h2>9️⃣ Více stínů současně</h2>
+
+  <p>
+    Jednotlivé stíny můžeš oddělit čárkou:
+  </p>
+
+  <pre><code class="language-css">.karta {
+  box-shadow:
+    0 4px 12px #888888,
+    inset 0 0 5px #dddddd;
+}</code></pre>
+
+  <p>
+    První stín je vnější a druhý je vnitřní.
+  </p>
+
+  <h2>🔟 Text-shadow – stín textu</h2>
+
+  <pre><code class="language-css">h1 {
+  text-shadow: 2px 2px 4px #999999;
+}</code></pre>
+
+  <p>
+    Pořadí hodnot je podobné jako u stínu prvku:
+  </p>
+
+  <ol>
+    <li>vodorovný posun,</li>
+    <li>svislý posun,</li>
+    <li>rozmazání,</li>
+    <li>barva.</li>
+  </ol>
+
+  <div class="chyba">
+    <h3>⚠️ Nepřeháněj textový stín</h3>
+
+    <p>
+      Příliš silný stín může snížit čitelnost.
+      Nejlépe funguje jako jemné zvýraznění nadpisu.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylovaná karta</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <article class="karta">
+    <h1>Moje stylovaná karta</h1>
+
+    <p>
+      Kombinuji pozadí, okraj, zaoblení a stín.
+    </p>
+
+    <div class="tip-karty">
+      Jemné vlastnosti společně vytvářejí výrazný výsledek.
+    </div>
+
+    <button>Pokračovat</button>
+  </article>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  min-height: 100vh;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #dfe8f6;
+  font-family: Arial, sans-serif;
+}
+
+.karta {
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 420px;
+
+  padding: 24px;
+  border: 3px solid #3558a8;
+  border-radius: 18px;
+
+  background-color: white;
+  color: #252535;
+
+  box-shadow: 0 8px 20px #8793ad;
+}
+
+h1 {
+  color: #3558a8;
+  text-align: center;
+  text-shadow: 1px 1px 3px #b5bdd0;
+}
+
+.tip-karty {
+  padding: 12px;
+  border-left: 6px solid #e29a23;
+  background-color: #fff3d8;
+}
+
+button {
+  padding: 10px 18px;
+  border: 2px solid #273f7a;
+  border-radius: 10px;
+
+  color: white;
+  background: linear-gradient(
+    to right,
+    #3558a8,
+    #6b48b8
+  );
+
+  box-shadow: 0 4px 8px #8793ad;
+}</code></pre>
+
+  <h2>🔍 Jak jednotlivé vlastnosti spolupracují</h2>
+
+  <ul>
+    <li>
+      Pozadí oddělí kartu od stránky.
+    </li>
+
+    <li>
+      Border přesně vymezí její okraj.
+    </li>
+
+    <li>
+      Border-radius změkčí ostré rohy.
+    </li>
+
+    <li>
+      Box-shadow vytvoří dojem, že karta leží nad stránkou.
+    </li>
+
+    <li>
+      Text-shadow jemně zvýrazní nadpis.
+    </li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        U borderu chybí jednotka:
+        <code class="language-css inline-code">border: 3 solid blue;</code>.
+      </li>
+
+      <li>
+        U borderu chybí druh čáry:
+        <code class="language-css inline-code">border: 3px blue;</code>.
+      </li>
+
+      <li>
+        Kruh nevznikne, protože prvek nemá stejnou šířku a výšku.
+      </li>
+
+      <li>
+        Hodnoty stínu jsou v nesprávném pořadí.
+      </li>
+
+      <li>
+        Stín je příliš tmavý, ostrý nebo velký a přebíjí obsah.
+      </li>
+
+      <li>
+        Příliš mnoho různých barev, okrajů a stínů vytvoří nepřehledný vzhled.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      <code class="language-css inline-code">background-color</code>
+      nastavuje barvu pozadí.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">background</code>
+      je zkrácená vlastnost a umožňuje také barevný přechod.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">border</code>
+      obsahuje tloušťku, druh čáry a barvu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">border-radius</code>
+      zaobluje rohy.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">border-radius: 50%;</code>
+      vytvoří kruh pouze ze čtvercového prvku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">box-shadow</code>
+      vytváří stín celého prvku.
+    </li>
+
+    <li>
+      Klíčové slovo
+      <code class="language-css inline-code">inset</code>
+      vytvoří vnitřní stín.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">text-shadow</code>
+      vytváří stín textu.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Nejprve si lekci projdi a vyzkoušej si několik různých kombinací.
+    </p>
+
+    <p>
+      Potom dostaneš praktický úkol pouze z pozadí, okrajů,
+      zaoblení a stínů společně s dříve zvládnutým učivem.
+    </p>
+
+    <p>
+      Úkolem nebude použít co nejvíc efektů.
+      Cílem bude vytvořit čitelný a vyvážený vzhled.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-flexbox.html">⬅️ Flexbox</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
