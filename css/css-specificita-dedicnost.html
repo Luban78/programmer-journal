@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Specificita, dědičnost a pořadí pravidel | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>⚖️ Specificita, dědičnost a pořadí pravidel</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Na jeden HTML prvek může současně mířit několik CSS pravidel.
+  </p>
+
+  <p>
+    Prohlížeč proto musí rozhodnout, které pravidlo má přednost.
+    Toto rozhodování ovlivňuje specificita selektoru, pořadí pravidel
+    a někdy také dědičnost.
+  </p>
+
+  <p>
+    Díky této lekci pochopíš, proč se někdy barva nebo jiná vlastnost
+    nezmění tak, jak očekáváš.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Když se dvě CSS pravidla přou o stejnou vlastnost,
+      prohlížeč hledá silnější a přesnější pravidlo.
+    </p>
+
+    <p>Zjednodušeně platí:</p>
+
+    <pre><code class="language-none">element  <  třída  <  ID
+
+p        <  .text  <  #upozorneni</code></pre>
+
+    <p>
+      Pokud mají pravidla stejnou sílu, vyhraje pravidlo,
+      které je v CSS napsané později.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>co znamená CSS kaskáda</li>
+    <li>jak funguje pořadí pravidel</li>
+    <li>proč je třída silnější než element</li>
+    <li>proč je ID silnější než třída</li>
+    <li>co znamená dědičnost</li>
+    <li>které vlastnosti se často dědí</li>
+    <li>jak fungují hodnoty <code class="language-css inline-code">inherit</code> a <code class="language-css inline-code">initial</code></li>
+    <li>proč se má <code class="language-css inline-code">!important</code> používat jen výjimečně</li>
+  </ul>
+
+  <h2>1️⃣ Kaskáda a pořadí pravidel</h2>
+
+  <pre><code class="language-css">p {
+  color: blue;
+}
+
+p {
+  color: red;
+}</code></pre>
+
+  <p>
+    Obě pravidla používají stejný selektor
+    <code class="language-css inline-code">p</code>.
+  </p>
+
+  <p>
+    Proto mají stejnou sílu a vyhraje pozdější pravidlo.
+    Odstavce budou červené.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Praktické pravidlo</h3>
+
+    <p>
+      Když jsou selektory stejně silné,
+      pozdější pravidlo přepíše předchozí.
+    </p>
+  </div>
+
+  <h2>2️⃣ Element, třída a ID</h2>
+
+  <h3>HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<p class="dulezity" id="upozorneni">
+  Důležitá zpráva
+</p>
+  </script>
+
+  <h3>CSS</h3>
+
+  <pre><code class="language-css">p {
+  color: green;
+}
+
+.dulezity {
+  color: blue;
+}
+
+#upozorneni {
+  color: red;
+}</code></pre>
+
+  <p>
+    Na jeden odstavec míří všechna tři pravidla.
+    Vyhraje ID a text bude červený.
+  </p>
+
+  <pre><code class="language-none">p  → obecné pravidlo
+.dulezity → přesnější pravidlo
+#upozorneni → nejpřesnější z těchto tří</code></pre>
+
+  <div class="mind">
+    <h3>🧠 Jednoduchá pomůcka</h3>
+
+    <p>
+      Element vybírá celý druh prvků.
+    </p>
+
+    <p>
+      Třída vybírá určitou skupinu.
+    </p>
+
+    <p>
+      ID vybírá jeden konkrétní prvek.
+      Proto je jeho selektor přesnější.
+    </p>
+  </div>
+
+  <h2>3️⃣ Složené selektory</h2>
+
+  <pre><code class="language-css">.karta p {
+  color: darkblue;
+}</code></pre>
+
+  <p>
+    Toto pravidlo vybírá pouze odstavce uvnitř prvku s třídou
+    <code class="language-css inline-code">karta</code>.
+  </p>
+
+  <script type="text/plain" class="language-markup">
+<div class="karta">
+  <p>Tento odstavec pravidlo vybere.</p>
+</div>
+
+<p>Tento odstavec zůstane beze změny.</p>
+  </script>
+
+  <p>
+    Selektor je přesnější než samotné
+    <code class="language-css inline-code">p</code>,
+    protože obsahuje třídu i element.
+  </p>
+
+  <h2>4️⃣ Dědičnost</h2>
+
+  <p>
+    Některé CSS vlastnosti se automaticky přenášejí
+    z rodiče na jeho potomky.
+  </p>
+
+  <h3>HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<div class="karta">
+  <h2>Nadpis</h2>
+  <p>Odstavec uvnitř karty.</p>
+</div>
+  </script>
+
+  <h3>CSS</h3>
+
+  <pre><code class="language-css">.karta {
+  color: darkblue;
+  font-family: Arial, sans-serif;
+}</code></pre>
+
+  <p>
+    Nadpis i odstavec zdědí barvu textu a rodinu písma,
+    pokud nemají vlastní pravidlo.
+  </p>
+
+  <h3>Vlastnosti, které se často dědí</h3>
+
+  <ul>
+    <li><code class="language-css inline-code">color</code></li>
+    <li><code class="language-css inline-code">font-family</code></li>
+    <li><code class="language-css inline-code">font-size</code></li>
+    <li><code class="language-css inline-code">font-weight</code></li>
+    <li><code class="language-css inline-code">line-height</code></li>
+    <li><code class="language-css inline-code">text-align</code></li>
+  </ul>
+
+  <h3>Vlastnosti, které se běžně nedědí</h3>
+
+  <ul>
+    <li><code class="language-css inline-code">margin</code></li>
+    <li><code class="language-css inline-code">padding</code></li>
+    <li><code class="language-css inline-code">border</code></li>
+    <li><code class="language-css inline-code">background-color</code></li>
+    <li><code class="language-css inline-code">width</code></li>
+    <li><code class="language-css inline-code">height</code></li>
+  </ul>
+
+  <div class="mind">
+    <h3>🧠 Proč je to užitečné</h3>
+
+    <p>
+      Když nastavíš písmo a základní barvu na
+      <code class="language-markup inline-code">&lt;body&gt;</code>,
+      nemusíš je opakovat u každého odstavce a nadpisu.
+    </p>
+  </div>
+
+  <h2>5️⃣ Vlastní pravidlo přepíše zděděnou hodnotu</h2>
+
+  <pre><code class="language-css">.karta {
+  color: darkblue;
+}
+
+.karta h2 {
+  color: darkred;
+}</code></pre>
+
+  <p>
+    Odstavec zdědí tmavě modrou barvu.
+    Nadpis má ale vlastní pravidlo, takže bude tmavě červený.
+  </p>
+
+  <h2>6️⃣ Hodnota inherit</h2>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">inherit</code>
+    výslovně převezme hodnotu od rodiče.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  border: 3px solid darkblue;
+}
+
+.vnitrni {
+  border: inherit;
+}</code></pre>
+
+  <p>
+    Border se běžně nedědí.
+    Pomocí
+    <code class="language-css inline-code">inherit</code>
+    ho ale vnitřnímu prvku předáme úmyslně.
+  </p>
+
+  <h2>7️⃣ Hodnota initial</h2>
+
+  <p>
+    Hodnota
+    <code class="language-css inline-code">initial</code>
+    vrátí vlastnost na její výchozí CSS hodnotu.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  color: blue;
+}
+
+.bez-barvy-rodice {
+  color: initial;
+}</code></pre>
+
+  <p>
+    Potomek nebude používat modrou barvu zděděnou od karty.
+  </p>
+
+  <h2>8️⃣ Inline styl</h2>
+
+  <script type="text/plain" class="language-markup">
+<p style="color: purple;">
+  Fialový odstavec
+</p>
+  </script>
+
+  <p>
+    Styl přímo v HTML má vysokou prioritu.
+    Pro běžnou práci ho ale používat nechceme,
+    protože míchá obsah a vzhled dohromady.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Proč se inline stylu vyhýbat</h3>
+
+    <p>
+      Údržba stránky je potom složitější
+      a stejné hodnoty musíš měnit na více místech.
+    </p>
+
+    <p>
+      Pro naše projekty budeme dál používat samostatný soubor
+      <code class="language-css inline-code">style.css</code>.
+    </p>
+  </div>
+
+  <h2>9️⃣ !important</h2>
+
+  <pre><code class="language-css">p {
+  color: red !important;
+}</code></pre>
+
+  <p>
+    Klíčové slovo
+    <code class="language-css inline-code">!important</code>
+    dá danému pravidlu velmi vysokou prioritu.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Používej pouze výjimečně</h3>
+
+    <p>
+      Časté používání
+      <code class="language-css inline-code">!important</code>
+      vede k těžko opravitelnému CSS.
+    </p>
+
+    <p>
+      Nejdřív zkontroluj selektor, pořadí pravidel a případnou dědičnost.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specificita</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <article class="karta">
+    <h1>Moje karta</h1>
+
+    <p>Běžný odstavec.</p>
+
+    <p class="dulezity">
+      Důležitý odstavec.
+    </p>
+
+    <p class="dulezity" id="nejdulezitejsi">
+      Nejdůležitější odstavec.
+    </p>
+  </article>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  color: #303038;
+  font-family: Arial, sans-serif;
+}
+
+.karta {
+  padding: 20px;
+  border: 3px solid #334f9c;
+}
+
+p {
+  color: green;
+}
+
+.dulezity {
+  color: blue;
+  font-weight: bold;
+}
+
+#nejdulezitejsi {
+  color: red;
+}</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      Když mají selektory stejnou sílu,
+      vyhraje pozdější pravidlo.
+    </li>
+
+    <li>
+      Zjednodušeně platí:
+      element je slabší než třída a třída je slabší než ID.
+    </li>
+
+    <li>
+      Textové vlastnosti se často dědí z rodiče na potomky.
+    </li>
+
+    <li>
+      Rozměry, margin, padding, border a pozadí se běžně nedědí.
+    </li>
+
+    <li>
+      Vlastní pravidlo potomka přepíše zděděnou hodnotu.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">!important</code>
+      není běžné řešení konfliktu.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Po nastudování dostaneš krátký úkol,
+      ve kterém budou na jeden odstavec mířit tři různě silné selektory.
+    </p>
+
+    <p>
+      Kontrolní otázky opět půjdou postupně po jedné.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-responzivni-design.html">⬅️ Responzivita</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+    <a href="css-promenne.html">CSS proměnné ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

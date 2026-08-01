@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CSS proměnné a opakované hodnoty | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🎛️ CSS proměnné a opakované hodnoty</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Ve větším CSS souboru se stejné barvy, mezery nebo rozměry
+    často opakují na mnoha místech.
+  </p>
+
+  <p>
+    CSS proměnná umožní hodnotu pojmenovat a potom ji opakovaně používat.
+  </p>
+
+  <p>
+    Když později hodnotu změníš na jednom místě,
+    změna se projeví ve všech pravidlech, která proměnnou používají.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Místo opakování konkrétní barvy:
+    </p>
+
+    <pre><code class="language-css">color: #334f9c;
+border: 3px solid #334f9c;
+background-color: #334f9c;</code></pre>
+
+    <p>
+      ji pojmenuješ například:
+    </p>
+
+    <pre><code class="language-css">--hlavni-barva: #334f9c;</code></pre>
+
+    <p>
+      A potom používáš její jméno:
+    </p>
+
+    <pre><code class="language-css">color: var(--hlavni-barva);</code></pre>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>vytvořit CSS proměnnou</li>
+    <li>použít ji pomocí funkce <code class="language-css inline-code">var()</code></li>
+    <li>uložit barvy, mezery i rozměry</li>
+    <li>vytvořit společné proměnné v selektoru <code class="language-css inline-code">:root</code></li>
+    <li>pochopit místní platnost proměnné</li>
+    <li>použít záložní hodnotu</li>
+    <li>rychle změnit barevné téma stránky</li>
+    <li>pochopit rozdíl mezi CSS proměnnou a budoucí JavaScript proměnnou</li>
+  </ul>
+
+  <h2>1️⃣ Vytvoření CSS proměnné</h2>
+
+  <pre><code class="language-css">:root {
+  --hlavni-barva: #334f9c;
+}</code></pre>
+
+  <p>
+    Název vlastní CSS proměnné vždy začíná dvěma pomlčkami:
+  </p>
+
+  <pre><code class="language-none">--nazev-promenne</code></pre>
+
+  <p>
+    Za dvojtečku zapisujeme hodnotu stejně jako u běžné CSS vlastnosti.
+  </p>
+
+  <h2>2️⃣ Použití pomocí var()</h2>
+
+  <pre><code class="language-css">h1 {
+  color: var(--hlavni-barva);
+}</code></pre>
+
+  <p>
+    Funkce
+    <code class="language-css inline-code">var()</code>
+    načte hodnotu uloženou v proměnné.
+  </p>
+
+  <h2>3️⃣ Proč používáme :root</h2>
+
+  <pre><code class="language-css">:root {
+  --hlavni-barva: #334f9c;
+  --pozadi-stranky: #e7edf8;
+  --mezera: 16px;
+}</code></pre>
+
+  <p>
+    Selektor
+    <code class="language-css inline-code">:root</code>
+    představuje kořen dokumentu.
+  </p>
+
+  <p>
+    Proměnné vytvořené v
+    <code class="language-css inline-code">:root</code>
+    mohou používat prvky v celé stránce.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Co se do :root často ukládá</h3>
+
+    <ul>
+      <li>hlavní a vedlejší barvy,</li>
+      <li>barvy pozadí a textu,</li>
+      <li>opakované mezery,</li>
+      <li>velikost zaoblení,</li>
+      <li>maximální šířka obsahu.</li>
+    </ul>
+  </div>
+
+  <h2>4️⃣ Proměnná nemusí obsahovat jen barvu</h2>
+
+  <pre><code class="language-css">:root {
+  --mezera-mala: 8px;
+  --mezera-velka: 24px;
+  --zaobleni: 16px;
+  --sirka-karty: 420px;
+}</code></pre>
+
+  <pre><code class="language-css">.karta {
+  max-width: var(--sirka-karty);
+  padding: var(--mezera-velka);
+  border-radius: var(--zaobleni);
+}</code></pre>
+
+  <p>
+    Proměnná může uchovávat téměř jakoukoliv CSS hodnotu.
+  </p>
+
+  <h2>5️⃣ Kompletní barevná sada</h2>
+
+  <pre><code class="language-css">:root {
+  --barva-hlavni: #334f9c;
+  --barva-vedlejsi: #6f42c1;
+  --barva-textu: #252535;
+  --barva-pozadi: #e7edf8;
+  --barva-karty: #ffffff;
+}</code></pre>
+
+  <pre><code class="language-css">body {
+  color: var(--barva-textu);
+  background-color: var(--barva-pozadi);
+}
+
+.karta {
+  background-color: var(--barva-karty);
+  border: 3px solid var(--barva-hlavni);
+}
+
+h1 {
+  color: var(--barva-hlavni);
+}</code></pre>
+
+  <p>
+    Celé barevné téma je nyní přehledně uložené na jednom místě.
+  </p>
+
+  <h2>6️⃣ Záložní hodnota</h2>
+
+  <pre><code class="language-css">h1 {
+  color: var(--hlavni-barva, darkblue);
+}</code></pre>
+
+  <p>
+    Pokud proměnná
+    <code class="language-css inline-code">--hlavni-barva</code>
+    neexistuje, použije se záložní hodnota
+    <code class="language-css inline-code">darkblue</code>.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Čtení vlastními slovy</h3>
+
+    <p>
+      Použij hlavní barvu.
+      Jestli není dostupná, použij tmavě modrou.
+    </p>
+  </div>
+
+  <h2>7️⃣ Místní proměnná</h2>
+
+  <pre><code class="language-css">.upozorneni {
+  --barva-bloku: orange;
+
+  color: var(--barva-bloku);
+  border-left: 6px solid var(--barva-bloku);
+}</code></pre>
+
+  <p>
+    Proměnná vytvořená uvnitř
+    <code class="language-css inline-code">.upozorneni</code>
+    je dostupná tomuto prvku a jeho potomkům.
+  </p>
+
+  <p>
+    Ostatní části stránky ji běžně použít nemohou.
+  </p>
+
+  <h2>8️⃣ Přepsání proměnné v určité části</h2>
+
+  <pre><code class="language-css">:root {
+  --hlavni-barva: #334f9c;
+}
+
+.varovani {
+  --hlavni-barva: #b3261e;
+}</code></pre>
+
+  <pre><code class="language-css">.karta {
+  border: 3px solid var(--hlavni-barva);
+}</code></pre>
+
+  <p>
+    Běžná karta použije modrou barvu.
+    Karta uvnitř prvku
+    <code class="language-css inline-code">.varovani</code>
+    použije červenou.
+  </p>
+
+  <h2>9️⃣ Jednoduché světlé a tmavé téma</h2>
+
+  <pre><code class="language-css">:root {
+  --pozadi: #f3f5fa;
+  --text: #252535;
+  --karta: #ffffff;
+}
+
+.tmave-tema {
+  --pozadi: #17171d;
+  --text: #f3f3f7;
+  --karta: #292933;
+}</code></pre>
+
+  <pre><code class="language-css">body {
+  color: var(--text);
+  background-color: var(--pozadi);
+}
+
+.karta {
+  background-color: var(--karta);
+}</code></pre>
+
+  <p>
+    Zatím můžeme třídu
+    <code class="language-css inline-code">tmave-tema</code>
+    přidat ručně v HTML.
+  </p>
+
+  <p>
+    Později ji pomocí JavaScriptu budeme přepínat po kliknutí na tlačítko.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Most k JavaScriptu</h3>
+
+    <p>
+      JavaScript může měnit třídy prvků.
+      CSS proměnné potom umožní jednou změnou třídy přebarvit celé téma.
+    </p>
+  </div>
+
+  <h2>🔟 CSS proměnná není JavaScript proměnná</h2>
+
+  <pre><code class="language-css">:root {
+  --barva: blue;
+}</code></pre>
+
+  <pre><code class="language-javascript">const barva = "blue";</code></pre>
+
+  <p>
+    Oba zápisy ukládají hodnotu pod názvem,
+    ale patří do jiných jazyků a používají se jinak.
+  </p>
+
+  <ul>
+    <li>CSS proměnná řídí hlavně vzhled.</li>
+    <li>JavaScript proměnná uchovává data pro logiku programu.</li>
+  </ul>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS proměnné</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <article class="karta">
+    <h1>Moje karta</h1>
+
+    <p>
+      Barvy a mezery používám pomocí CSS proměnných.
+    </p>
+
+    <button>Pokračovat</button>
+  </article>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">:root {
+  --hlavni-barva: #334f9c;
+  --vedlejsi-barva: #6f42c1;
+  --pozadi: #e7edf8;
+  --karta: #ffffff;
+  --text: #252535;
+
+  --mezera: 20px;
+  --zaobleni: 16px;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--text);
+  background-color: var(--pozadi);
+  font-family: Arial, sans-serif;
+}
+
+.karta {
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 420px;
+
+  padding: var(--mezera);
+  border: 3px solid var(--hlavni-barva);
+  border-radius: var(--zaobleni);
+
+  background-color: var(--karta);
+}
+
+h1 {
+  color: var(--hlavni-barva);
+  text-align: center;
+}
+
+button {
+  padding: 10px 18px;
+  border: 2px solid var(--vedlejsi-barva);
+  border-radius: calc(var(--zaobleni) / 2);
+
+  color: white;
+  background-color: var(--vedlejsi-barva);
+}</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        Název proměnné nezačíná dvěma pomlčkami.
+      </li>
+
+      <li>
+        Proměnná se použije bez funkce
+        <code class="language-css inline-code">var()</code>.
+      </li>
+
+      <li>
+        V názvu proměnné je překlep.
+      </li>
+
+      <li>
+        Místní proměnná se používá mimo oblast,
+        ve které byla vytvořena.
+      </li>
+
+      <li>
+        Všechny jednotlivé hodnoty se změní na proměnné,
+        i když se nikde neopakují a nemají žádný významný název.
+      </li>
+    </ul>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      Název CSS proměnné začíná dvěma pomlčkami.
+    </li>
+
+    <li>
+      Hodnotu načítáme pomocí
+      <code class="language-css inline-code">var(--nazev)</code>.
+    </li>
+
+    <li>
+      Společné proměnné je praktické ukládat do
+      <code class="language-css inline-code">:root</code>.
+    </li>
+
+    <li>
+      CSS proměnná může obsahovat barvu, mezeru, rozměr i další hodnoty.
+    </li>
+
+    <li>
+      Druhá hodnota ve
+      <code class="language-css inline-code">var()</code>
+      slouží jako záloha.
+    </li>
+
+    <li>
+      Proměnnou lze v určité části stránky přepsat.
+    </li>
+
+    <li>
+      CSS proměnné usnadňují barevná témata a budoucí změny pomocí JavaScriptu.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Po nastudování dostaneš krátký úkol:
+      vytvoříš tři společné proměnné a použiješ je na kartě a tlačítku.
+    </p>
+
+    <p>
+      Potom přijde závěrečný CSS projekt.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-specificita-dedicnost.html">⬅️ Specificita</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+    <a href="css-maly-projekt.html">Závěrečný projekt ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

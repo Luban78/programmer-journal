@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Malý závěrečný CSS projekt | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🏁 Malý závěrečný CSS projekt</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    V této části už nepřibude žádná nová CSS vlastnost.
+  </p>
+
+  <p>
+    Cílem je spojit dosavadní znalosti do jedné malé responzivní stránky,
+    kterou napíšeš celou od nuly.
+  </p>
+
+  <p>
+    Projekt ukáže, zda umíš samostatně přemýšlet o struktuře,
+    vzhledu, rozložení a chování stránky na různých šířkách.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o projektu přemýšlet</h2>
+
+    <p>Nezačínej barvami a stíny.</p>
+
+    <p>Postupuj v tomto pořadí:</p>
+
+    <ol>
+      <li>Vytvoř správnou HTML strukturu.</li>
+      <li>Připoj externí CSS.</li>
+      <li>Nastav základní text a barvy.</li>
+      <li>Vytvoř box model jednotlivých částí.</li>
+      <li>Vyřeš rozměry a rozložení.</li>
+      <li>Přidej responzivní změnu.</li>
+      <li>Až nakonec dolaď zaoblení, stíny a detaily.</li>
+    </ol>
+  </div>
+
+  <h2>🎯 Zadání projektu</h2>
+
+  <p>
+    Vytvoř stránku s názvem:
+  </p>
+
+  <pre><code class="language-none">Moje cesta programátora</code></pre>
+
+  <p>Stránka bude obsahovat:</p>
+
+  <ul>
+    <li>hlavní nadpis a krátký úvod,</li>
+    <li>tři karty: HTML, CSS a JavaScript,</li>
+    <li>u každé karty krátký popis,</li>
+    <li>sekci s dovednostmi nebo technologiemi,</li>
+    <li>jedno výrazné tlačítko,</li>
+    <li>krátkou poznámku nebo upozornění.</li>
+  </ul>
+
+  <h2>📐 Orientační rozložení</h2>
+
+  <h3>Mobil</h3>
+
+  <pre><code class="language-none">┌────────────────────────┐
+│ Moje cesta programátora│
+│ krátký úvod             │
+└────────────────────────┘
+
+┌────────────────────────┐
+│ HTML                   │
+│ popis                  │
+└────────────────────────┘
+
+┌────────────────────────┐
+│ CSS                    │
+│ popis                  │
+└────────────────────────┘
+
+┌────────────────────────┐
+│ JavaScript             │
+│ popis                  │
+└────────────────────────┘
+
+[ HTML ] [ CSS ] [ Git ]
+
+      [ Pokračovat ]</code></pre>
+
+  <h3>Širší obrazovka</h3>
+
+  <pre><code class="language-none">┌──────────────────────────────────────────┐
+│          Moje cesta programátora         │
+│                krátký úvod               │
+└──────────────────────────────────────────┘
+
+┌────────────┐ ┌────────────┐ ┌────────────┐
+│ HTML       │ │ CSS        │ │ JavaScript │
+│ popis      │ │ popis      │ │ popis      │
+└────────────┘ └────────────┘ └────────────┘
+
+       [ HTML ] [ CSS ] [ Git ]
+
+               [ Pokračovat ]</code></pre>
+
+  <h2>✅ Povinné znalosti v projektu</h2>
+
+  <p>Projekt musí prokázat použití těchto oblastí:</p>
+
+  <ul>
+    <li>externí soubor <code class="language-css inline-code">style.css</code>,</li>
+    <li>elementový selektor, třída a alespoň jedno ID,</li>
+    <li>barvy, písmo a řádkování,</li>
+    <li>padding, border a margin,</li>
+    <li>width, max-width a box-sizing,</li>
+    <li>Flexbox a gap,</li>
+    <li>flex-wrap nebo flex-direction,</li>
+    <li>border-radius a box-shadow,</li>
+    <li>jedna media query s min-width,</li>
+    <li>alespoň tři CSS proměnné v :root.</li>
+  </ul>
+
+  <div class="tip">
+    <h3>💡 Nemusíš použít úplně všechno</h3>
+
+    <p>
+      Nepřidávej vlastnost jen proto, že ji znáš.
+      Použij ji pouze tam, kde má jasný význam.
+    </p>
+  </div>
+
+  <h2>🎨 CSS proměnné projektu</h2>
+
+  <p>
+    Připrav si alespoň tři společné hodnoty:
+  </p>
+
+  <pre><code class="language-css">:root {
+  --hlavni-barva: ...;
+  --pozadi-stranky: ...;
+  --barva-karty: ...;
+}</code></pre>
+
+  <p>
+    Konkrétní hodnoty si vyber sám.
+  </p>
+
+  <h2>📱 Responzivní požadavek</h2>
+
+  <p>
+    Na mobilu budou tři hlavní karty pod sebou.
+  </p>
+
+  <p>
+    Od tebou zvoleného breakpointu budou vedle sebe.
+  </p>
+
+  <p>
+    Použij pouze jednu media query.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Breakpoint vybíráš podle vzhledu</h3>
+
+    <p>
+      Pomalu rozšiřuj náhled a sleduj,
+      kdy mají tři karty dostatek prostoru.
+    </p>
+
+    <p>
+      Nevybírej číslo jen proto, že bylo použito v předchozím příkladu.
+    </p>
+  </div>
+
+  <h2>🧪 Doporučený pracovní postup</h2>
+
+  <ol>
+    <li>Napiš celé HTML bez CSS.</li>
+    <li>Zkontroluj správné uzavření všech značek.</li>
+    <li>Nastav základní styl body.</li>
+    <li>Uprav hlavní obal stránky.</li>
+    <li>Vytvoř vzhled jedné karty.</li>
+    <li>Stejnou třídu použij na všechny tři karty.</li>
+    <li>Zapni Flexbox na jejich rodiči.</li>
+    <li>Přidej media query.</li>
+    <li>Dolaď štítky, tlačítko a upozornění.</li>
+    <li>Nakonec zkontroluj mobilní i široký náhled.</li>
+  </ol>
+
+  <h2>🔍 Kontrolní seznam před odesláním</h2>
+
+  <ul>
+    <li>Je v HTML právě jeden <code class="language-markup inline-code">&lt;body&gt;</code>?</li>
+    <li>Jsou všechny značky správně uzavřené?</li>
+    <li>Je CSS připojené externím souborem?</li>
+    <li>Neprotéká obsah mimo obrazovku?</li>
+    <li>Jsou karty na mobilu pod sebou?</li>
+    <li>Jsou na širší obrazovce vedle sebe?</li>
+    <li>Je text dobře čitelný?</li>
+    <li>Nejsou stíny nebo barvy zbytečně výrazné?</li>
+    <li>Používáš jednu společnou třídu místo kopírování stejného CSS?</li>
+    <li>Mají CSS proměnné srozumitelné názvy?</li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Co v projektu zatím nepoužívat</h3>
+
+    <ul>
+      <li>JavaScript,</li>
+      <li>Grid,</li>
+      <li>position,</li>
+      <li>animace,</li>
+      <li>hover efekty,</li>
+      <li>kód zkopírovaný jako hotové řešení.</li>
+    </ul>
+
+    <p>
+      Cílem je samostatně upevnit přesně to,
+      co už bylo probrané.
+    </p>
+  </div>
+
+  <h2>🏆 Jak bude projekt hodnocen</h2>
+
+  <ul>
+    <li><strong>HTML struktura:</strong> správné a přehledné značky.</li>
+    <li><strong>CSS logika:</strong> vhodně zvolené selektory a společné třídy.</li>
+    <li><strong>Box model:</strong> rozumné mezery, okraje a rozměry.</li>
+    <li><strong>Flexbox:</strong> rodič správně řídí potomky.</li>
+    <li><strong>Responzivita:</strong> jedna funkční media query.</li>
+    <li><strong>Vzhled:</strong> čitelnost a vyváženost.</li>
+    <li><strong>Porozumění:</strong> schopnost vysvětlit vlastní rozhodnutí.</li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude po dokončení</h2>
+
+    <p>
+      Po úspěšném dokončení tohoto projektu bude CSS kapitola hotová.
+    </p>
+
+    <p>
+      Potom přejdeme na JavaScript a tvoje stránky poprvé začnou
+      skutečně reagovat na kliknutí a vstup uživatele.
+    </p>
+
+    <p>
+      Později pomocí JavaScriptu vytvoříš také rychlý přístup
+      k právě studovaným lekcím a jeho uložení do localStorage.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-promenne.html">⬅️ CSS proměnné</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+    <a href="../javascript.html">JavaScript ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
