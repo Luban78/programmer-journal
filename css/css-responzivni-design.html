@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Responzivní design a media queries | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>📱 Responzivní design a media queries</h1>
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Stejnou webovou stránku mohou lidé otevřít na telefonu,
+    tabletu, notebooku i velkém monitoru.
+  </p>
+
+  <p>
+    Responzivní design znamená, že se vzhled stránky přizpůsobí
+    dostupné šířce obrazovky a zůstane použitelný na různých zařízeních.
+  </p>
+
+  <p>
+    V předchozích lekcích ses na responzivitu už připravoval pomocí
+    procent, <code class="language-css inline-code">max-width</code>,
+    <code class="language-css inline-code">flex-wrap</code>
+    a pružných rozměrů. Teď se naučíš pomocí media queries měnit pravidla
+    podle šířky obrazovky.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Nejprve vytvoříš základní vzhled, který funguje na malé obrazovce.
+    </p>
+
+    <p>
+      Potom prohlížeči řekneš:
+    </p>
+
+    <p>
+      <strong>
+        „Když bude obrazovka alespoň takto široká,
+        použij navíc tato pravidla.“
+      </strong>
+    </p>
+
+    <p>
+      K tomu slouží
+      <code class="language-css inline-code">@media</code>.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>co znamená responzivní web</li>
+    <li>proč je důležitý viewport v HTML</li>
+    <li>jak se zapisuje media query</li>
+    <li>jak funguje <code class="language-css inline-code">min-width</code></li>
+    <li>jak funguje <code class="language-css inline-code">max-width</code></li>
+    <li>co znamená mobile-first přístup</li>
+    <li>jak na větší obrazovce změnit Flexbox z column na row</li>
+    <li>jak měnit mezery, písmo a rozměry podle šířky obrazovky</li>
+    <li>jak vybrat breakpoint podle skutečného vzhledu stránky</li>
+  </ul>
+
+  <h2>1️⃣ Viewport v HTML</h2>
+
+  <p>
+    V části
+    <code class="language-markup inline-code">&lt;head&gt;</code>
+    už pravidelně používáš tento řádek:
+  </p>
+
+  <pre><code class="language-markup">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+  <p>
+    Říká mobilnímu prohlížeči, aby šířku stránky přizpůsobil
+    skutečné šířce zařízení.
+  </p>
+
+  <p>
+    Bez správného viewportu může stránka na telefonu vypadat zmenšeně
+    jako široká počítačová stránka.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Praktické pravidlo</h3>
+
+    <p>
+      Tento meta řádek nechávej ve všech běžných responzivních stránkách.
+    </p>
+  </div>
+
+  <h2>2️⃣ Co už je responzivní bez media query</h2>
+
+  <p>
+    Ne každá responzivní úprava potřebuje
+    <code class="language-css inline-code">@media</code>.
+  </p>
+
+  <pre><code class="language-css">.karta {
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 420px;
+  margin: 20px auto;
+}</code></pre>
+
+  <p>
+    Na malém telefonu se karta zmenší na 90 % dostupného prostoru.
+    Na velké obrazovce nepřeroste přes 420 px.
+  </p>
+
+  <p>
+    Také Flexbox může prvky automaticky zalamovat:
+  </p>
+
+  <pre><code class="language-css">.stitky {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}</code></pre>
+
+  <p>
+    Media query používáme až tehdy, když chceme při určité šířce
+    skutečně změnit rozložení nebo vzhled.
+  </p>
+
+  <h2>3️⃣ Základní zápis media query</h2>
+
+  <pre><code class="language-css">@media (min-width: 700px) {
+  .karta {
+    max-width: 650px;
+  }
+}</code></pre>
+
+  <p>
+    Pravidlo uvnitř se použije pouze tehdy,
+    když je okno široké alespoň 700 px.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Čtení vlastními slovy</h3>
+
+    <p>
+      <code class="language-css inline-code">@media</code>:
+      použij podmíněná pravidla.
+    </p>
+
+    <p>
+      <code class="language-css inline-code">min-width: 700px</code>:
+      když je šířka nejméně 700 px.
+    </p>
+
+    <p>
+      Složené závorky obsahují CSS, které se za této podmínky přidá
+      nebo přepíše.
+    </p>
+  </div>
+
+  <h2>4️⃣ Mobile-first přístup</h2>
+
+  <p>
+    Mobile-first znamená, že základní CSS nejprve navrhneš pro malou obrazovku.
+  </p>
+
+  <p>
+    Potom pomocí
+    <code class="language-css inline-code">min-width</code>
+    přidáváš změny pro větší obrazovky.
+  </p>
+
+  <pre><code class="language-css">.obsah {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 700px) {
+  .obsah {
+    flex-direction: row;
+  }
+}</code></pre>
+
+  <p>Na telefonu budou části pod sebou:</p>
+
+  <pre><code class="language-none">[ první část ]
+[ druhá část ]</code></pre>
+
+  <p>Od šířky 700 px budou vedle sebe:</p>
+
+  <pre><code class="language-none">[ první část ] [ druhá část ]</code></pre>
+
+  <div class="tip">
+    <h3>💡 Proč je mobile-first praktický</h3>
+
+    <p>
+      Začneš jednodušším rozložením pro malý prostor
+      a větší obrazovky potom postupně rozšiřuješ.
+    </p>
+  </div>
+
+  <h2>5️⃣ Min-width a max-width v media query</h2>
+
+  <h3>Min-width</h3>
+
+  <pre><code class="language-css">@media (min-width: 700px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}</code></pre>
+
+  <p>
+    Pravidlo platí od 700 px výše.
+  </p>
+
+  <h3>Max-width</h3>
+
+  <pre><code class="language-css">@media (max-width: 699px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+}</code></pre>
+
+  <p>
+    Pravidlo platí do šířky 699 px včetně.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Nezaměňovat dvě různá použití</h3>
+
+    <p>
+      U běžného prvku:
+      <code class="language-css inline-code">max-width: 420px;</code>
+      omezuje šířku samotného prvku.
+    </p>
+
+    <p>
+      V media query:
+      <code class="language-css inline-code">@media (max-width: 699px)</code>
+      kontroluje šířku okna, při které se mají pravidla použít.
+    </p>
+  </div>
+
+  <h2>6️⃣ Změna Flexboxu podle obrazovky</h2>
+
+  <h3>HTML</h3>
+
+  <script type="text/plain" class="language-markup">
+<div class="karty">
+  <article class="karta">HTML</article>
+  <article class="karta">CSS</article>
+  <article class="karta">JavaScript</article>
+</div>
+  </script>
+
+  <h3>CSS</h3>
+
+  <pre><code class="language-css">.karty {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 750px) {
+  .karty {
+    flex-direction: row;
+  }
+}</code></pre>
+
+  <p>
+    Základní styl skládá karty pod sebe.
+    Na větší obrazovce se změní pouze směr jejich rodiče.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Flexbox stále nastavujeme rodiči</h3>
+
+    <p>
+      Media query nemění hlavní pravidlo Flexboxu.
+      Jestli chceš přeskupit karty, upravuješ jejich společného rodiče.
+    </p>
+  </div>
+
+  <h2>7️⃣ Změna více vlastností současně</h2>
+
+  <pre><code class="language-css">.karta {
+  padding: 16px;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+@media (min-width: 800px) {
+  .karta {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+}</code></pre>
+
+  <p>
+    Na větším displeji můžeš využít více prostoru:
+    zvětšit padding, písmo nebo maximální šířku.
+  </p>
+
+  <p>
+    Nemusíš ale měnit vše. Media query má obsahovat jen vlastnosti,
+    které se skutečně potřebují změnit.
+  </p>
+
+  <h2>8️⃣ Breakpoint – bod změny</h2>
+
+  <p>
+    Číslo v podmínce, například 700 px, se označuje jako breakpoint.
+  </p>
+
+  <pre><code class="language-css">@media (min-width: 700px) {
+  /* změny pro širší obrazovku */
+}</code></pre>
+
+  <p>
+    Breakpoint není přesný název konkrétního telefonu nebo tabletu.
+  </p>
+
+  <p>
+    Vyber ho podle chvíle, kdy se tvoje rozložení začne nevejít
+    nebo kdy už naopak vznikne dost prostoru pro jiný vzhled.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Správný způsob testování</h3>
+
+    <p>
+      Pomalu měň šířku náhledu a sleduj,
+      kde stránka přestává vypadat dobře.
+      Tam je vhodné zvážit breakpoint.
+    </p>
+  </div>
+
+  <h2>9️⃣ Více breakpointů</h2>
+
+  <pre><code class="language-css">.karta {
+  padding: 14px;
+}
+
+@media (min-width: 600px) {
+  .karta {
+    padding: 22px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .karta {
+    padding: 32px;
+  }
+}</code></pre>
+
+  <p>
+    Pravidla se postupně přidávají.
+    Při šířce nad 1000 px platí základní CSS i obě media queries.
+  </p>
+
+  <div class="mind">
+    <h3>🧠 Rozhoduje také pořadí</h3>
+
+    <p>
+      Když více pravidel upravuje stejnou vlastnost
+      a mají stejnou sílu selektoru, pozdější pravidlo přepíše předchozí.
+    </p>
+
+    <p>
+      Přesné fungování pořadí a specificity probereme v další lekci.
+    </p>
+  </div>
+
+  <h2>🔟 Co nedělat</h2>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyby</h3>
+
+    <ul>
+      <li>
+        Chybí viewport v HTML.
+      </li>
+
+      <li>
+        Media query je vložená dovnitř jiného CSS pravidla.
+      </li>
+
+      <li>
+        Chybí některá složená závorka.
+      </li>
+
+      <li>
+        Použije se příliš mnoho breakpointů bez skutečného důvodu.
+      </li>
+
+      <li>
+        Rozložení se navrhuje pro konkrétní model telefonu
+        místo podle prostoru, který obsah potřebuje.
+      </li>
+
+      <li>
+        Na mobilu zůstane pevná šířka větší než obrazovka.
+      </li>
+
+      <li>
+        Pevná výška zabrání kartě růst podle obsahu.
+      </li>
+
+      <li>
+        Změní se jednotlivé flex položky,
+        i když bylo potřeba změnit jejich společného rodiče.
+      </li>
+    </ul>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>Soubor index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responzivní karty</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Moje responzivní znalosti</h1>
+
+    <div class="karty">
+      <article class="karta">
+        <h2>HTML</h2>
+        <p>Struktura webové stránky.</p>
+      </article>
+
+      <article class="karta">
+        <h2>CSS</h2>
+        <p>Vzhled a rozložení stránky.</p>
+      </article>
+
+      <article class="karta">
+        <h2>JavaScript</h2>
+        <p>Chování a logika aplikace.</p>
+      </article>
+    </div>
+  </main>
+</body>
+
+</html>
+  </script>
+
+  <h3>Soubor style.css</h3>
+
+  <pre><code class="language-css">body {
+  margin: 0;
+  padding: 20px;
+
+  background-color: #e7edf8;
+  color: #252535;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #334f9c;
+}
+
+.karty {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.karta {
+  box-sizing: border-box;
+  width: 100%;
+
+  padding: 18px;
+  border: 3px solid #334f9c;
+  border-radius: 14px;
+
+  background-color: white;
+  box-shadow: 0 5px 12px #a6afc2;
+}
+
+@media (min-width: 750px) {
+  body {
+    padding: 35px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .karty {
+    flex-direction: row;
+  }
+
+  .karta {
+    width: 33%;
+  }
+}</code></pre>
+
+  <h2>🔍 Co se v příkladu mění</h2>
+
+  <ul>
+    <li>
+      Na malé obrazovce jsou karty pod sebou.
+    </li>
+
+    <li>
+      Od šířky 750 px jsou karty vedle sebe.
+    </li>
+
+    <li>
+      Na větší obrazovce se zvětší padding stránky i hlavní nadpis.
+    </li>
+
+    <li>
+      Všechny změny jsou soustředěné v jedné media query.
+    </li>
+  </ul>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>
+      Responzivní stránka se přizpůsobuje dostupnému prostoru.
+    </li>
+
+    <li>
+      Viewport v HTML je důležitý pro správné zobrazení na mobilu.
+    </li>
+
+    <li>
+      Nejdřív používej pružné rozměry, max-width a flex-wrap.
+    </li>
+
+    <li>
+      Media query používej pro změnu rozložení nebo vzhledu
+      při určité šířce.
+    </li>
+
+    <li>
+      Mobile-first začíná základními styly pro malou obrazovku.
+    </li>
+
+    <li>
+      <code class="language-css inline-code">@media (min-width: ...)</code>
+      přidává změny od dané šířky výše.
+    </li>
+
+    <li>
+      Breakpoint vybírej podle obsahu a vzhledu,
+      ne podle konkrétní značky zařízení.
+    </li>
+
+    <li>
+      Do media query zapisuj pouze to, co se má změnit.
+    </li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      Nejprve si vyzkoušej jednu stránku na úzkém a širším náhledu.
+    </p>
+
+    <p>
+      Potom dostaneš kratší praktický úkol.
+      Nejdřív vytvoříš mobilní rozložení pod sebou
+      a jedinou media query ho na větší obrazovce změníš na řádek.
+    </p>
+
+    <p>
+      Úkol bude rozdělený do malých částí a kontrolní otázky
+      dostaneš postupně po jedné.
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="css-pozadi-okraje-stiny.html">⬅️ Vzhled prvků</a>
+    <a href="../css.html">🎨 Obsah CSS</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
