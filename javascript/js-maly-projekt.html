@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Malý závěrečný JavaScript projekt | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🏁 Malý závěrečný JavaScript projekt</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    V závěrečném projektu spojíš proměnné, podmínky,
+    funkce, DOM, události, formuláře, pole a localStorage.
+  </p>
+
+  <p>
+    Nebudeš dostávat hotové řešení.
+    Projekt rozdělíme na malé etapy a každou společně zkontrolujeme.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Projekt: Studijní plán</h2>
+
+    <p>
+      Vytvoříš malou aplikaci,
+      do které přidáš témata k nastudování.
+    </p>
+
+    <p>
+      Každé téma půjde označit jako dokončené,
+      odstranit a zachovat po obnovení stránky.
+    </p>
+  </div>
+
+  <h2>🎯 Výsledná funkce</h2>
+
+  <pre><code class="language-none">
+Moje studijní témata
+
+[ nové téma................ ] [ Přidat ]
+
+○ DOM a výběr prvků       [ Hotovo ] [ Smazat ]
+● Flexbox                  [ Vrátit ] [ Smazat ]
+○ localStorage             [ Hotovo ] [ Smazat ]
+
+Hotovo: 1 / 3
+</code></pre>
+
+  <h2>📚 Co projekt procvičí</h2>
+
+  <ul>
+    <li>HTML formulář a seznam,</li>
+    <li>CSS stavy dokončené položky,</li>
+    <li>proměnné a funkce,</li>
+    <li>událost submit,</li>
+    <li>čtení hodnoty inputu,</li>
+    <li>pole objektů,</li>
+    <li>vytváření prvků v DOM,</li>
+    <li>podmínky,</li>
+    <li>metody <code class="language-javascript inline-code">find()</code> a <code class="language-javascript inline-code">filter()</code>,</li>
+    <li>ukládání do localStorage,</li>
+    <li>výpočet a zobrazení postupu.</li>
+  </ul>
+
+  <h2>1️⃣ Datový model položky</h2>
+
+  <p>Každé téma bude objekt:</p>
+
+  <pre><code class="language-javascript">
+{
+  id: 1722512345678,
+  nazev: &quot;DOM a výběr prvků&quot;,
+  jeHotovo: false,
+}
+</code></pre>
+
+  <ul>
+    <li><code class="language-javascript inline-code">id</code> jednoznačně rozliší položku,</li>
+    <li><code class="language-javascript inline-code">nazev</code> obsahuje text od uživatele,</li>
+    <li><code class="language-javascript inline-code">jeHotovo</code> ukládá stav.</li>
+  </ul>
+
+  <h2>2️⃣ Povinné funkce aplikace</h2>
+
+  <ol>
+    <li>Přidat nové téma z formuláře.</li>
+    <li>Zakázat uložení prázdného tématu.</li>
+    <li>Zobrazit všechny položky.</li>
+    <li>Přepnout stav hotovo / rozpracováno.</li>
+    <li>Odstranit vybranou položku.</li>
+    <li>Zobrazit počet dokončených položek.</li>
+    <li>Uložit seznam do localStorage.</li>
+    <li>Po načtení obnovit uložený seznam.</li>
+  </ol>
+
+  <h2>3️⃣ Doporučené HTML části</h2>
+
+  <ul>
+    <li>hlavní nadpis,</li>
+    <li>formulář s inputem a tlačítkem,</li>
+    <li>místo pro chybovou zprávu,</li>
+    <li>seznam témat,</li>
+    <li>text s postupem.</li>
+  </ul>
+
+  <h2>4️⃣ Doporučené funkce v JavaScriptu</h2>
+
+  <pre><code class="language-javascript">
+nactiTemata()
+ulozTemata()
+zobrazTemata()
+pridejTema()
+prepniTema()
+smazTema()
+aktualizujPostup()
+</code></pre>
+
+  <p>
+    Názvy jsou doporučení.
+    Důležité je, aby každá funkce měla jeden jasný úkol.
+  </p>
+
+  <h2>5️⃣ Pracovní etapy</h2>
+
+  <ol>
+    <li><strong>Etapa 1:</strong> pouze správné HTML.</li>
+    <li><strong>Etapa 2:</strong> CSS vzhled a responzivita.</li>
+    <li><strong>Etapa 3:</strong> přidání jednoho tématu.</li>
+    <li><strong>Etapa 4:</strong> pole témat a vykreslování.</li>
+    <li><strong>Etapa 5:</strong> přepínání dokončení.</li>
+    <li><strong>Etapa 6:</strong> mazání.</li>
+    <li><strong>Etapa 7:</strong> localStorage.</li>
+    <li><strong>Etapa 8:</strong> postup a finální kontrola.</li>
+  </ol>
+
+  <div class="tip">
+    <h3>💡 Budeme pokračovat naším stylem</h3>
+
+    <p>
+      Nedostaneš všechny etapy jako jeden obrovský úkol.
+    </p>
+
+    <p>
+      Vždy vyřešíš jen jednu konkrétní část,
+      pošleš celý aktuální soubor
+      a opravíme případně jeden problém najednou.
+    </p>
+  </div>
+
+  <h2>6️⃣ Kontrolní seznam</h2>
+
+  <ul>
+    <li>Jsou všechny HTML značky správně uzavřené?</li>
+    <li>Je JavaScript v samostatném souboru?</li>
+    <li>Má každá funkce srozumitelný název?</li>
+    <li>Není stejný kód zbytečně zkopírovaný vícekrát?</li>
+    <li>Je prázdný vstup odmítnutý?</li>
+    <li>Vykresluje se UI podle pole dat?</li>
+    <li>Ukládá se po každé změně?</li>
+    <li>Obnoví se data po načtení?</li>
+    <li>Funguje aplikace i bez uložených dat?</li>
+    <li>Je ovládání použitelné na mobilu?</li>
+  </ul>
+
+  <div class="chyba">
+    <h3>⚠️ Co zatím do projektu nepřidávat</h3>
+
+    <ul>
+      <li>API nebo databázi,</li>
+      <li>přihlašování,</li>
+      <li>složitou animaci,</li>
+      <li>knihovny a frameworky,</li>
+      <li>funkce, kterým zatím nerozumíš.</li>
+    </ul>
+  </div>
+
+  <h2>🏆 Dokončení kapitoly</h2>
+
+  <p>
+    Až bude projekt fungovat a dokážeš vysvětlit jeho hlavní části,
+    budeš mít hotové pevné základy JavaScriptu.
+  </p>
+
+  <p>
+    Potom budeme pokračovat složitější prací s DOM,
+    moduly, asynchronním kódem, API a vlastními aplikacemi.
+  </p>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>Velký projekt se skládá z malých ověřitelných etap.</li>
+    <li>Data mají být oddělená od vykreslení stránky.</li>
+    <li>UI se má znovu vytvořit z aktuálního pole dat.</li>
+    <li>Po změně dat je potřeba uložit nový stav.</li>
+    <li>Čitelný kód je důležitější než nejkratší zápis.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-maly-projekt"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-localstorage-zalozky.html">⬅️ localStorage</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="../index.html">🏠 Hlavní stránka</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

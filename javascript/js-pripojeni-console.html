@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Připojení JavaScriptu a console.log | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🔌 Připojení JavaScriptu a console.log</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    HTML vytváří obsah stránky a CSS určuje její vzhled.
+    JavaScript přidává příkazy, rozhodování a reakce na uživatele.
+  </p>
+
+  <p>
+    V první lekci připojíš samostatný soubor
+    <code class="language-javascript inline-code">script.js</code>
+    a ověříš jeho spuštění pomocí
+    <code class="language-javascript inline-code">console.log()</code>.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <p>
+      Soubor HTML řekne prohlížeči:
+      „Načti také tento JavaScriptový soubor.“
+    </p>
+
+    <p>
+      Prohlížeč potom přečte příkazy v souboru shora dolů
+      a postupně je vykoná.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>vytvořit soubor <code class="language-javascript inline-code">script.js</code></li>
+    <li>připojit ho pomocí značky <code class="language-markup inline-code">&lt;script&gt;</code></li>
+    <li>vypsat zprávu pomocí <code class="language-javascript inline-code">console.log()</code></li>
+    <li>poznat rozdíl mezi textem a příkazem</li>
+    <li>psát jednoduché komentáře</li>
+    <li>pochopit, proč umísťujeme script na konec body</li>
+  </ul>
+
+  <h2>1️⃣ Připojení externího souboru</h2>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>První JavaScript</title>
+</head>
+
+<body>
+  <h1>Moje první JavaScript stránka</h1>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+</script>
+
+  <p>
+    Atribut
+    <code class="language-markup inline-code">src</code>
+    obsahuje cestu k JavaScriptovému souboru.
+  </p>
+
+  <p>
+    Když jsou
+    <code class="language-javascript inline-code">index.html</code>
+    a
+    <code class="language-javascript inline-code">script.js</code>
+    ve stejné složce, stačí napsat:
+  </p>
+
+  <script type="text/plain" class="language-markup">
+<script src="script.js"></script>
+</script>
+
+  <h2>2️⃣ První příkaz</h2>
+
+  <p>Do souboru <code class="language-javascript inline-code">script.js</code> napiš:</p>
+
+  <pre><code class="language-javascript">console.log(&quot;JavaScript funguje!&quot;);</code></pre>
+
+  <p>
+    Funkce
+    <code class="language-javascript inline-code">console.log()</code>
+    vypíše hodnotu do konzole prohlížeče.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Proč je console.log užitečný</h3>
+
+    <p>
+      Umožní ti rychle ověřit, zda se určitá část programu spustila
+      a jakou hodnotu právě obsahuje proměnná.
+    </p>
+  </div>
+
+  <h2>3️⃣ Text musí být v uvozovkách</h2>
+
+  <pre><code class="language-javascript">console.log(&quot;Ahoj Lubo&quot;);
+console.log(&#x27;Učím se JavaScript&#x27;);</code></pre>
+
+  <p>
+    Textová hodnota se v JavaScriptu nazývá
+    <strong>string</strong>
+    a zapisuje se do uvozovek.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Nejčastější chyba</h3>
+
+    <pre><code class="language-javascript">console.log(JavaScript funguje);</code></pre>
+
+    <p>
+      Bez uvozovek JavaScript nepovažuje obsah za text.
+      Hledal by proměnné s názvy
+      <code class="language-javascript inline-code">JavaScript</code>
+      a
+      <code class="language-javascript inline-code">funguje</code>.
+    </p>
+  </div>
+
+  <h2>4️⃣ Více příkazů</h2>
+
+  <pre><code class="language-javascript">
+console.log(&quot;První zpráva&quot;);
+console.log(&quot;Druhá zpráva&quot;);
+console.log(2 + 3);
+</code></pre>
+
+  <p>
+    Příkazy se vykonají shora dolů.
+    Poslední příkaz nevypíše text, ale výsledek výpočtu:
+    <code class="language-javascript inline-code">5</code>.
+  </p>
+
+  <h2>5️⃣ Středník</h2>
+
+  <pre><code class="language-javascript">console.log(&quot;Ahoj&quot;);</code></pre>
+
+  <p>
+    JavaScript často funguje i bez středníku,
+    ale v naší učebnici ho budeme na konci jednoduchých příkazů používat.
+  </p>
+
+  <h2>6️⃣ Komentáře</h2>
+
+  <pre><code class="language-javascript">
+// Jednořádkový komentář
+
+console.log(&quot;Tento příkaz se spustí&quot;);
+
+/*
+  Víceřádkový komentář
+  může mít několik řádků.
+*/
+</code></pre>
+
+  <p>
+    Komentář je poznámka pro člověka.
+    JavaScript ho nevykonává.
+  </p>
+
+  <h2>7️⃣ Proč je script na konci body</h2>
+
+  <p>
+    Prohlížeč nejdřív vytvoří HTML obsah a potom spustí JavaScript.
+    To se nám bude hodit, až JavaScript začne vyhledávat a měnit prvky stránky.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Druhá možnost: defer</h3>
+
+    <script type="text/plain" class="language-markup">
+<script src="script.js" defer></script>
+</script>
+
+    <p>
+      Atribut
+      <code class="language-markup inline-code">defer</code>
+      dovoluje vložit script také do
+      <code class="language-markup inline-code">&lt;head&gt;</code>.
+    </p>
+
+    <p>
+      V Programmer Journalu zatím zůstaneme u přehledného zápisu
+      těsně před
+      <code class="language-markup inline-code">&lt;/body&gt;</code>.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>První JavaScript</title>
+</head>
+
+<body>
+  <h1>Programmer Journal</h1>
+  <p>JavaScript je připojený.</p>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+</script>
+
+  <h3>script.js</h3>
+
+  <pre><code class="language-javascript">
+console.log(&quot;Programmer Journal&quot;);
+console.log(&quot;JavaScript je správně připojený.&quot;);
+console.log(5 * 5);
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>JavaScript píšeme do souboru <code class="language-javascript inline-code">script.js</code>.</li>
+    <li>Soubor připojujeme značkou <code class="language-markup inline-code">&lt;script src="..."&gt;</code>.</li>
+    <li><code class="language-javascript inline-code">console.log()</code> vypisuje hodnoty do konzole.</li>
+    <li>Text musí být v uvozovkách.</li>
+    <li>Příkazy se vykonávají shora dolů.</li>
+    <li>Komentáře se nespouštějí.</li>
+  </ul>
+
+  <div class="mind">
+    <h2>⏭️ Co bude následovat</h2>
+
+    <p>
+      V dalším úkolu vytvoříš jednoduchou HTML stránku,
+      připojíš vlastní script a vypíšeš několik zpráv a výpočtů.
+    </p>
+  </div>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-pripojeni-console"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="../javascript.html">⬅️ Obsah JS</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-promenne.html">Proměnné const ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

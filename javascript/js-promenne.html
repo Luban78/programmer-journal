@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Proměnné const a let | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>📦 Proměnné const a let</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Program často potřebuje hodnotu pojmenovat a později ji znovu použít.
+    K tomu slouží proměnné.
+  </p>
+
+  <p>
+    Proměnnou si můžeš představit jako pojmenovanou krabičku,
+    ve které je uložená určitá hodnota.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <pre><code class="language-none">
+krabička: jmeno
+hodnota:  Lubomír
+
+krabička: pocetLekci
+hodnota:  12
+</code></pre>
+
+    <p>
+      Místo opakování hodnoty používáš její srozumitelný název.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>vytvořit proměnnou pomocí <code class="language-javascript inline-code">const</code></li>
+    <li>vytvořit měnitelnou proměnnou pomocí <code class="language-javascript inline-code">let</code></li>
+    <li>proměnnou přečíst a vypsat</li>
+    <li>změnit hodnotu proměnné</li>
+    <li>správně pojmenovávat proměnné</li>
+    <li>pochopit rozdíl mezi deklarací a přiřazením</li>
+  </ul>
+
+  <h2>1️⃣ Const – hodnota, kterou nepřepisujeme</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = &quot;Lubomír&quot;;
+console.log(jmeno);
+</code></pre>
+
+  <p>
+    Slovo
+    <code class="language-javascript inline-code">const</code>
+    vytvoří proměnnou.
+  </p>
+
+  <p>
+    <code class="language-javascript inline-code">jmeno</code>
+    je její název a
+    <code class="language-javascript inline-code">"Lubomír"</code>
+    je uložená hodnota.
+  </p>
+
+  <h2>2️⃣ Let – hodnota, kterou později měníme</h2>
+
+  <pre><code class="language-javascript">
+let pocetLekci = 1;
+
+console.log(pocetLekci);
+
+pocetLekci = 2;
+
+console.log(pocetLekci);
+</code></pre>
+
+  <p>
+    Proměnnou vytvořenou pomocí
+    <code class="language-javascript inline-code">let</code>
+    můžeme později přepsat.
+  </p>
+
+  <h2>3️⃣ Const nelze znovu přiřadit</h2>
+
+  <div class="chyba">
+    <h3>⚠️ Toto vyvolá chybu</h3>
+
+    <pre><code class="language-javascript">
+const kapitola = &quot;CSS&quot;;
+kapitola = &quot;JavaScript&quot;;
+</code></pre>
+
+    <p>
+      Když víš, že nebudeš přiřazovat novou hodnotu,
+      použij
+      <code class="language-javascript inline-code">const</code>.
+    </p>
+  </div>
+
+  <h2>4️⃣ Preferuj const</h2>
+
+  <p>
+    Praktické pravidlo:
+  </p>
+
+  <ul>
+    <li>začni pomocí <code class="language-javascript inline-code">const</code>,</li>
+    <li><code class="language-javascript inline-code">let</code> použij, pouze když hodnotu opravdu potřebuješ měnit.</li>
+  </ul>
+
+  <h2>5️⃣ Srozumitelné názvy</h2>
+
+  <pre><code class="language-javascript">
+const vek = 47;
+const nazevProjektu = &quot;Programmer Journal&quot;;
+const jeLekceHotova = true;
+</code></pre>
+
+  <p>
+    V JavaScriptu se často používá zápis
+    <strong>camelCase</strong>.
+    První slovo začíná malým písmenem a další slova velkým:
+  </p>
+
+  <pre><code class="language-none">nazevProjektu
+pocetDokoncenychLekci
+jeUzivatelPrihlasen</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Nevhodné názvy</h3>
+
+    <pre><code class="language-javascript">
+const x = &quot;Programmer Journal&quot;;
+const a = 12;
+</code></pre>
+
+    <p>
+      Kód sice funguje, ale z názvu nepoznáš význam uložené hodnoty.
+    </p>
+  </div>
+
+  <h2>6️⃣ Co název nesmí obsahovat</h2>
+
+  <ul>
+    <li>mezery,</li>
+    <li>pomlčku uprostřed názvu,</li>
+    <li>název nesmí začít číslem,</li>
+    <li>nepoužívej vyhrazená slova jako <code class="language-javascript inline-code">const</code> nebo <code class="language-javascript inline-code">if</code>.</li>
+  </ul>
+
+  <pre><code class="language-javascript">
+const mojeJmeno = &quot;Lubomír&quot;;
+const lekce2 = &quot;Proměnné&quot;;
+</code></pre>
+
+  <h2>7️⃣ Výpočet pomocí proměnných</h2>
+
+  <pre><code class="language-javascript">
+const hotoveLekce = 8;
+const vsechnyLekce = 12;
+const zbyva = vsechnyLekce - hotoveLekce;
+
+console.log(zbyva);
+</code></pre>
+
+  <p>
+    Výsledkem bude číslo
+    <code class="language-javascript inline-code">4</code>.
+  </p>
+
+  <h2>8️⃣ Spojení textu a proměnné</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = &quot;Lubomír&quot;;
+
+console.log(&quot;Ahoj &quot; + jmeno);
+</code></pre>
+
+  <p>
+    Operátor
+    <code class="language-javascript inline-code">+</code>
+    zde spojuje dva texty.
+  </p>
+
+  <h2>9️⃣ Template literal</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = &quot;Lubomír&quot;;
+const lekce = &quot;JavaScript&quot;;
+
+console.log(`Ahoj ${jmeno}, právě studuješ ${lekce}.`);
+</code></pre>
+
+  <p>
+    Text je mezi zpětnými apostrofy
+    <code class="language-javascript inline-code">`</code>
+    a proměnnou vložíš pomocí
+    <code class="language-javascript inline-code">${nazev}</code>.
+  </p>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = &quot;Lubomír&quot;;
+const nazevKnihy = &quot;Programmer Journal&quot;;
+
+let hotoveLekce = 8;
+hotoveLekce = hotoveLekce + 1;
+
+console.log(`Uživatel: ${jmeno}`);
+console.log(`Projekt: ${nazevKnihy}`);
+console.log(`Dokončené lekce: ${hotoveLekce}`);
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li><code class="language-javascript inline-code">const</code> používáme pro hodnotu, kterou nepřepisujeme.</li>
+    <li><code class="language-javascript inline-code">let</code> používáme pro hodnotu, kterou budeme měnit.</li>
+    <li>Název má vysvětlovat význam hodnoty.</li>
+    <li>V JavaScriptu používáme často camelCase.</li>
+    <li>Proměnnou můžeme použít ve výpočtu nebo textu.</li>
+    <li>Template literal usnadňuje skládání textu a hodnot.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-promenne"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-pripojeni-console.html">⬅️ Připojení JavaScriptu</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-datove-typy-operatory.html">Datové typy ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

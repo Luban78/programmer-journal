@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Události a addEventListener | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>👆 Události a addEventListener</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Událost je něco, co se stalo:
+    uživatel klikl, napsal text, odeslal formulář nebo stiskl klávesu.
+  </p>
+
+  <p>
+    JavaScript může na událost čekat a spustit připravenou funkci.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Tři části události</h2>
+
+    <pre><code class="language-none">
+1. vyber prvek
+2. poslouchej událost
+3. spusť funkci
+</code></pre>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>použít <code class="language-javascript inline-code">addEventListener()</code></li>
+    <li>reagovat na kliknutí</li>
+    <li>předat funkci bez okamžitého spuštění</li>
+    <li>použít objekt události</li>
+    <li>reagovat na <code class="language-javascript inline-code">input</code> a <code class="language-javascript inline-code">submit</code></li>
+    <li>zastavit výchozí chování pomocí <code class="language-javascript inline-code">preventDefault()</code></li>
+  </ul>
+
+  <h2>1️⃣ Kliknutí na tlačítko</h2>
+
+  <script type="text/plain" class="language-markup">
+<button id="pozdrav">Pozdravit</button>
+</script>
+
+  <pre><code class="language-javascript">
+const tlacitko = document.querySelector(&quot;#pozdrav&quot;);
+
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  console.log(&quot;Na tlačítko bylo kliknuto.&quot;);
+});
+</code></pre>
+
+  <p>
+    První argument je název události.
+    Druhý argument je funkce, která se spustí po události.
+  </p>
+
+  <h2>2️⃣ Pojmenovaná funkce</h2>
+
+  <pre><code class="language-javascript">
+const tlacitko = document.querySelector(&quot;#pozdrav&quot;);
+
+function pozdravUzivatele() {
+  console.log(&quot;Ahoj Lubo!&quot;);
+}
+
+tlacitko.addEventListener(&quot;click&quot;, pozdravUzivatele);
+</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Nepřidávej závorky při předávání funkce</h3>
+
+    <pre><code class="language-javascript">tlacitko.addEventListener(&quot;click&quot;, pozdravUzivatele());</code></pre>
+
+    <p>
+      Tento zápis funkci spustí okamžitě
+      a do posluchače předá její výsledek.
+    </p>
+
+    <pre><code class="language-javascript">tlacitko.addEventListener(&quot;click&quot;, pozdravUzivatele);</code></pre>
+  </div>
+
+  <h2>3️⃣ Objekt události</h2>
+
+  <pre><code class="language-javascript">
+tlacitko.addEventListener(&quot;click&quot;, (event) =&gt; {
+  console.log(event);
+  console.log(event.target);
+});
+</code></pre>
+
+  <p>
+    Objekt
+    <code class="language-javascript inline-code">event</code>
+    obsahuje informace o konkrétní události.
+  </p>
+
+  <h2>4️⃣ Událost input</h2>
+
+  <script type="text/plain" class="language-markup">
+<input id="jmeno" type="text">
+</script>
+
+  <pre><code class="language-javascript">
+const vstup = document.querySelector(&quot;#jmeno&quot;);
+
+vstup.addEventListener(&quot;input&quot;, () =&gt; {
+  console.log(vstup.value);
+});
+</code></pre>
+
+  <p>
+    Událost
+    <code class="language-javascript inline-code">input</code>
+    se spouští při každé změně hodnoty pole.
+  </p>
+
+  <h2>5️⃣ Událost change</h2>
+
+  <pre><code class="language-javascript">
+vstup.addEventListener(&quot;change&quot;, () =&gt; {
+  console.log(&quot;Hodnota byla potvrzena.&quot;);
+});
+</code></pre>
+
+  <p>
+    U textového pole se
+    <code class="language-javascript inline-code">change</code>
+    obvykle spustí po potvrzení změny nebo opuštění pole.
+  </p>
+
+  <h2>6️⃣ Odeslání formuláře</h2>
+
+  <script type="text/plain" class="language-markup">
+<form id="formular">
+  <input id="tema" type="text">
+  <button type="submit">Uložit</button>
+</form>
+</script>
+
+  <pre><code class="language-javascript">
+const formular = document.querySelector(&quot;#formular&quot;);
+
+formular.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  event.preventDefault();
+
+  console.log(&quot;Formulář zpracoval JavaScript.&quot;);
+});
+</code></pre>
+
+  <p>
+    Prohlížeč by formulář běžně odeslal a obnovil stránku.
+    Metoda
+    <code class="language-javascript inline-code">preventDefault()</code>
+    toto výchozí chování zastaví.
+  </p>
+
+  <h2>7️⃣ Více tlačítek</h2>
+
+  <script type="text/plain" class="language-markup">
+<button class="volba">HTML</button>
+<button class="volba">CSS</button>
+<button class="volba">JavaScript</button>
+</script>
+
+  <pre><code class="language-javascript">
+const tlacitka = document.querySelectorAll(&quot;.volba&quot;);
+
+tlacitka.forEach((tlacitko) =&gt; {
+  tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+    console.log(tlacitko.textContent);
+  });
+});
+</code></pre>
+
+  <p>
+    Každému nalezenému tlačítku přidáme vlastní posluchač.
+  </p>
+
+  <h2>8️⃣ Událost se spustí až později</h2>
+
+  <p>
+    Při načtení stránky JavaScript pouze nastaví posluchač.
+    Funkce uvnitř se spustí až ve chvíli,
+    kdy uživatel opravdu klikne nebo provede jinou událost.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Názvy událostí jsou text</h3>
+
+    <pre><code class="language-javascript">
+&quot;click&quot;
+&quot;input&quot;
+&quot;change&quot;
+&quot;submit&quot;
+&quot;keydown&quot;
+</code></pre>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <script type="text/plain" class="language-markup">
+<h1>Počítadlo kliknutí</h1>
+
+<button id="pocitadlo">Klikni</button>
+
+<script src="script.js"></script>
+</script>
+
+  <pre><code class="language-javascript">
+const tlacitko = document.querySelector(&quot;#pocitadlo&quot;);
+
+let pocetKliknuti = 0;
+
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  pocetKliknuti += 1;
+  console.log(`Počet kliknutí: ${pocetKliknuti}`);
+});
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li><code class="language-javascript inline-code">addEventListener()</code> čeká na událost.</li>
+    <li>Funkci předáváme bez závorek.</li>
+    <li><code class="language-javascript inline-code">event</code> obsahuje informace o události.</li>
+    <li><code class="language-javascript inline-code">input</code> reaguje na změnu pole.</li>
+    <li><code class="language-javascript inline-code">submit</code> patří formuláři.</li>
+    <li><code class="language-javascript inline-code">preventDefault()</code> zastaví výchozí chování.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-udalosti"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-dom-vyber.html">⬅️ DOM</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-dom-zmeny.html">Změna textu, tříd ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

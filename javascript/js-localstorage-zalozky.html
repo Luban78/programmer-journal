@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>localStorage a záložky rychlého přístupu | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🔖 localStorage a záložky rychlého přístupu</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Běžná JavaScriptová proměnná po obnovení stránky zmizí.
+    localStorage ukládá malé množství dat přímo v prohlížeči
+    a zachová je i po zavření aplikace.
+  </p>
+
+  <p>
+    V této lekci připravíme základy tvého plánovaného
+    rychlého přístupu k právě studovaným lekcím.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <pre><code class="language-none">
+JavaScriptová proměnná:
+  existuje během běhu stránky
+
+localStorage:
+  zůstane uložený i po obnovení
+</code></pre>
+
+    <p>
+      localStorage ukládá dvojice:
+      <strong>klíč → textová hodnota</strong>.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>uložit hodnotu pomocí <code class="language-javascript inline-code">setItem()</code></li>
+    <li>načíst hodnotu pomocí <code class="language-javascript inline-code">getItem()</code></li>
+    <li>hodnotu odstranit</li>
+    <li>uložit boolean nebo číslo jako text</li>
+    <li>uložit pole objektů pomocí JSON</li>
+    <li>bezpečně načíst data pomocí výchozí hodnoty</li>
+    <li>vykreslit uložené záložky</li>
+    <li>zabránit uložení stejné záložky dvakrát</li>
+    <li>rozlišit dostupnou, dokončenou a budoucí lekci</li>
+  </ul>
+
+  <h2>1️⃣ Uložení textu</h2>
+
+  <pre><code class="language-javascript">
+localStorage.setItem(&quot;uzivatel&quot;, &quot;Lubomír&quot;);
+</code></pre>
+
+  <p>
+    První hodnota je klíč.
+    Druhá hodnota je uložený text.
+  </p>
+
+  <h2>2️⃣ Načtení hodnoty</h2>
+
+  <pre><code class="language-javascript">
+const uzivatel = localStorage.getItem(&quot;uzivatel&quot;);
+
+console.log(uzivatel);
+</code></pre>
+
+  <h2>3️⃣ Když klíč neexistuje</h2>
+
+  <pre><code class="language-javascript">
+const tema = localStorage.getItem(&quot;tema&quot;);
+
+console.log(tema);
+</code></pre>
+
+  <p>
+    Výsledkem bude
+    <code class="language-javascript inline-code">null</code>.
+  </p>
+
+  <h2>4️⃣ Odstranění hodnoty</h2>
+
+  <pre><code class="language-javascript">
+localStorage.removeItem(&quot;uzivatel&quot;);
+</code></pre>
+
+  <h2>5️⃣ Vymazání celého localStorage</h2>
+
+  <pre><code class="language-javascript">localStorage.clear();</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Clear maže všechna data daného webu</h3>
+
+    <p>
+      V reálné aplikaci ho používej opatrně.
+      Programmer Journal už v localStorage uchovává dokončené lekce.
+    </p>
+  </div>
+
+  <h2>6️⃣ localStorage ukládá text</h2>
+
+  <pre><code class="language-javascript">
+localStorage.setItem(&quot;pocet&quot;, 5);
+
+const pocet = localStorage.getItem(&quot;pocet&quot;);
+
+console.log(typeof pocet);
+</code></pre>
+
+  <p>
+    Načtená hodnota bude string.
+    Pro výpočet ji můžeš převést:
+  </p>
+
+  <pre><code class="language-javascript">const cislo = Number(pocet);</code></pre>
+
+  <h2>7️⃣ JSON.stringify – objekt na text</h2>
+
+  <pre><code class="language-javascript">
+const zalozka = {
+  nazev: &quot;Podmínky&quot;,
+  url: &quot;javascript/js-podminky.html&quot;,
+};
+
+const text = JSON.stringify(zalozka);
+
+localStorage.setItem(&quot;zalozka&quot;, text);
+</code></pre>
+
+  <h2>8️⃣ JSON.parse – text zpět na objekt</h2>
+
+  <pre><code class="language-javascript">
+const ulozenyText = localStorage.getItem(&quot;zalozka&quot;);
+const ulozenaZalozka = JSON.parse(ulozenyText);
+
+console.log(ulozenaZalozka.nazev);
+</code></pre>
+
+  <h2>9️⃣ Pole záložek</h2>
+
+  <pre><code class="language-javascript">
+const zalozky = [
+  {
+    id: &quot;js-podminky&quot;,
+    nazev: &quot;Podmínky&quot;,
+    url: &quot;javascript/js-podminky.html&quot;,
+  },
+  {
+    id: &quot;js-funkce&quot;,
+    nazev: &quot;Funkce&quot;,
+    url: &quot;javascript/js-funkce.html&quot;,
+  },
+];
+
+localStorage.setItem(
+  &quot;rychly-pristup&quot;,
+  JSON.stringify(zalozky),
+);
+</code></pre>
+
+  <h2>🔟 Bezpečné načtení výchozího pole</h2>
+
+  <pre><code class="language-javascript">
+const ulozeneZalozky =
+  JSON.parse(localStorage.getItem(&quot;rychly-pristup&quot;)) || [];
+</code></pre>
+
+  <p>
+    Pokud klíč neexistuje,
+    použije se prázdné pole.
+  </p>
+
+  <h2>1️⃣1️⃣ Uložení nové záložky</h2>
+
+  <pre><code class="language-javascript">
+const zalozky =
+  JSON.parse(localStorage.getItem(&quot;rychly-pristup&quot;)) || [];
+
+const novaZalozka = {
+  id: &quot;js-dom-vyber&quot;,
+  nazev: &quot;DOM a výběr prvků&quot;,
+  url: &quot;javascript/js-dom-vyber.html&quot;,
+};
+
+zalozky.push(novaZalozka);
+
+localStorage.setItem(
+  &quot;rychly-pristup&quot;,
+  JSON.stringify(zalozky),
+);
+</code></pre>
+
+  <h2>1️⃣2️⃣ Kontrola duplicity</h2>
+
+  <pre><code class="language-javascript">
+const uzExistuje = zalozky.some((zalozka) =&gt; {
+  return zalozka.id === novaZalozka.id;
+});
+
+if (!uzExistuje) {
+  zalozky.push(novaZalozka);
+}
+</code></pre>
+
+  <h2>1️⃣3️⃣ Vykreslení záložek</h2>
+
+  <script type="text/plain" class="language-markup">
+<nav id="rychly-pristup"></nav>
+</script>
+
+  <pre><code class="language-javascript">
+const panel = document.querySelector(&quot;#rychly-pristup&quot;);
+
+function zobrazZalozky(zalozky) {
+  panel.textContent = &quot;&quot;;
+
+  zalozky.forEach((zalozka) =&gt; {
+    const odkaz = document.createElement(&quot;a&quot;);
+
+    odkaz.href = zalozka.url;
+    odkaz.textContent = zalozka.nazev;
+
+    panel.append(odkaz);
+  });
+}
+</code></pre>
+
+  <p>
+    Nejdřív panel vyčistíme a potom z uložených dat znovu vytvoříme odkazy.
+  </p>
+
+  <h2>1️⃣4️⃣ Odebrání záložky</h2>
+
+  <pre><code class="language-javascript">
+const noveZalozky = zalozky.filter((zalozka) =&gt; {
+  return zalozka.id !== &quot;js-dom-vyber&quot;;
+});
+
+localStorage.setItem(
+  &quot;rychly-pristup&quot;,
+  JSON.stringify(noveZalozky),
+);
+</code></pre>
+
+  <h2>1️⃣5️⃣ Stavy lekcí v Programmer Journalu</h2>
+
+  <p>Pro vzhled můžeme používat tři třídy:</p>
+
+  <pre><code class="language-javascript">
+lekce-dokoncena
+lekce-dostupna
+lekce-budouci
+</code></pre>
+
+  <p>
+    JavaScript později podle dat přidá odpovídající CSS třídu.
+  </p>
+
+  <pre><code class="language-javascript">
+if (jeDokoncena) {
+  odkaz.classList.add(&quot;lekce-dokoncena&quot;);
+} else if (jeDostupna) {
+  odkaz.classList.add(&quot;lekce-dostupna&quot;);
+} else {
+  odkaz.classList.add(&quot;lekce-budouci&quot;);
+}
+</code></pre>
+
+  <div class="tip">
+    <h3>💡 Tvoje plánovaná funkce</h3>
+
+    <p>
+      V praktickém úkolu nebudeme vytvářet celý systém najednou.
+    </p>
+
+    <p>
+      Nejdřív připneme jednu lekci,
+      uložíme ji do localStorage
+      a po obnovení ji znovu zobrazíme.
+    </p>
+
+    <p>
+      Další možnosti potom doplníme postupně,
+      abys rozuměl každému kroku.
+    </p>
+  </div>
+
+  <h2>💻 Zjednodušený kompletní příklad</h2>
+
+  <h3>index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<button
+  id="pripnout"
+  data-id="js-podminky"
+  data-nazev="Podmínky"
+  data-url="javascript/js-podminky.html"
+>
+  Připnout lekci
+</button>
+
+<nav id="rychly-pristup"></nav>
+
+<script src="script.js"></script>
+</script>
+
+  <h3>script.js</h3>
+
+  <pre><code class="language-javascript">
+const tlacitko = document.querySelector(&quot;#pripnout&quot;);
+const panel = document.querySelector(&quot;#rychly-pristup&quot;);
+
+let zalozky =
+  JSON.parse(localStorage.getItem(&quot;rychly-pristup&quot;)) || [];
+
+function ulozZalozky() {
+  localStorage.setItem(
+    &quot;rychly-pristup&quot;,
+    JSON.stringify(zalozky),
+  );
+}
+
+function zobrazZalozky() {
+  panel.textContent = &quot;&quot;;
+
+  zalozky.forEach((zalozka) =&gt; {
+    const odkaz = document.createElement(&quot;a&quot;);
+
+    odkaz.href = zalozka.url;
+    odkaz.textContent = zalozka.nazev;
+
+    panel.append(odkaz);
+  });
+}
+
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  const novaZalozka = {
+    id: tlacitko.dataset.id,
+    nazev: tlacitko.dataset.nazev,
+    url: tlacitko.dataset.url,
+  };
+
+  const uzExistuje = zalozky.some((zalozka) =&gt; {
+    return zalozka.id === novaZalozka.id;
+  });
+
+  if (!uzExistuje) {
+    zalozky.push(novaZalozka);
+    ulozZalozky();
+    zobrazZalozky();
+  }
+});
+
+zobrazZalozky();
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li><code class="language-javascript inline-code">setItem()</code> ukládá textovou hodnotu.</li>
+    <li><code class="language-javascript inline-code">getItem()</code> ji načítá.</li>
+    <li>Nenalezený klíč vrací <code class="language-javascript inline-code">null</code>.</li>
+    <li>Objekty a pole převádíme pomocí <code class="language-javascript inline-code">JSON.stringify()</code>.</li>
+    <li>Zpět je obnovíme pomocí <code class="language-javascript inline-code">JSON.parse()</code>.</li>
+    <li>Po změně pole musíme nová data znovu uložit.</li>
+    <li>Po načtení stránky vykreslíme UI z uložených dat.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-localstorage-zalozky"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-pole-cykly.html">⬅️ Pole, objekty</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-maly-projekt.html">Malý závěrečný JavaScript projekt ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

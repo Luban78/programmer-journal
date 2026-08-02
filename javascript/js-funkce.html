@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Funkce, parametry a return | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>⚙️ Funkce, parametry a return</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Funkce sdružuje několik příkazů pod jedním názvem.
+    Můžeš ji spustit opakovaně a poslat jí různé hodnoty.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Funkce jako pojmenovaný pracovní postup</h2>
+
+    <pre><code class="language-none">
+název funkce: pozdravUzivatele
+
+vstup:  jméno
+práce:  vytvoření pozdravu
+výstup: hotový text
+</code></pre>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>vytvořit deklaraci funkce</li>
+    <li>funkci zavolat</li>
+    <li>předat parametry a argumenty</li>
+    <li>vrátit výsledek pomocí <code class="language-javascript inline-code">return</code></li>
+    <li>pochopit lokální proměnné</li>
+    <li>rozlišit funkci, která hodnotu vrací, od funkce, která něco provede</li>
+    <li>zapsat jednoduchou arrow function</li>
+  </ul>
+
+  <h2>1️⃣ Vytvoření a zavolání funkce</h2>
+
+  <pre><code class="language-javascript">
+function pozdrav() {
+  console.log(&quot;Ahoj z Programmer Journalu!&quot;);
+}
+
+pozdrav();
+</code></pre>
+
+  <p>
+    Kód uvnitř funkce se nespustí při jejím vytvoření,
+    ale až při zavolání:
+    <code class="language-javascript inline-code">pozdrav()</code>.
+  </p>
+
+  <h2>2️⃣ Parametr</h2>
+
+  <pre><code class="language-javascript">
+function pozdrav(jmeno) {
+  console.log(`Ahoj ${jmeno}!`);
+}
+
+pozdrav(&quot;Lubomír&quot;);
+pozdrav(&quot;Eva&quot;);
+</code></pre>
+
+  <p>
+    <code class="language-javascript inline-code">jmeno</code>
+    je parametr.
+    Hodnoty
+    <code class="language-javascript inline-code">"Lubomír"</code>
+    a
+    <code class="language-javascript inline-code">"Eva"</code>
+    jsou argumenty při jednotlivých voláních.
+  </p>
+
+  <h2>3️⃣ Více parametrů</h2>
+
+  <pre><code class="language-javascript">
+function secti(a, b) {
+  console.log(a + b);
+}
+
+secti(5, 3);
+secti(20, 10);
+</code></pre>
+
+  <h2>4️⃣ Return – vrácení výsledku</h2>
+
+  <pre><code class="language-javascript">
+function secti(a, b) {
+  return a + b;
+}
+
+const vysledek = secti(5, 3);
+
+console.log(vysledek);
+</code></pre>
+
+  <p>
+    <code class="language-javascript inline-code">return</code>
+    pošle výsledek z funkce ven,
+    takže ho můžeš uložit nebo dále použít.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Kód za return se nespustí</h3>
+
+    <pre><code class="language-javascript">
+function test() {
+  return &quot;Hotovo&quot;;
+  console.log(&quot;Tento řádek se nespustí.&quot;);
+}
+</code></pre>
+  </div>
+
+  <h2>5️⃣ Funkce bez return</h2>
+
+  <pre><code class="language-javascript">
+function zobrazZpravu(zprava) {
+  console.log(zprava);
+}
+</code></pre>
+
+  <p>
+    Tato funkce provede akci,
+    ale nevrací hodnotu pro další zpracování.
+  </p>
+
+  <h2>6️⃣ Lokální proměnná</h2>
+
+  <pre><code class="language-javascript">
+function vytvorPozdrav(jmeno) {
+  const zprava = `Ahoj ${jmeno}`;
+  return zprava;
+}
+
+console.log(vytvorPozdrav(&quot;Lubomír&quot;));
+</code></pre>
+
+  <p>
+    Proměnná
+    <code class="language-javascript inline-code">zprava</code>
+    existuje pouze uvnitř funkce.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Mimo funkci není dostupná</h3>
+
+    <pre><code class="language-javascript">
+function vytvorPozdrav() {
+  const zprava = &quot;Ahoj&quot;;
+}
+
+console.log(zprava);
+</code></pre>
+  </div>
+
+  <h2>7️⃣ Funkce a podmínka</h2>
+
+  <pre><code class="language-javascript">
+function stavLekce(jeHotova) {
+  if (jeHotova) {
+    return &quot;Dokončeno&quot;;
+  }
+
+  return &quot;Rozpracováno&quot;;
+}
+
+console.log(stavLekce(true));
+</code></pre>
+
+  <p>
+    Druhý
+    <code class="language-javascript inline-code">return</code>
+    se použije pouze tehdy, když první podmínka neplatí.
+  </p>
+
+  <h2>8️⃣ Arrow function</h2>
+
+  <pre><code class="language-javascript">
+const secti = (a, b) =&gt; {
+  return a + b;
+};
+
+console.log(secti(4, 6));
+</code></pre>
+
+  <p>
+    Arrow function je jiný zápis funkce.
+    Často ho uvidíš u událostí a práce s poli.
+  </p>
+
+  <h2>9️⃣ Krátká arrow function</h2>
+
+  <pre><code class="language-javascript">const secti = (a, b) =&gt; a + b;</code></pre>
+
+  <p>
+    U jednoduchého jediného výrazu lze vynechat složené závorky
+    i slovo
+    <code class="language-javascript inline-code">return</code>.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Pro začátek používej čitelnost</h3>
+
+    <p>
+      Nemusíš vše zapisovat nejkratším možným způsobem.
+      Důležitější je, abys kódu rozuměl.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <pre><code class="language-javascript">
+function vypocitejProcenta(hotovo, celkem) {
+  const procenta = (hotovo / celkem) * 100;
+  return procenta;
+}
+
+function vytvorZpravu(jmeno, procenta) {
+  return `${jmeno} má hotovo ${procenta} % kapitoly.`;
+}
+
+const postup = vypocitejProcenta(9, 12);
+const zprava = vytvorZpravu(&quot;Lubomír&quot;, postup);
+
+console.log(zprava);
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>Funkce je pojmenovaný opakovatelný blok kódu.</li>
+    <li>Parametr přijímá hodnotu při volání.</li>
+    <li>Argument je konkrétní předaná hodnota.</li>
+    <li><code class="language-javascript inline-code">return</code> vrací výsledek.</li>
+    <li>Lokální proměnná existuje pouze uvnitř své funkce nebo bloku.</li>
+    <li>Arrow function je alternativní zápis funkce.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-funkce"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-podminky.html">⬅️ Podmínky if, else if</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-dom-vyber.html">DOM ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

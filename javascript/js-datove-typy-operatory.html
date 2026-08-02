@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Datové typy a základní operátory | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🔢 Datové typy a základní operátory</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Proměnná může obsahovat různé druhy hodnot.
+    JavaScript se podle typu hodnoty rozhoduje, jak s ní bude pracovat.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Stejný znak může dělat něco jiného</h2>
+
+    <pre><code class="language-javascript">
+console.log(2 + 3);
+console.log(&quot;2&quot; + &quot;3&quot;);
+</code></pre>
+
+    <p>
+      První výsledek je číslo
+      <code class="language-javascript inline-code">5</code>.
+      Druhý výsledek je text
+      <code class="language-javascript inline-code">"23"</code>.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>string, number a boolean</li>
+    <li>hodnoty <code class="language-javascript inline-code">null</code> a <code class="language-javascript inline-code">undefined</code></li>
+    <li>zjistit typ pomocí <code class="language-javascript inline-code">typeof</code></li>
+    <li>základní matematické operátory</li>
+    <li>porovnávací operátory</li>
+    <li>přísné porovnání <code class="language-javascript inline-code">===</code></li>
+    <li>logické operátory</li>
+  </ul>
+
+  <h2>1️⃣ String – text</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = &quot;Lubomír&quot;;
+const projekt = &#x27;Programmer Journal&#x27;;
+const zprava = `Právě studuji ${projekt}.`;
+</code></pre>
+
+  <p>
+    String zapisujeme do uvozovek nebo zpětných apostrofů.
+  </p>
+
+  <h2>2️⃣ Number – číslo</h2>
+
+  <pre><code class="language-javascript">
+const vek = 47;
+const cena = 129.90;
+const teplota = -5;
+</code></pre>
+
+  <p>
+    JavaScript používá jeden základní typ
+    <code class="language-javascript inline-code">number</code>
+    pro celá i desetinná čísla.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Desetinná tečka</h3>
+
+    <p>
+      V kódu se desetinné číslo zapisuje s tečkou:
+    </p>
+
+    <pre><code class="language-javascript">const cena = 129.90;</code></pre>
+
+    <p>Čárka by měla jiný význam.</p>
+  </div>
+
+  <h2>3️⃣ Boolean – ano nebo ne</h2>
+
+  <pre><code class="language-javascript">
+const jeLekceHotova = true;
+const jeUzivatelOdhlasen = false;
+</code></pre>
+
+  <p>
+    Boolean má pouze dvě hodnoty:
+    <code class="language-javascript inline-code">true</code>
+    a
+    <code class="language-javascript inline-code">false</code>.
+  </p>
+
+  <h2>4️⃣ Undefined a null</h2>
+
+  <pre><code class="language-javascript">
+let vybranaLekce;
+console.log(vybranaLekce);
+
+const posledniChyba = null;
+</code></pre>
+
+  <ul>
+    <li><code class="language-javascript inline-code">undefined</code> obvykle znamená, že hodnota zatím nebyla přiřazena.</li>
+    <li><code class="language-javascript inline-code">null</code> používáme, když úmyslně říkáme „žádná hodnota“.</li>
+  </ul>
+
+  <h2>5️⃣ Zjištění typu</h2>
+
+  <pre><code class="language-javascript">
+console.log(typeof &quot;Ahoj&quot;);
+console.log(typeof 47);
+console.log(typeof true);
+console.log(typeof undefined);
+</code></pre>
+
+  <p>
+    Operátor
+    <code class="language-javascript inline-code">typeof</code>
+    vrací název typu jako text.
+  </p>
+
+  <h2>6️⃣ Matematické operátory</h2>
+
+  <pre><code class="language-javascript">
+console.log(10 + 5);
+console.log(10 - 5);
+console.log(10 * 5);
+console.log(10 / 5);
+console.log(10 % 3);
+console.log(5 ** 2);
+</code></pre>
+
+  <ul>
+    <li><code class="language-javascript inline-code">+</code> sčítání,</li>
+    <li><code class="language-javascript inline-code">-</code> odčítání,</li>
+    <li><code class="language-javascript inline-code">*</code> násobení,</li>
+    <li><code class="language-javascript inline-code">/</code> dělení,</li>
+    <li><code class="language-javascript inline-code">%</code> zbytek po dělení,</li>
+    <li><code class="language-javascript inline-code">**</code> mocnina.</li>
+  </ul>
+
+  <h2>7️⃣ Změna číselné hodnoty</h2>
+
+  <pre><code class="language-javascript">
+let skore = 10;
+
+skore = skore + 1;
+skore += 5;
+skore++;
+
+console.log(skore);
+</code></pre>
+
+  <p>
+    Všechny tři zápisy mění původní hodnotu proměnné.
+  </p>
+
+  <h2>8️⃣ Porovnání</h2>
+
+  <pre><code class="language-javascript">
+console.log(5 &gt; 3);
+console.log(5 &lt; 3);
+console.log(5 &gt;= 5);
+console.log(5 === 5);
+console.log(5 !== 3);
+</code></pre>
+
+  <p>
+    Výsledkem porovnání je vždy boolean:
+    <code class="language-javascript inline-code">true</code>
+    nebo
+    <code class="language-javascript inline-code">false</code>.
+  </p>
+
+  <h2>9️⃣ Přísné porovnání</h2>
+
+  <pre><code class="language-javascript">
+console.log(5 === 5);
+console.log(5 === &quot;5&quot;);
+</code></pre>
+
+  <p>
+    Druhé porovnání vrátí
+    <code class="language-javascript inline-code">false</code>,
+    protože číslo a text jsou různé typy.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Praktické pravidlo</h3>
+
+    <p>
+      Používej
+      <code class="language-javascript inline-code">===</code>
+      a
+      <code class="language-javascript inline-code">!==</code>
+      místo volnějších variant
+      <code class="language-javascript inline-code">==</code>
+      a
+      <code class="language-javascript inline-code">!=</code>.
+    </p>
+  </div>
+
+  <h2>🔟 Logické operátory</h2>
+
+  <pre><code class="language-javascript">
+const jePrihlasen = true;
+const maOpravneni = true;
+
+console.log(jePrihlasen &amp;&amp; maOpravneni);
+console.log(jePrihlasen || maOpravneni);
+console.log(!jePrihlasen);
+</code></pre>
+
+  <ul>
+    <li><code class="language-javascript inline-code">&&</code> znamená „a zároveň“,</li>
+    <li><code class="language-javascript inline-code">||</code> znamená „nebo“,</li>
+    <li><code class="language-javascript inline-code">!</code> obrací boolean hodnotu.</li>
+  </ul>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>String je text.</li>
+    <li>Number je číslo.</li>
+    <li>Boolean je true nebo false.</li>
+    <li><code class="language-javascript inline-code">typeof</code> zjistí typ hodnoty.</li>
+    <li>Operátor <code class="language-javascript inline-code">+</code> může sčítat čísla nebo spojovat text.</li>
+    <li>Porovnání vrací boolean.</li>
+    <li>Pro rovnost používej přísné <code class="language-javascript inline-code">===</code>.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-datove-typy-operatory"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-promenne.html">⬅️ Proměnné const</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-podminky.html">Podmínky if, else if ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

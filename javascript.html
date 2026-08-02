@@ -27,32 +27,33 @@
   <p>
     JavaScript přidává logiku a chování.
     Díky němu může stránka reagovat na kliknutí,
-    měnit text, kontrolovat hodnoty a ukládat data.
+    měnit text, kontrolovat vstup uživatele a ukládat data.
   </p>
 
   <p>
-    V této kapitole budeme opět postupovat lekci po lekci:
-    nejdřív vysvětlení v Programmer Journalu,
-    potom krátký samostatný úkol a code review.
+    Všechny lekce jsou připravené.
+    Procházet je budeme postupně naším systémem:
+    lekce, krátký úkol, code review a ověření pochopení.
   </p>
 
   <div class="mind">
     <h2>🧠 Jak přemýšlet o JavaScriptu</h2>
 
     <p>
-      JavaScript bude dostávat informace,
-      rozhodovat se a provádět příkazy.
+      JavaScript přijímá hodnoty, rozhoduje se
+      a vykonává příkazy.
     </p>
 
-    <pre><code class="language-javascript">const jmeno = "Lubomír";
+    <pre><code class="language-javascript">
+const jmeno = &quot;Lubomír&quot;;
 
-if (jmeno === "Lubomír") {
-  console.log("Vítej v JavaScriptu!");
-}</code></pre>
+if (jmeno === &quot;Lubomír&quot;) {
+  console.log(&quot;Vítej v JavaScriptu!&quot;);
+}
+</code></pre>
 
     <p>
-      Nemusíš tomuto příkladu zatím rozumět.
-      Každou jeho část postupně rozebereme.
+      Po prvních lekcích budeš rozumět každému řádku tohoto příkladu.
     </p>
   </div>
 
@@ -70,84 +71,74 @@ if (jmeno === "Lubomír") {
   <ul class="lesson-list" data-chapter="javascript">
     <li data-lesson="js-pripojeni-console">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Připojení JavaScriptu a console.log</span>
+      <a href="javascript/js-pripojeni-console.html">Připojení JavaScriptu a console.log</a>
     </li>
-
     <li data-lesson="js-promenne">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Proměnné const a let</span>
+      <a href="javascript/js-promenne.html">Proměnné const a let</a>
     </li>
-
     <li data-lesson="js-datove-typy-operatory">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Datové typy a základní operátory</span>
+      <a href="javascript/js-datove-typy-operatory.html">Datové typy a základní operátory</a>
     </li>
-
     <li data-lesson="js-podminky">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Podmínky if, else if a else</span>
+      <a href="javascript/js-podminky.html">Podmínky if, else if a else</a>
     </li>
-
     <li data-lesson="js-funkce">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Funkce, parametry a return</span>
+      <a href="javascript/js-funkce.html">Funkce, parametry a return</a>
     </li>
-
     <li data-lesson="js-dom-vyber">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">DOM a výběr prvků stránky</span>
+      <a href="javascript/js-dom-vyber.html">DOM a výběr prvků stránky</a>
     </li>
-
     <li data-lesson="js-udalosti">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Události a addEventListener</span>
+      <a href="javascript/js-udalosti.html">Události a addEventListener</a>
     </li>
-
     <li data-lesson="js-dom-zmeny">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Změna textu, tříd a obsahu</span>
+      <a href="javascript/js-dom-zmeny.html">Změna textu, tříd a obsahu</a>
     </li>
-
     <li data-lesson="js-vstup-formulare">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Vstup od uživatele a formuláře</span>
+      <a href="javascript/js-vstup-formulare.html">Vstup od uživatele a formuláře</a>
     </li>
-
     <li data-lesson="js-pole-cykly">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Pole a cykly</span>
+      <a href="javascript/js-pole-cykly.html">Pole, objekty a cykly</a>
     </li>
-
     <li data-lesson="js-localstorage-zalozky">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">localStorage a záložky rychlého přístupu</span>
+      <a href="javascript/js-localstorage-zalozky.html">localStorage a záložky rychlého přístupu</a>
     </li>
-
     <li data-lesson="js-maly-projekt">
       <span class="lesson-status"></span>
-      <span class="lesson-coming">Malý závěrečný JavaScript projekt</span>
+      <a href="javascript/js-maly-projekt.html">Malý závěrečný JavaScript projekt</a>
     </li>
   </ul>
 
   <div class="tip">
-    <h2>🔖 Plánovaná funkce naší knihy</h2>
+    <h2>🔖 Rychlý přístup v naší knize</h2>
 
     <p>
-      V lekci o localStorage vytvoříš horní panel rychlého přístupu.
+      V lekci o localStorage vytvoříš první verzi panelu,
+      do kterého si připneš právě studované lekce.
     </p>
 
     <p>
-      Budeš si do něj připínat právě studované lekce
-      a odkazy zůstanou uložené i po zavření aplikace.
-    </p>
-
-    <p>
-      Současně rozlišíme dokončené, právě dostupné
-      a dosud neprobrané lekce různými stavy a barvami.
+      Odkazy zůstanou uložené po zavření aplikace
+      a později přidáme barevné rozlišení dokončených,
+      dostupných a dosud neprobraných lekcí.
     </p>
   </div>
 
-  <a href="index.html">🏠 Zpět na hlavní stránku</a>
+  <div class="lesson-nav">
+    <a href="css.html">⬅️ Obsah CSS</a>
+    <a href="index.html">🏠 Hlavní</a>
+    <a href="javascript/js-pripojeni-console.html">První lekce ➡️</a>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>

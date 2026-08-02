@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Změna textu, tříd a obsahu | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🪄 Změna textu, tříd a obsahu</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Po výběru prvku a zachycení události může JavaScript stránku změnit.
+  </p>
+
+  <p>
+    Může upravit text, přidat CSS třídu,
+    skrýt prvek nebo vytvořit úplně nový obsah.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Doporučený postup</h2>
+
+    <pre><code class="language-none">
+1. HTML vytvoří prvek
+2. CSS připraví možné vzhledy
+3. JavaScript přepíná stav
+</code></pre>
+
+    <p>
+      JavaScript nemá zbytečně obsahovat celý vzhled.
+      Vzhled patří především do CSS tříd.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>měnit text pomocí <code class="language-javascript inline-code">textContent</code></li>
+    <li>přidávat a odebírat třídy</li>
+    <li>přepínat stav pomocí <code class="language-javascript inline-code">classList.toggle()</code></li>
+    <li>používat atribut <code class="language-javascript inline-code">hidden</code></li>
+    <li>vytvářet nový prvek pomocí <code class="language-javascript inline-code">createElement()</code></li>
+    <li>vložit prvek pomocí <code class="language-javascript inline-code">append()</code></li>
+    <li>bezpečně pracovat s <code class="language-javascript inline-code">innerHTML</code></li>
+  </ul>
+
+  <h2>1️⃣ Změna textu</h2>
+
+  <script type="text/plain" class="language-markup">
+<h1 id="nadpis">Původní nadpis</h1>
+</script>
+
+  <pre><code class="language-javascript">
+const nadpis = document.querySelector(&quot;#nadpis&quot;);
+
+nadpis.textContent = &quot;Nový nadpis&quot;;
+</code></pre>
+
+  <h2>2️⃣ Změna textu po kliknutí</h2>
+
+  <script type="text/plain" class="language-markup">
+<p id="stav">Lekce není dokončená.</p>
+<button id="dokoncit">Dokončit lekci</button>
+</script>
+
+  <pre><code class="language-javascript">
+const stav = document.querySelector(&quot;#stav&quot;);
+const tlacitko = document.querySelector(&quot;#dokoncit&quot;);
+
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  stav.textContent = &quot;Lekce je dokončená.&quot;;
+});
+</code></pre>
+
+  <h2>3️⃣ Přidání CSS třídy</h2>
+
+  <pre><code class="language-javascript">
+stav.classList.add(&quot;je-hotovo&quot;);
+</code></pre>
+
+  <pre><code class="language-javascript">
+.je-hotovo {
+  color: darkgreen;
+  font-weight: bold;
+}
+</code></pre>
+
+  <p>
+    JavaScript mění stav a CSS určuje vzhled tohoto stavu.
+  </p>
+
+  <h2>4️⃣ Odebrání třídy</h2>
+
+  <pre><code class="language-javascript">
+stav.classList.remove(&quot;je-hotovo&quot;);
+</code></pre>
+
+  <h2>5️⃣ Toggle – přepnutí</h2>
+
+  <pre><code class="language-javascript">
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  document.body.classList.toggle(&quot;tmave-tema&quot;);
+});
+</code></pre>
+
+  <p>
+    Pokud třída neexistuje, přidá se.
+    Pokud už existuje, odebere se.
+  </p>
+
+  <h2>6️⃣ Zjištění, zda třída existuje</h2>
+
+  <pre><code class="language-javascript">
+const jeTmave = document.body.classList.contains(&quot;tmave-tema&quot;);
+
+console.log(jeTmave);
+</code></pre>
+
+  <h2>7️⃣ Skrytí prvku</h2>
+
+  <pre><code class="language-javascript">
+const napoveda = document.querySelector(&quot;#napoveda&quot;);
+
+napoveda.hidden = true;
+napoveda.hidden = false;
+</code></pre>
+
+  <p>
+    Boolean vlastnost
+    <code class="language-javascript inline-code">hidden</code>
+    určuje, zda je prvek skrytý.
+  </p>
+
+  <h2>8️⃣ Vytvoření nového prvku</h2>
+
+  <pre><code class="language-javascript">
+const novaPolozka = document.createElement(&quot;li&quot;);
+
+novaPolozka.textContent = &quot;JavaScript&quot;;
+</code></pre>
+
+  <p>
+    Prvek zatím existuje pouze v JavaScriptu
+    a ještě není vložený do stránky.
+  </p>
+
+  <h2>9️⃣ Vložení do stránky</h2>
+
+  <script type="text/plain" class="language-markup">
+<ul id="seznam">
+  <li>HTML</li>
+  <li>CSS</li>
+</ul>
+</script>
+
+  <pre><code class="language-javascript">
+const seznam = document.querySelector(&quot;#seznam&quot;);
+const novaPolozka = document.createElement(&quot;li&quot;);
+
+novaPolozka.textContent = &quot;JavaScript&quot;;
+
+seznam.append(novaPolozka);
+</code></pre>
+
+  <h2>🔟 Odstranění prvku</h2>
+
+  <pre><code class="language-javascript">
+novaPolozka.remove();
+</code></pre>
+
+  <h2>1️⃣1️⃣ InnerHTML</h2>
+
+  <pre><code class="language-javascript">
+const panel = document.querySelector(&quot;#panel&quot;);
+
+panel.innerHTML = &quot;&lt;strong&gt;Hotovo&lt;/strong&gt;&quot;;
+</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Pozor na obsah od uživatele</h3>
+
+    <p>
+      Nevkládej pomocí
+      <code class="language-javascript inline-code">innerHTML</code>
+      neověřený text od uživatele.
+    </p>
+
+    <p>
+      Pro obyčejný text používej raději
+      <code class="language-javascript inline-code">textContent</code>.
+    </p>
+  </div>
+
+  <h2>💻 Kompletní příklad – přepínač tématu</h2>
+
+  <h3>index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<button id="tema">Přepnout téma</button>
+
+<article class="karta">
+  <h1>Programmer Journal</h1>
+  <p>JavaScript přepíná CSS třídu.</p>
+</article>
+
+<script src="script.js"></script>
+</script>
+
+  <h3>style.css</h3>
+
+  <pre><code class="language-javascript">
+body {
+  background-color: white;
+  color: #222222;
+}
+
+body.tmave-tema {
+  background-color: #17171d;
+  color: #f3f3f7;
+}
+</code></pre>
+
+  <h3>script.js</h3>
+
+  <pre><code class="language-javascript">
+const tlacitko = document.querySelector(&quot;#tema&quot;);
+
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  document.body.classList.toggle(&quot;tmave-tema&quot;);
+});
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li><code class="language-javascript inline-code">textContent</code> bezpečně mění text.</li>
+    <li><code class="language-javascript inline-code">classList.add()</code> přidává třídu.</li>
+    <li><code class="language-javascript inline-code">classList.remove()</code> třídu odstraňuje.</li>
+    <li><code class="language-javascript inline-code">classList.toggle()</code> přepíná stav.</li>
+    <li><code class="language-javascript inline-code">createElement()</code> vytvoří nový prvek.</li>
+    <li><code class="language-javascript inline-code">append()</code> vloží prvek do stránky.</li>
+    <li>Pro text od uživatele používej raději <code class="language-javascript inline-code">textContent</code>.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-dom-zmeny"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-udalosti.html">⬅️ Události</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-vstup-formulare.html">Vstup od uživatele ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

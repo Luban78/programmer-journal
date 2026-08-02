@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DOM a výběr prvků stránky | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🔍 DOM a výběr prvků stránky</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    DOM je JavaScriptový obraz aktuální HTML stránky.
+    Díky němu může JavaScript vyhledat konkrétní prvek a pracovat s ním.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 HTML se změní na strom prvků</h2>
+
+    <pre><code class="language-none">
+document
+└── html
+    └── body
+        ├── h1
+        ├── p
+        └── button
+</code></pre>
+
+    <p>
+      JavaScript nejdřív prvek vybere.
+      Teprve potom může číst nebo měnit jeho vlastnosti.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>co je DOM</li>
+    <li>vybrat prvek pomocí <code class="language-javascript inline-code">querySelector()</code></li>
+    <li>vybrat více prvků pomocí <code class="language-javascript inline-code">querySelectorAll()</code></li>
+    <li>používat stejné selektory jako v CSS</li>
+    <li>přečíst text prvku</li>
+    <li>poznat hodnotu <code class="language-javascript inline-code">null</code></li>
+    <li>bezpečně ověřit, že prvek existuje</li>
+  </ul>
+
+  <h2>1️⃣ Příklad HTML</h2>
+
+  <script type="text/plain" class="language-markup">
+<h1 id="hlavni-nadpis">Programmer Journal</h1>
+
+<p class="popis">Moje osobní učebnice.</p>
+
+<button class="tlacitko">Pokračovat</button>
+</script>
+
+  <h2>2️⃣ Výběr podle elementu</h2>
+
+  <pre><code class="language-javascript">
+const nadpis = document.querySelector(&quot;h1&quot;);
+
+console.log(nadpis);
+</code></pre>
+
+  <h2>3️⃣ Výběr podle třídy</h2>
+
+  <pre><code class="language-javascript">
+const tlacitko = document.querySelector(&quot;.tlacitko&quot;);
+
+console.log(tlacitko);
+</code></pre>
+
+  <h2>4️⃣ Výběr podle ID</h2>
+
+  <pre><code class="language-javascript">
+const hlavniNadpis = document.querySelector(&quot;#hlavni-nadpis&quot;);
+
+console.log(hlavniNadpis);
+</code></pre>
+
+  <p>
+    Do
+    <code class="language-javascript inline-code">querySelector()</code>
+    zapisuješ CSS selektor jako text.
+  </p>
+
+  <h2>5️⃣ Výběr prvního odpovídajícího prvku</h2>
+
+  <script type="text/plain" class="language-markup">
+<p class="lekce">HTML</p>
+<p class="lekce">CSS</p>
+<p class="lekce">JavaScript</p>
+</script>
+
+  <pre><code class="language-javascript">
+const prvniLekce = document.querySelector(&quot;.lekce&quot;);
+
+console.log(prvniLekce);
+</code></pre>
+
+  <p>
+    <code class="language-javascript inline-code">querySelector()</code>
+    vrátí pouze první odpovídající prvek.
+  </p>
+
+  <h2>6️⃣ Výběr všech prvků</h2>
+
+  <pre><code class="language-javascript">
+const vsechnyLekce = document.querySelectorAll(&quot;.lekce&quot;);
+
+console.log(vsechnyLekce);
+console.log(vsechnyLekce.length);
+</code></pre>
+
+  <p>
+    Výsledkem je seznam podobný poli,
+    který obsahuje všechny odpovídající prvky.
+  </p>
+
+  <h2>7️⃣ Čtení textu</h2>
+
+  <pre><code class="language-javascript">
+const nadpis = document.querySelector(&quot;h1&quot;);
+
+console.log(nadpis.textContent);
+</code></pre>
+
+  <p>
+    Vlastnost
+    <code class="language-javascript inline-code">textContent</code>
+    obsahuje text uvnitř prvku.
+  </p>
+
+  <h2>8️⃣ Když prvek neexistuje</h2>
+
+  <pre><code class="language-javascript">
+const neexistujiciPrvek = document.querySelector(&quot;.neexistuje&quot;);
+
+console.log(neexistujiciPrvek);
+</code></pre>
+
+  <p>
+    Výsledkem bude
+    <code class="language-javascript inline-code">null</code>.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Práce s null vyvolá chybu</h3>
+
+    <pre><code class="language-javascript">
+const prvek = document.querySelector(&quot;.neexistuje&quot;);
+
+console.log(prvek.textContent);
+</code></pre>
+
+    <p>
+      JavaScript nemůže číst text prvku, který nebyl nalezen.
+    </p>
+  </div>
+
+  <h2>9️⃣ Bezpečná kontrola</h2>
+
+  <pre><code class="language-javascript">
+const prvek = document.querySelector(&quot;.popis&quot;);
+
+if (prvek) {
+  console.log(prvek.textContent);
+}
+</code></pre>
+
+  <p>
+    Kód uvnitř podmínky se spustí pouze tehdy,
+    když byl prvek nalezen.
+  </p>
+
+  <h2>🔟 Přesnější selektor</h2>
+
+  <pre><code class="language-javascript">
+const nadpisKarty = document.querySelector(&quot;.karta h2&quot;);
+const tlacitkoVMenu = document.querySelector(&quot;.menu button&quot;);
+</code></pre>
+
+  <p>
+    Můžeš používat stejné složené selektory,
+    jaké už znáš z CSS.
+  </p>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <h3>index.html</h3>
+
+  <script type="text/plain" class="language-markup">
+<h1 id="nadpis">Programmer Journal</h1>
+
+<p class="popis">
+  Učím se JavaScript.
+</p>
+
+<p class="lekce">HTML</p>
+<p class="lekce">CSS</p>
+<p class="lekce">JavaScript</p>
+
+<script src="script.js"></script>
+</script>
+
+  <h3>script.js</h3>
+
+  <pre><code class="language-javascript">
+const nadpis = document.querySelector(&quot;#nadpis&quot;);
+const popis = document.querySelector(&quot;.popis&quot;);
+const lekce = document.querySelectorAll(&quot;.lekce&quot;);
+
+console.log(nadpis.textContent);
+console.log(popis.textContent);
+console.log(`Počet lekcí: ${lekce.length}`);
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>DOM zpřístupňuje HTML prvky JavaScriptu.</li>
+    <li><code class="language-javascript inline-code">querySelector()</code> vrátí první nalezený prvek.</li>
+    <li><code class="language-javascript inline-code">querySelectorAll()</code> vrátí všechny odpovídající prvky.</li>
+    <li>Selektor zapisujeme jako text.</li>
+    <li><code class="language-javascript inline-code">textContent</code> čte text prvku.</li>
+    <li>Nenalezený prvek má hodnotu <code class="language-javascript inline-code">null</code>.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-dom-vyber"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-funkce.html">⬅️ Funkce, parametry</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-udalosti.html">Události ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

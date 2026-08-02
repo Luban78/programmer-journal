@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Podmínky if, else if a else | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🚦 Podmínky if, else if a else</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Podmínka umožní programu rozhodnout, který kód se má vykonat.
+  </p>
+
+  <p>
+    Program se díky ní může zachovat jinak podle přihlášení,
+    výsledku výpočtu nebo hodnoty formuláře.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Jak o tom přemýšlet</h2>
+
+    <pre><code class="language-none">
+POKUD je lekce hotová:
+    zobraz zelený stav
+
+JINAK:
+    zobraz šedý stav
+</code></pre>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>zapsat podmínku <code class="language-javascript inline-code">if</code></li>
+    <li>přidat větev <code class="language-javascript inline-code">else</code></li>
+    <li>rozlišit více možností pomocí <code class="language-javascript inline-code">else if</code></li>
+    <li>kombinovat podmínky pomocí <code class="language-javascript inline-code">&&</code> a <code class="language-javascript inline-code">||</code></li>
+    <li>použít vnořenou podmínku pouze tam, kde dává smysl</li>
+    <li>pochopit truthy a falsy hodnoty</li>
+  </ul>
+
+  <h2>1️⃣ Základní if</h2>
+
+  <pre><code class="language-javascript">
+const jeLekceHotova = true;
+
+if (jeLekceHotova) {
+  console.log(&quot;Lekce je dokončená.&quot;);
+}
+</code></pre>
+
+  <p>
+    Kód ve složených závorkách se spustí pouze tehdy,
+    když je podmínka pravdivá.
+  </p>
+
+  <h2>2️⃣ If a else</h2>
+
+  <pre><code class="language-javascript">
+const jeLekceHotova = false;
+
+if (jeLekceHotova) {
+  console.log(&quot;Lekce je dokončená.&quot;);
+} else {
+  console.log(&quot;Lekce ještě není dokončená.&quot;);
+}
+</code></pre>
+
+  <p>
+    Vždy se spustí právě jedna z těchto dvou větví.
+  </p>
+
+  <h2>3️⃣ Else if</h2>
+
+  <pre><code class="language-javascript">
+const procenta = 75;
+
+if (procenta === 100) {
+  console.log(&quot;Kapitola je hotová.&quot;);
+} else if (procenta &gt;= 50) {
+  console.log(&quot;Jsi za polovinou.&quot;);
+} else {
+  console.log(&quot;Pokračuj v učení.&quot;);
+}
+</code></pre>
+
+  <p>
+    JavaScript kontroluje podmínky shora dolů
+    a zastaví se u první pravdivé větve.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Na pořadí záleží</h3>
+
+    <pre><code class="language-javascript">
+const procenta = 100;
+
+if (procenta &gt;= 50) {
+  console.log(&quot;Jsi za polovinou.&quot;);
+} else if (procenta === 100) {
+  console.log(&quot;Kapitola je hotová.&quot;);
+}
+</code></pre>
+
+    <p>
+      Druhá větev se nikdy nespustí,
+      protože 100 splňuje už první podmínku.
+    </p>
+  </div>
+
+  <h2>4️⃣ Porovnání v podmínce</h2>
+
+  <pre><code class="language-javascript">
+const zadanyPin = &quot;1234&quot;;
+const spravnyPin = &quot;1234&quot;;
+
+if (zadanyPin === spravnyPin) {
+  console.log(&quot;Přihlášení povoleno.&quot;);
+}
+</code></pre>
+
+  <h2>5️⃣ Více podmínek současně</h2>
+
+  <pre><code class="language-javascript">
+const jePrihlasen = true;
+const maRoliAdmin = true;
+
+if (jePrihlasen &amp;&amp; maRoliAdmin) {
+  console.log(&quot;Zobraz administraci.&quot;);
+}
+</code></pre>
+
+  <p>
+    Operátor
+    <code class="language-javascript inline-code">&&</code>
+    vyžaduje, aby byly pravdivé obě části.
+  </p>
+
+  <h2>6️⃣ Alespoň jedna možnost</h2>
+
+  <pre><code class="language-javascript">
+const jeAdmin = false;
+const jeSuperAdmin = true;
+
+if (jeAdmin || jeSuperAdmin) {
+  console.log(&quot;Uživatel může otevřít správu.&quot;);
+}
+</code></pre>
+
+  <h2>7️⃣ Obrácení podmínky</h2>
+
+  <pre><code class="language-javascript">
+const jePrihlasen = false;
+
+if (!jePrihlasen) {
+  console.log(&quot;Nejdřív se přihlas.&quot;);
+}
+</code></pre>
+
+  <h2>8️⃣ Truthy a falsy</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = &quot;&quot;;
+
+if (jmeno) {
+  console.log(&quot;Jméno bylo zadáno.&quot;);
+} else {
+  console.log(&quot;Jméno je prázdné.&quot;);
+}
+</code></pre>
+
+  <p>
+    Prázdný text
+    <code class="language-javascript inline-code">""</code>,
+    číslo
+    <code class="language-javascript inline-code">0</code>,
+    <code class="language-javascript inline-code">null</code>
+    a
+    <code class="language-javascript inline-code">undefined</code>
+    se v podmínce chovají jako nepravdivé hodnoty.
+  </p>
+
+  <div class="tip">
+    <h3>💡 Pro začátek buď přesný</h3>
+
+    <p>
+      Truthy a falsy zápis je užitečný,
+      ale při učení může být někdy přehlednější výslovné porovnání.
+    </p>
+  </div>
+
+  <h2>9️⃣ Vnořená podmínka</h2>
+
+  <pre><code class="language-javascript">
+const jePrihlasen = true;
+const role = &quot;admin&quot;;
+
+if (jePrihlasen) {
+  if (role === &quot;admin&quot;) {
+    console.log(&quot;Zobraz administraci.&quot;);
+  }
+}
+</code></pre>
+
+  <p>
+    Vnoření je možné, ale příliš mnoho úrovní zhoršuje čitelnost.
+  </p>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <pre><code class="language-javascript">
+const pocetHotovychLekci = 9;
+const pocetVsechLekci = 12;
+
+if (pocetHotovychLekci === pocetVsechLekci) {
+  console.log(&quot;JavaScript kapitola je dokončená.&quot;);
+} else if (pocetHotovychLekci &gt;= 6) {
+  console.log(&quot;Jsi za polovinou kapitoly.&quot;);
+} else {
+  console.log(&quot;Pokračuj další lekcí.&quot;);
+}
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li><code class="language-javascript inline-code">if</code> spustí kód při pravdivé podmínce.</li>
+    <li><code class="language-javascript inline-code">else</code> řeší opačnou možnost.</li>
+    <li><code class="language-javascript inline-code">else if</code> přidává další možnost.</li>
+    <li>Podmínky se kontrolují shora dolů.</li>
+    <li><code class="language-javascript inline-code">&&</code> vyžaduje obě podmínky.</li>
+    <li><code class="language-javascript inline-code">||</code> vyžaduje alespoň jednu.</li>
+    <li><code class="language-javascript inline-code">!</code> obrací boolean.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-podminky"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-datove-typy-operatory.html">⬅️ Datové typy</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-funkce.html">Funkce, parametry ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

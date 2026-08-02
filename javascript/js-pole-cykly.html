@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pole, objekty a cykly | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>🔁 Pole, objekty a cykly</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Pole uchovává více hodnot v jednom uspořádaném seznamu.
+    Objekt seskupuje související vlastnosti pod jeden celek.
+    Cyklus opakuje stejnou práci pro více položek.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Proč to potřebujeme</h2>
+
+    <p>
+      Záložky Programmer Journalu nebudou jedna samostatná proměnná.
+      Budou seznamem několika lekcí.
+    </p>
+
+    <p>
+      Každá lekce může mít název, adresu a stav.
+      Právě proto potřebujeme pole objektů.
+    </p>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>vytvořit pole</li>
+    <li>přečíst položku podle indexu</li>
+    <li>zjistit délku pole</li>
+    <li>přidat a odebrat položku</li>
+    <li>projít pole pomocí <code class="language-javascript inline-code">for...of</code> a <code class="language-javascript inline-code">forEach()</code></li>
+    <li>vytvořit objekt</li>
+    <li>přečíst vlastnost objektu</li>
+    <li>vytvořit pole objektů</li>
+    <li>vyhledat položku pomocí <code class="language-javascript inline-code">find()</code></li>
+    <li>vytvořit nové pole pomocí <code class="language-javascript inline-code">filter()</code></li>
+  </ul>
+
+  <h2>1️⃣ Pole</h2>
+
+  <pre><code class="language-javascript">
+const technologie = [&quot;HTML&quot;, &quot;CSS&quot;, &quot;JavaScript&quot;];
+
+console.log(technologie);
+</code></pre>
+
+  <h2>2️⃣ Index začíná nulou</h2>
+
+  <pre><code class="language-javascript">
+console.log(technologie[0]);
+console.log(technologie[1]);
+console.log(technologie[2]);
+</code></pre>
+
+  <pre><code class="language-none">
+index:    0        1          2
+hodnota: HTML     CSS        JavaScript
+</code></pre>
+
+  <h2>3️⃣ Délka pole</h2>
+
+  <pre><code class="language-javascript">console.log(technologie.length);</code></pre>
+
+  <h2>4️⃣ Přidání položky</h2>
+
+  <pre><code class="language-javascript">
+technologie.push(&quot;Git&quot;);
+
+console.log(technologie);
+</code></pre>
+
+  <h2>5️⃣ Odebrání poslední položky</h2>
+
+  <pre><code class="language-javascript">
+const odebranaPolozka = technologie.pop();
+
+console.log(odebranaPolozka);
+</code></pre>
+
+  <h2>6️⃣ For...of</h2>
+
+  <pre><code class="language-javascript">
+for (const technologieNazev of technologie) {
+  console.log(technologieNazev);
+}
+</code></pre>
+
+  <p>
+    Cyklus se spustí jednou pro každou položku pole.
+  </p>
+
+  <h2>7️⃣ ForEach</h2>
+
+  <pre><code class="language-javascript">
+technologie.forEach((technologieNazev) =&gt; {
+  console.log(technologieNazev);
+});
+</code></pre>
+
+  <p>
+    Metoda
+    <code class="language-javascript inline-code">forEach()</code>
+    přijme funkci, kterou zavolá pro každou položku.
+  </p>
+
+  <h2>8️⃣ Objekt</h2>
+
+  <pre><code class="language-javascript">
+const lekce = {
+  nazev: &quot;Flexbox&quot;,
+  kapitola: &quot;CSS&quot;,
+  jeHotova: true,
+};
+</code></pre>
+
+  <p>
+    Objekt obsahuje dvojice
+    <strong>vlastnost: hodnota</strong>.
+  </p>
+
+  <h2>9️⃣ Čtení vlastností</h2>
+
+  <pre><code class="language-javascript">
+console.log(lekce.nazev);
+console.log(lekce.kapitola);
+console.log(lekce.jeHotova);
+</code></pre>
+
+  <h2>🔟 Změna vlastnosti</h2>
+
+  <pre><code class="language-javascript">
+lekce.jeHotova = false;
+</code></pre>
+
+  <p>
+    Proměnná je vytvořená pomocí
+    <code class="language-javascript inline-code">const</code>,
+    ale obsah objektu můžeme upravit.
+    Nemůžeme pouze přiřadit úplně nový objekt do stejné proměnné.
+  </p>
+
+  <h2>1️⃣1️⃣ Pole objektů</h2>
+
+  <pre><code class="language-javascript">
+const lekce = [
+  {
+    nazev: &quot;HTML struktura&quot;,
+    kapitola: &quot;HTML&quot;,
+    jeHotova: true,
+  },
+  {
+    nazev: &quot;Flexbox&quot;,
+    kapitola: &quot;CSS&quot;,
+    jeHotova: true,
+  },
+  {
+    nazev: &quot;Proměnné&quot;,
+    kapitola: &quot;JavaScript&quot;,
+    jeHotova: false,
+  },
+];
+</code></pre>
+
+  <h2>1️⃣2️⃣ Průchod polem objektů</h2>
+
+  <pre><code class="language-javascript">
+lekce.forEach((lekcePolozka) =&gt; {
+  console.log(`${lekcePolozka.kapitola}: ${lekcePolozka.nazev}`);
+});
+</code></pre>
+
+  <h2>1️⃣3️⃣ Find – nalezení jedné položky</h2>
+
+  <pre><code class="language-javascript">
+const nalezenaLekce = lekce.find((lekcePolozka) =&gt; {
+  return lekcePolozka.nazev === &quot;Flexbox&quot;;
+});
+
+console.log(nalezenaLekce);
+</code></pre>
+
+  <h2>1️⃣4️⃣ Filter – vybrání více položek</h2>
+
+  <pre><code class="language-javascript">
+const hotoveLekce = lekce.filter((lekcePolozka) =&gt; {
+  return lekcePolozka.jeHotova;
+});
+
+console.log(hotoveLekce);
+</code></pre>
+
+  <h2>1️⃣5️⃣ Vykreslení seznamu do HTML</h2>
+
+  <script type="text/plain" class="language-markup">
+<ul id="seznam-lekci"></ul>
+</script>
+
+  <pre><code class="language-javascript">
+const seznam = document.querySelector(&quot;#seznam-lekci&quot;);
+
+lekce.forEach((lekcePolozka) =&gt; {
+  const polozka = document.createElement(&quot;li&quot;);
+
+  polozka.textContent =
+    `${lekcePolozka.kapitola}: ${lekcePolozka.nazev}`;
+
+  seznam.append(polozka);
+});
+</code></pre>
+
+  <div class="chyba">
+    <h3>⚠️ Index mimo pole</h3>
+
+    <pre><code class="language-javascript">console.log(technologie[99]);</code></pre>
+
+    <p>
+      Výsledkem bude
+      <code class="language-javascript inline-code">undefined</code>,
+      protože na tomto indexu žádná položka není.
+    </p>
+  </div>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>Pole uchovává uspořádaný seznam hodnot.</li>
+    <li>První položka má index 0.</li>
+    <li><code class="language-javascript inline-code">length</code> vrací počet položek.</li>
+    <li><code class="language-javascript inline-code">push()</code> přidá položku na konec.</li>
+    <li>Objekt seskupuje vlastnosti jednoho celku.</li>
+    <li>Pole objektů je vhodné pro seznam lekcí nebo záložek.</li>
+    <li><code class="language-javascript inline-code">find()</code> hledá jednu položku.</li>
+    <li><code class="language-javascript inline-code">filter()</code> vytváří výběr více položek.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-pole-cykly"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-vstup-formulare.html">⬅️ Vstup od uživatele</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-localstorage-zalozky.html">localStorage ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

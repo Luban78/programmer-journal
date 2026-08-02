@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vstup od uživatele a formuláře | Programmer Journal</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css"
+  >
+</head>
+
+<body>
+  <h1>⌨️ Vstup od uživatele a formuláře</h1>
+
+
+  <h2>Krátký úvod</h2>
+
+  <p>
+    Formulář umožní uživateli zadat data.
+    JavaScript je může přečíst, zkontrolovat a zobrazit výsledek
+    bez obnovení celé stránky.
+  </p>
+
+  <div class="mind">
+    <h2>🧠 Tok dat ve formuláři</h2>
+
+    <pre><code class="language-none">
+uživatel zadá hodnotu
+        ↓
+JavaScript přečte .value
+        ↓
+hodnotu zkontroluje
+        ↓
+zobrazí výsledek nebo chybu
+</code></pre>
+  </div>
+
+  <h2>📚 Co se dnes naučíš</h2>
+
+  <ul>
+    <li>přečíst hodnotu inputu</li>
+    <li>odstranit mezery pomocí <code class="language-javascript inline-code">trim()</code></li>
+    <li>zpracovat odeslání formuláře</li>
+    <li>použít <code class="language-javascript inline-code">preventDefault()</code></li>
+    <li>zkontrolovat prázdnou hodnotu</li>
+    <li>převést text na číslo</li>
+    <li>vyčistit formulář</li>
+    <li>zobrazit uživateli zpětnou vazbu</li>
+  </ul>
+
+  <h2>1️⃣ Čtení hodnoty inputu</h2>
+
+  <script type="text/plain" class="language-markup">
+<input id="jmeno" type="text">
+<button id="zobrazit">Zobrazit</button>
+</script>
+
+  <pre><code class="language-javascript">
+const vstup = document.querySelector(&quot;#jmeno&quot;);
+const tlacitko = document.querySelector(&quot;#zobrazit&quot;);
+
+tlacitko.addEventListener(&quot;click&quot;, () =&gt; {
+  console.log(vstup.value);
+});
+</code></pre>
+
+  <p>
+    Vlastnost
+    <code class="language-javascript inline-code">value</code>
+    obsahuje aktuální hodnotu formulářového pole.
+  </p>
+
+  <h2>2️⃣ Odstranění přebytečných mezer</h2>
+
+  <pre><code class="language-javascript">
+const jmeno = vstup.value.trim();
+</code></pre>
+
+  <p>
+    Metoda
+    <code class="language-javascript inline-code">trim()</code>
+    odstraní mezery na začátku a na konci textu.
+  </p>
+
+  <h2>3️⃣ Odeslání formuláře</h2>
+
+  <script type="text/plain" class="language-markup">
+<form id="formular">
+  <label for="tema">Téma studia</label>
+  <input id="tema" type="text">
+
+  <button type="submit">Uložit</button>
+</form>
+
+<p id="vysledek"></p>
+</script>
+
+  <pre><code class="language-javascript">
+const formular = document.querySelector(&quot;#formular&quot;);
+const temaInput = document.querySelector(&quot;#tema&quot;);
+const vysledek = document.querySelector(&quot;#vysledek&quot;);
+
+formular.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  event.preventDefault();
+
+  const tema = temaInput.value.trim();
+
+  vysledek.textContent = tema;
+});
+</code></pre>
+
+  <h2>4️⃣ Kontrola prázdného vstupu</h2>
+
+  <pre><code class="language-javascript">
+if (tema === &quot;&quot;) {
+  vysledek.textContent = &quot;Nejdřív napiš téma.&quot;;
+  return;
+}
+</code></pre>
+
+  <p>
+    <code class="language-javascript inline-code">return</code>
+    ukončí funkci, takže se další kód při chybě nespustí.
+  </p>
+
+  <h2>5️⃣ Změna vzhledu chybové zprávy</h2>
+
+  <pre><code class="language-javascript">
+if (tema === &quot;&quot;) {
+  vysledek.textContent = &quot;Nejdřív napiš téma.&quot;;
+  vysledek.classList.add(&quot;chyba-formulare&quot;);
+  return;
+}
+
+vysledek.classList.remove(&quot;chyba-formulare&quot;);
+</code></pre>
+
+  <h2>6️⃣ Převod textu na číslo</h2>
+
+  <script type="text/plain" class="language-markup">
+<input id="pocet" type="number">
+</script>
+
+  <pre><code class="language-javascript">
+const pocetInput = document.querySelector(&quot;#pocet&quot;);
+const pocet = Number(pocetInput.value);
+
+console.log(pocet + 1);
+</code></pre>
+
+  <p>
+    Hodnota inputu je text i tehdy,
+    když má pole typ
+    <code class="language-markup inline-code">number</code>.
+  </p>
+
+  <div class="chyba">
+    <h3>⚠️ Bez převodu se text spojí</h3>
+
+    <pre><code class="language-javascript">
+const hodnota = &quot;5&quot;;
+
+console.log(hodnota + 1);
+</code></pre>
+
+    <p>Výsledkem bude text <code class="language-javascript inline-code">"51"</code>.</p>
+  </div>
+
+  <h2>7️⃣ Kontrola čísla</h2>
+
+  <pre><code class="language-javascript">
+const pocet = Number(pocetInput.value);
+
+if (Number.isNaN(pocet)) {
+  console.log(&quot;Hodnota není platné číslo.&quot;);
+}
+</code></pre>
+
+  <h2>8️⃣ Vyčištění pole</h2>
+
+  <pre><code class="language-javascript">
+temaInput.value = &quot;&quot;;
+</code></pre>
+
+  <p>
+    Po úspěšném zpracování můžeš input připravit pro další hodnotu.
+  </p>
+
+  <h2>9️⃣ Reset celého formuláře</h2>
+
+  <pre><code class="language-javascript">formular.reset();</code></pre>
+
+  <h2>💻 Kompletní příklad</h2>
+
+  <script type="text/plain" class="language-markup">
+<form id="studium-formular">
+  <label for="studium-tema">Co se dnes učíš?</label>
+
+  <input
+    id="studium-tema"
+    type="text"
+    autocomplete="off"
+  >
+
+  <button type="submit">Uložit téma</button>
+</form>
+
+<p id="zprava"></p>
+
+<script src="script.js"></script>
+</script>
+
+  <pre><code class="language-javascript">
+const formular = document.querySelector(&quot;#studium-formular&quot;);
+const input = document.querySelector(&quot;#studium-tema&quot;);
+const zprava = document.querySelector(&quot;#zprava&quot;);
+
+formular.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  event.preventDefault();
+
+  const tema = input.value.trim();
+
+  if (tema === &quot;&quot;) {
+    zprava.textContent = &quot;Napiš nejdřív téma studia.&quot;;
+    zprava.classList.add(&quot;chyba-formulare&quot;);
+    return;
+  }
+
+  zprava.classList.remove(&quot;chyba-formulare&quot;);
+  zprava.textContent = `Dnes studuješ: ${tema}`;
+
+  formular.reset();
+});
+</code></pre>
+
+  <h2>📝 Co si zapamatovat</h2>
+
+  <ul>
+    <li>Hodnotu pole čteme přes <code class="language-javascript inline-code">value</code>.</li>
+    <li><code class="language-javascript inline-code">trim()</code> odstraní krajní mezery.</li>
+    <li>Formulář poslouchá událost <code class="language-javascript inline-code">submit</code>.</li>
+    <li><code class="language-javascript inline-code">preventDefault()</code> zabrání obnovení stránky.</li>
+    <li>Číselný vstup převádíme pomocí <code class="language-javascript inline-code">Number()</code>.</li>
+    <li><code class="language-javascript inline-code">reset()</code> vyčistí celý formulář.</li>
+  </ul>
+
+
+  <button
+    class="complete-lesson"
+    data-lesson="js-vstup-formulare"
+  >
+    ✅ Označit lekci jako dokončenou
+  </button>
+
+  <div class="lesson-nav">
+    <a href="js-dom-zmeny.html">⬅️ Změna textu, tříd</a>
+    <a href="../javascript.html">⚡ Obsah JS</a>
+    <a href="js-pole-cykly.html">Pole, objekty ➡️</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js"></script>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
